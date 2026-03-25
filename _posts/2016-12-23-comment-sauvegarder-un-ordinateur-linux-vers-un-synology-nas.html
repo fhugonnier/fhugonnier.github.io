@@ -25,7 +25,7 @@ permalink: "/2016/12/23/comment-sauvegarder-un-ordinateur-linux-vers-un-synology
 <p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
 <html><body></p>
 <h1></h1>
-<p><img src="{{site.baseurl}}/assets/images/2016/12/how_to_backup_Linux_computer.jpg" alt=""></p>
+<p></p>
 <h2>Aperçu</h2>
 <p class="last">Votre Synology NAS peut servir de destination de sauvegarde pour votre ordinateur Linux en utilisant l'un des protocoles suivants : rsync ou FTP, CIFS, NFS ou WebDAV parmi lesquels rsync est le plus commun. La sauvegarde automatique peut être effectuée avec un script écrit; le transfert de données de la sauvegarde peut être crypté pour protéger vos données importantes avec niveau de sécurité élevé.</p>
 <p>Cet article vous guidera à travers les étapes pour sauvegarder vos données sur votre poste de travail ou serveur Linux vers votre Synology NAS.</p>
@@ -59,7 +59,7 @@ permalink: "/2016/12/23/comment-sauvegarder-un-ordinateur-linux-vers-un-synology
 <li>Cliquez sur <b>Appliquer</b> pour enregistrer les paramètres.</li>
 </ol>
 </ol>
-<p><img src="{{site.baseurl}}/assets/images/2016/12/01.png" alt=""></p>
+<p></p>
 <p>Pour configurer un utilisateur DSM avec les privilèges adéquats sur votre Synology NAS :</p>
 <ol class="last">
 <ol class="last">
@@ -67,7 +67,7 @@ permalink: "/2016/12/23/comment-sauvegarder-un-ordinateur-linux-vers-un-synology
 <li>Allez dans <b>Panneau de configuration</b> &gt; <b>Dossier partagé</b>, sélectionnez un dossier partagé, cliquez sur <b>Modifier</b> &gt; <b>Autorisations</b> et attribuez le privilège <b>Lecture/écriture</b> à l’utilisateur. Répétez cette étape pour inclure davantage de dossiers partagés qui pourraient être utilisés comme destinations de sauvegarde.</li>
 </ol>
 </ol>
-<p><img src="{{site.baseurl}}/assets/images/2016/12/02.png" alt=""></p>
+<p></p>
 <h3 class="list_head">
 <a id="t3" name="t3"></a>3 Sauvegarder les données d'un serveur Linux vers un Synology NAS</h3>
 <p>La façon la plus commune de sauvegarder des données d'un serveur Linux vers un Synology NAS est d'utiliser rsync pour effectuer des dossiers dupliqués. Vous devez monter le dossier sur le Synology NAS vers votre serveur Linux en utilisant le CIFS ou NFS monté au préalable. La commande sera :</p>

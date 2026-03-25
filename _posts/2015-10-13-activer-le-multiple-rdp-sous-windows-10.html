@@ -39,15 +39,15 @@ permalink: "/2015/10/13/activer-le-multiple-rdp-sous-windows-10/"
 </ul>
 <h2>Mise en place du multiple RDP</h2>
 <p>Aller dans la barre de recherche et taper « services.msc » puis sélectionner le premier résultat.</p>
-<p><a href="http://www.sky-future.net/wp-content/uploads/2015/08/capture1.png"><img class="aligncenter wp-image-10204 size-medium" src="{{site.baseurl}}/assets/images/2015/10/capture1-193x300.png" alt="services.msc" width="193" height="300"></a></p>
+<p><a href="http://www.sky-future.net/wp-content/uploads/2015/08/capture1.png"></a></p>
 <p>Une fois ouvert, arrêtez les services “<strong>Services Bureau à distance</strong>“ et  « <strong>Configuration des services Bureau à distance</strong>« .</p>
-<p><a href="http://www.sky-future.net/wp-content/uploads/2015/08/multiplerdp6.png"><img class="aligncenter wp-image-10205 size-medium" src="{{site.baseurl}}/assets/images/2015/10/multiplerdp6-300x207.png" alt="Les services" width="300" height="207"></a></p>
+<p><a href="http://www.sky-future.net/wp-content/uploads/2015/08/multiplerdp6.png"></a></p>
 <p>Une fois arrêtée, rendez-vous dans le dossier : <strong>C:\Windows\System32</strong></p>
 <p>Faites une copie du fichier <strong>termsrv.dl</strong>l.</p>
 <p>Allez ensuite dans les propriétés du fichier.</p>
 <p>Puis dans l’onglet <strong>Sécurité </strong>et cliquez sur <strong>Avancé</strong>. Il faut ensuite changer le propriétaire qui est <strong>TrustedInstaller</strong>par défaut, ce qui ne permet pas de modifier les droits sur  le fichier. Cliquer sur <strong>Modifier</strong> et indiquez le nom de votre utilisateur disposant des droits administrateur puis valider.</p>
 <p>Fermer les propriété puis ouvrez les de nouveau. Pour vous donner cette fois-ci le contrôle total sur le fichier  au groupe « Administrateurs ».</p>
-<p><a href="http://www.sky-future.net/wp-content/uploads/2015/08/capt4.png"><img class="aligncenter wp-image-10206 size-medium" src="{{site.baseurl}}/assets/images/2015/10/capt4-300x121.png" alt="Droit fichier " width="300" height="121"></a></p>
+<p><a href="http://www.sky-future.net/wp-content/uploads/2015/08/capt4.png"></a></p>
 <p>Une fois effectuée, remplacer ce fichier <strong>termsrv.dl</strong>l par le fichier présent dans l’archive précédemment téléchargé.</p>
 <p>Puis redémarrer les services “<strong>Services Bureau à distance</strong>“ et  « <strong>Configuration des services Bureau à distance</strong>« .</p>
 <p>Voilà normalement vous pouvez vous connecter au bureau à distance à plusieurs en même temps avec un ou plusieurs comptes différents.</body></html></p>

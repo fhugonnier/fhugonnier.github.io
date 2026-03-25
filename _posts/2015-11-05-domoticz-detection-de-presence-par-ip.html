@@ -26,11 +26,11 @@ permalink: "/2015/11/05/domoticz-detection-de-presence-par-ip/"
 <html><body></p>
 <p> </p>
 <p>Dans cette article, on va créer des interrupteurs virtuels sur <a href="http://www.geekland-leblog.fr/a-la-decouverte-de-domoticz/" target="_blank">Domticz</a> qui vont représenter les téléphones connectés sur le Wifi de votre box.</p>
-<p><a href="http://www.geekland-leblog.fr/wordpress/wp-content/uploads/2015/02/tel_domoticz.jpg" rel="prettyPhoto"><img class="alignnone wp-image-97 lazy-loaded" src="{{site.baseurl}}/assets/images/2015/11/tel_domoticz.jpg" alt="tel_domoticz" width="692" height="410"></a></p>
+<p><a href="http://www.geekland-leblog.fr/wordpress/wp-content/uploads/2015/02/tel_domoticz.jpg" rel="prettyPhoto"></a></p>
 <p>Exemple : On voit que mon téléphone est connecté sur le wifi donc je suis chez moi et ma copine est au travail, donc son téléphone est hors-ligne. On va commencé par créer nos boutons virtuels.</p>
-<p><a href="http://www.geekland-leblog.fr/wordpress/wp-content/uploads/2015/02/dunidev.jpg" rel="prettyPhoto"><img class="alignnone wp-image-98 lazy-loaded" src="{{site.baseurl}}/assets/images/2015/11/dunidev.jpg" alt="dunidev" width="713" height="328"></a></p>
+<p><a href="http://www.geekland-leblog.fr/wordpress/wp-content/uploads/2015/02/dunidev.jpg" rel="prettyPhoto"></a></p>
 <p>Crée un Matériel virtuel  de type « Dummy (Does nothing, use for virtual switch only »). Nommez-le comme vous voulez, pour moi ça sera Dummy dev, cliquez sur ajoutez, on va à présent crée les interrupteurs virtuels,  <strong>Interrupteur/Ajout manuel.</strong></p>
-<p><a href="http://www.geekland-leblog.fr/wordpress/wp-content/uploads/2015/02/add-tel.jpg" rel="prettyPhoto"><img class="alignnone wp-image-99 size-full lazy-loaded" src="{{site.baseurl}}/assets/images/2015/11/add-tel.jpg" alt="add tel" width="402" height="431"></a></p>
+<p><a href="http://www.geekland-leblog.fr/wordpress/wp-content/uploads/2015/02/add-tel.jpg" rel="prettyPhoto"></a></p>
 <p>Sélectionner <strong>Hardware</strong>: Dunny dev ( pour vous le nom que vous lui avez donnez) <strong>Switch Type</strong>: on/off Type: X10, puis <strong>add Devices</strong> refaite l’opération pour un deuxième téléphone en changeant juste le <strong>unit code</strong>. Maintenant il faut installer le sctipt sur le serveur. On connecte le pi en SSH avec putty, il faut mettre le script dans le repertoire /home/pi/domoticz/scripts/lua et le nommer « script_time_ping.lua ».</p>
 <p>Pour crée un dossier, on va taper :</p>
 <pre class="">sudo nano /home/pi/domoticz/scripts/lua/script_time_ping.lua</pre>

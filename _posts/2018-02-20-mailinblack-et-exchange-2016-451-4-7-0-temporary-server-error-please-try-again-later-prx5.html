@@ -37,30 +37,30 @@ permalink: "/2018/02/20/mailinblack-et-exchange-2016-451-4-7-0-temporary-server-
 <p><strong>Première étape</strong> : Connectez vous à votre centre d’administration Exchange.</p>
 <p>Une fois connecté, dans le menu de gauche cliquez sur « <strong>Flux de messagerie</strong> »</p>
 <p>Puis sélectionnez dans le menu «<strong> Connecteurs de réception</strong> »</p>
-<p><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2018/02/prx51.jpg"><img class="wp-image-406 aligncenter" src="{{site.baseurl}}/assets/images/2018/02/prx51.jpg?w=300" alt="" width="350" height="203"></a></p>
+<p><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2018/02/prx51.jpg"></a></p>
 <p>Nous avons besoin de changer ici l’adresse IP de notre serveur Exchange 2016. Nous ajouterons plus loin aussi une ligne dans notre fichier « <strong>hosts</strong> ».</p>
 <p>• Sélectionnez la ligne «<strong> (Toutes les adresses IPv4 disponibles)</strong> »<br />
 • Pour la modifier cliquez sur le symbole du crayon au-dessus.</p>
-<p><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2018/02/prx52.jpg"><img class="wp-image-405 aligncenter" src="{{site.baseurl}}/assets/images/2018/02/prx52.jpg?w=300" alt="" width="347" height="264"></a></p>
+<p><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2018/02/prx52.jpg"></a></p>
 <p>• Dans la fenêtre qui s’ouvre, Sélectionnez le bouton radio « <strong>Spécifier une adresse IPv4</strong> »<br />
 • Saisissez l’adresse IP de votre serveur Exchange dans la zone de texte en dessous.</p>
-<p><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2018/02/prx53.jpg"><img class="size-medium wp-image-404 aligncenter" src="{{site.baseurl}}/assets/images/2018/02/prx53.jpg?w=300" alt="" width="300" height="184"></a></p>
+<p><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2018/02/prx53.jpg"></a></p>
 <p><strong>Enregistrez les changements.</strong></p>
 <p>Vous revenez sur la page précédente et vous devez avoir le résultat suivant. Cliquer sur enregistrer pour conserver vos modifications.</p>
-<p><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2018/02/prx54.jpg"><img class="size-medium wp-image-403 aligncenter" src="{{site.baseurl}}/assets/images/2018/02/prx54.jpg?w=300" alt="" width="300" height="228"></a></p>
+<p><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2018/02/prx54.jpg"></a></p>
 <p>Comme annoncé plus haut, la prochaine étape consiste à modifier le fichier hosts.</p>
 <p>Pour cela vous devez vous connecter directement à votre serveur Exchange avec un compte possédant les droits d’administration c’est important.</p>
 <p><strong>Ouvrez le Panneau de configuration.</strong></p>
 <p>Allez dans <strong>Systèmes et sécurité</strong> -&gt; <strong>Outils d’administration</strong> et lancez la console <strong>Services</strong>.</p>
 <p>Arrêtez un à un les services Exchange qui sont en cours d’exécution.</p>
-<p><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2018/02/prx55a.jpg"><img class="size-medium wp-image-402 aligncenter" src="{{site.baseurl}}/assets/images/2018/02/prx55a.jpg?w=300" alt="" width="300" height="199"></a></p>
+<p><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2018/02/prx55a.jpg"></a></p>
 <p>Ouvrez l’explorateur Windows et naviguez jusqu’au fichier « <strong>hosts</strong> » qui se situe dans :</p>
 <pre class="lang:default decode:true ">C:\Windows\System32\Drivers\etc</pre>
 <p><strong> </strong></p>
-<p><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2018/02/prx55b.jpg"><img class="size-medium wp-image-401 aligncenter" src="{{site.baseurl}}/assets/images/2018/02/prx55b.jpg?w=300" alt="" width="300" height="129"></a></p>
+<p><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2018/02/prx55b.jpg"></a></p>
 <p>Faites un clique droit pour modifier le fichier (à l’aide du bloc note) et ajoutez les lignes correspondantes à l’adresse IP de votre serveur Exchange 2016 et à son nom d’hôte.</p>
 <p>Pour notre exemple :</p>
 <pre class="lang:default decode:true">192.168.0.43 mail
 192.168.0.43 mail.domain.local</pre>
-<p><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2018/02/prx56.jpg"><img class="size-medium wp-image-400 aligncenter" src="{{site.baseurl}}/assets/images/2018/02/prx56.jpg?w=300" alt="" width="300" height="222"></a></p>
+<p><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2018/02/prx56.jpg"></a></p>
 <p>Enregistrez vos modifications puis, pour terminer vous devez redémarrer votre serveur. Vous ne devrez plus rencontrer l’erreur : <strong>Exchange 2016 451 4.7.0 Temporary server error. Please try again later. PRX5</strong>.</body></html></p>

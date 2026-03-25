@@ -40,16 +40,16 @@ permalink: "/2015/11/18/vpn-entre-2-pc/"
 <p><a name="serveur-vpn"></a></p>
 <h3>Serveur VPN</h3>
 <p>Ouvrez le Panneau de configuration, puis sélectionnez (Système et Sécurité, puis) Outils d'administration. et double cliquez ensutie sur Services.</p>
-<p><img src="{{site.baseurl}}/assets/images/2015/11/sd8Kaf90-services-routage-s-.png" alt="" width="500" border="0"></p>
+<p></p>
 <p>Activez le service Routage et accès distant en cliquant avec le bouton droit, puis Propriétés. Dans type de démarrage, mettre Automatique et cliquer sur Démarrer.</p>
-<p><img src="{{site.baseurl}}/assets/images/2015/11/ze13ur6k-routage-acces-distant-s-.png" alt="" width="406" border="0"></p>
+<p></p>
 <p>Toujours dans le panneau de configuration, cliquer sur "Réseau et Internet", puis sur "Centre Réseau et Partage". Choisir "Modifier les paramètres de la carte".</p>
 <p>L'item "Connexion entrantes" doit apparaître.</p>
-<p><img src="{{site.baseurl}}/assets/images/2015/11/0UwBPz9L-connexions-entrantes-s-.png" alt="" width="368" border="0"></p>
+<p></p>
 <p>Cliquez dessus avec le bouton droit, puis choisir "Propriétés" et enfin dans l'onglet général cocher la case "Autoriser d'autres utilisateurs" dans l'encart VPN.</p>
-<p><img src="{{site.baseurl}}/assets/images/2015/11/lHwyPGuH-proprietes-vpn-s-.png" alt="" width="428" border="0"></p>
+<p></p>
 <p>Il est possible de définir les droits d'accès grâce à l'onglet "Utilisateurs".</p>
-<p><img src="{{site.baseurl}}/assets/images/2015/11/URXIYp0D-users-s-.png" alt="" width="428" border="0"><br />
+<p><br />
 <a name="client-vpn"></a></p>
 <h3>Client VPN</h3>
 <p>Dans le panneau de configuration, cliquez sur "Réseau et Internet", puis sur "Centre Réseau et Partage". Choisissez "Configurer une nouvelle connexion ou un nouveau réseau".<br />
@@ -63,51 +63,51 @@ Ainsi pour mettre en place un <a href="http://www.commentcamarche.net/contents/5
 <p class="niv1">Dans notre exemple nous admettrons que la machine destinée à faire office de serveur VPN sur le réseau local possède deux interfaces; une destiné au réseau local (une <a href="http://www.commentcamarche.net/contents/733-carte-reseau">carte réseau</a> par exemple) et une destinée à Internet (une connexion <a href="http://www.commentcamarche.net/contents/1110-adsl">ADSL</a> ou <a href="http://www.commentcamarche.net/contents/1128-transmission-de-donnees-le-cablage">fibre optique</a> par exemple). C'est via son interface connectée à Internet que les clients VPN se connecteront au réseau local.</p>
 <p>Afin de permettre à cette machine de gérer des réseaux privés<br />
 virtuels, il suffit d'ouvrir l'élément <i>Connexions réseau</i> (<i>Network Connection</i>) dans le <i>Panneau de configuration</i>. Dans la fenêtre ainsi ouverte, double-cliquez sur <i>Assistant de nouvelle connexion</i> (<i>New connection wizard</i>) :</p>
-<p><img src="{{site.baseurl}}/assets/images/2015/11/pratique-images-1-assistant-nouvelle-connexion.gif" alt="assistant nouvelle connexion" width="480" border="0"></p>
+<p></p>
 <p>Appuyez ensuite sur la touche <i>Suivant</i> :</p>
-<p><img src="{{site.baseurl}}/assets/images/2015/11/pratique-images-2-assistant.gif" alt="assistant nouvelle connexion" width="302" border="0"></p>
+<p></p>
 <p>Parmi les trois choix proposés dans la fenêtre, sélectionnez "<i>Configurer une connexion avancée</i>" :</p>
-<p><img src="{{site.baseurl}}/assets/images/2015/11/pratique-images-4-configurer-connexion-avancee.gif" alt="configurer une connexion avancée" width="302" border="0"></p>
+<p></p>
 <p>Dans l'écran suivant sélectionnez "<i>Accepter les connexions entrantes</i>" :</p>
-<p><img src="{{site.baseurl}}/assets/images/2015/11/pratique-images-13-connexions-entrantes.gif" alt="Accepter les connexions entrantes" width="302" border="0"></p>
+<p></p>
 <p>L'écran suivant présente des périphériques à sélectionner pour une connexion directe. Il se peut qu'aucun périphérique ne soit proposé. Sauf besoin particulier vous n'aurez pas besoin d'en sélectionner :</p>
-<p><img src="{{site.baseurl}}/assets/images/2015/11/pratique-images-14-peripheriques.gif" alt="choix des périphériques" width="302" border="0"></p>
+<p></p>
 <p>Dans la fenêtre suivante sélectionnez<br />
 "<i>Autoriser les connexions privées virtuelles</i>" :</p>
-<p><img src="{{site.baseurl}}/assets/images/2015/11/pratique-images-15-autoriser-connexions-entrantes.gif" alt="autoriser les connexions privées virtuelles" width="302" border="0"></p>
+<p></p>
 <p>Une liste des utilisateurs du système apparaît, il suffit de sélectionner ou ajouter les utilisateurs autorisés à se connecter au serveur VPN :</p>
-<p><img src="{{site.baseurl}}/assets/images/2015/11/pratique-images-16-utilisateurs.gif" alt="choisir les utilisateurs" width="302" border="0"></p>
+<p></p>
 <p>Sélectionnez ensuite la liste des protocoles autorisés via le VPN :</p>
-<p><img src="{{site.baseurl}}/assets/images/2015/11/pratique-images-17-nouvelle-connexion.gif" alt="nouvelle connexion" width="302" border="0"></p>
+<p></p>
 <p>Un clic sur le bouton <i>Propriétés</i> associé au protocole <a href="http://www.commentcamarche.net/contents/539-tcp-ip">TCP/IP</a> permet de définir les <a href="http://www.commentcamarche.net/contents/523-adresse-ip">adresses IP</a> que le serveur affecte au client pour toute la durée de la session. Si le réseau local sur lequel se trouve le serveur ne possède pas d'adressage spécifique vous pouvez laissez le serveur déterminer automatiquement une adresse IP. Par contre si le réseau possède un plan d'adressage spécifique vous pouvez définir la plage d'adresse à affecter :</p>
-<p><img src="{{site.baseurl}}/assets/images/2015/11/pratique-images-18-proprietes-entrantes.gif" alt="propriétés TCP/IP" width="241" border="0"></p>
+<p></p>
 <p>La configuration du serveur VPN est désormais achevée, vous pouvez cliquer sur le bouton<i>Terminer</i> :</p>
-<p><img src="{{site.baseurl}}/assets/images/2015/11/pratique-images-19-terminer.gif" alt="Terminer" width="302" border="0"><br />
+<p><br />
 <a name="client-vpn"></a></p>
 <h3>Client VPN</h3>
 <p class="niv1">Afin d'autoriser un client à se connecter à votre serveur VPN, il est nécessaire au préalable de définir l'ensemble des paramètres de connexion (adresse du serveur, protocoles à utiliser, ...). L'assistant de nouvelle connexion disponible à partir de l'icône <i>Connexions réseau</i> du panneau de configuration permet cette configuration :</p>
-<p><img src="{{site.baseurl}}/assets/images/2015/11/pratique-images-1-assistant-nouvelle-connexion.gif" alt="assistant nouvelle connexion" width="480" border="0"></p>
+<p></p>
 <p>Appuyez ensuite sur la touche <i>Suivant</i> :</p>
-<p><img src="{{site.baseurl}}/assets/images/2015/11/pratique-images-2-assistant.gif" alt="assistant nouvelle connexion" width="302" border="0"></p>
+<p></p>
 <p>Parmi les trois choix proposés dans la fenêtre, sélectionnez "<i>Connexion au réseau d'entreprise</i>" :</p>
-<p><img src="{{site.baseurl}}/assets/images/2015/11/pratique-images-3-connexion-reseau-entreprise.gif" alt="connexion au réseau d\" width="302" border="0"></p>
+<p></p>
 <p>Dans l'écran suivant sélectionnez "<i>Connexion réseau privé virtuel</i>" :</p>
-<p><img src="{{site.baseurl}}/assets/images/2015/11/pratique-images-5-connexion-reseau-prive-virtuel.gif" alt="connexion réseau privé virtuel" width="302" border="0"></p>
+<p></p>
 <p>Entrez ensuite un nom décrivant au mieux le nom du réseau privé virtuel auquel vous souhaitez vous connecter :</p>
-<p><img src="{{site.baseurl}}/assets/images/2015/11/pratique-images-6-nom-connexion.gif" alt="nom de la connexion au réseau privé virtuel" width="302" border="0"></p>
+<p></p>
 <p>L'écran suivant permet d'indiquer si une connexion doit être établie préalablement à la connexion au réseau privé virtuel. La plupart du temps (si vous êtes sur une connexion permanente, un accès ADSL ou câble) il ne sera pas nécessaire d'établir la connexion puisque l'ordinateur est déjà connecté à Internet, dans le cas contraire sélectionnez la connexion à établir dans la liste :</p>
-<p><img src="{{site.baseurl}}/assets/images/2015/11/pratique-images-7-connexion-initiale.gif" alt="connexion initiale" width="302" border="0"></p>
+<p></p>
 <p>Afin d'accéder au serveur d'accès distant (serveur VPN ou hôte) il est indispensable de spécifier son adresse (adresse IP ou nom d'hôte).<br />
 Si celui-ci ne possède pas une <a href="http://www.commentcamarche.net/contents/523-adresse-ip">adresse IP</a> fixe, il sera nécessaire de l'équiper d'un dispositif de nommage dynamique (<i><a href="http://www.commentcamarche.net/sites/details/dyndns.org">DynDNS</a></i>) capable de lui affecter un <a href="http://www.commentcamarche.net/contents/518-dns-systeme-de-noms-de-domaine">nom de domaine</a> et de spécifier ce nom dans le champ ci-dessous :</p>
-<p><img src="{{site.baseurl}}/assets/images/2015/11/pratique-images-8-nom-hote.gif" alt="nom de l\" width="302" border="0"></p>
+<p></p>
 <p>Une fois la définition de la connexion VPN terminée, une fenêtre de connexion demandant un nom d'utilisateur (<i>login</i>) et un mot de passe s'ouvre à vous :</p>
-<p><img src="{{site.baseurl}}/assets/images/2015/11/pratique-images-10-connexion-vpn.gif" alt="Invite de connexion au réseau privé virtuel" width="348" border="0"></p>
+<p></p>
 <p>Avant de se connecter il est nécessaire de procéder à quelques réglages en cliquant sur le bouton<i>Propriétés</i> en bas de fenêtre. Une fenêtre comportant un certain nombre d'onglets permet ainsi de paramétrer plus finement la connexion. Dans l'onglet <i>Gestion de réseau</i> sélectionnez le protocole<i><a href="http://www.commentcamarche.net/contents/514-vpn-reseaux-prives-virtuels-rpv">PPTP</a></i> dans la liste déroulante, sélectionnez le <i>protocole Internet</i> (<a href="http://www.commentcamarche.net/contents/539-tcp-ip">TCP/IP</a>) et cliquez sur <i>Propriétés</i> :</p>
-<p><img src="{{site.baseurl}}/assets/images/2015/11/pratique-images-11-proprietes-pptp.gif" alt="Onglet gestion de réseau - protocole PPTP" width="262" border="0"></p>
+<p></p>
 <p>La fenêtre qui s'affiche permet de définir l'adresse IP que le système client aura lors de la connexion au serveur d'accès distant. Cela permet d'obtenir un adressage cohérent avec l'adressage distant. Le serveur VPN est ainsi capable de faire office de <a href="http://www.commentcamarche.net/contents/517-le-protocole-dhcp">serveur DHCP</a>, c'est-à-dire de fournir automatiquement une adresse IP valide au client VPN. Pour ce faire il suffit de sélectionner l'option "<i>Obtenir une adresse automatiquement</i>" :</p>
-<p><img src="{{site.baseurl}}/assets/images/2015/11/pratique-images-12-proprietes-dhcp.gif" alt="propriétés d\" width="242" border="0"> </p>
+<p> </p>
 <p class="niv1">Dans le cas où le client utilise le serveur <a href="http://www.commentcamarche.net/contents/517-le-protocole-dhcp">DHCP</a>, si le serveur lui affecte une adresse IP interne, le client sera alors connecté au réseau d'entreprise et pourra accéder aux ressources de celui-ci mais n'aura, par défaut, plus accès à Internet via l'interface utilisée car l'adresse IP dont il bénéficiera n'est pas routable. Afin de permettre au client d'être connecté au VPN et d'avoir accès à Internet via cette connexion il est nécessaire que le serveur VPN soit configuré de telle façon à partager sa connexion Internet ! Ainsi le bouton <i>Avancé</i> permet des'assurer que le client utilise la passerelle du serveur VPN <b>dans le cas où la connexion de ce dernier est partagée</b> :</p>
-<p><img src="{{site.baseurl}}/assets/images/2015/11/pratique-images-12-proprietes-dhcp-avancees.gif" alt="propriétés d\" width="254" border="0"></p>
+<p></p>
 <p>Pour pouvoir mettre en place la liaison VPN, il faut que les firewalls intermédiaires, notamment le pare-feu natif de Windows, soient configurés de telle façon à laisser s'établir la connexion. Ainsi, il est nécessaire de désactiver le pare-feu natif de Windows de la manière suivante :</p>
 <ul>
 <li>Dans le panneau de configuration cliquez sur <i>Connexions réseau</i>,</li>

@@ -36,19 +36,19 @@ permalink: "/2015/03/05/connexion-a-un-serveur-exchange-distant/"
 </div>
 <p> </p>
 <p>Dans la boîte de dialogue Demande d’informations d’identification Windows PowerShell, saisissez vos nom d’utilisateur et mot de passe, puis cliquez sur OK.</p>
-<p><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2015/03/05-03-2015-15-07-30.jpg"><img src="{{site.baseurl}}/assets/images/2015/03/05-03-2015-15-07-30.jpg?w=300" alt="05-03-2015 15-07-30" width="300" height="138"></a></p>
+<p><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2015/03/05-03-2015-15-07-30.jpg"></a></p>
 <p> </p>
 <p>Exécutez la commande suivante. Vous devez spécifier le nom de domaine complet d’un serveur d’accès au client Exchange 2013.</p>
 <div id="code-snippet-2">
 <div>$Session = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri http://&lt;FQDN of Exchange 2013 Client Access server&gt;/PowerShell/ -Authentication Kerberos -Credential $UserCredential</div>
 <div></div>
-<div><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2015/03/05-03-2015-15-38-56.jpg"><img src="{{site.baseurl}}/assets/images/2015/03/05-03-2015-15-38-56.jpg?w=300" alt="05-03-2015 15-38-56" width="300" height="138"></a></div>
+<div><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2015/03/05-03-2015-15-38-56.jpg"></a></div>
 </div>
 <p> </p>
 <p>Exécutez la commande suivante.</p>
 <div id="code-snippet-3">
 <div>Import-PSSession $Session</div>
-<div><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2015/03/05-03-2015-15-39-49.jpg"><img src="{{site.baseurl}}/assets/images/2015/03/05-03-2015-15-39-49.jpg?w=300" alt="05-03-2015 15-39-49" width="300" height="138"></a></div>
+<div><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2015/03/05-03-2015-15-39-49.jpg"></a></div>
 <div></div>
 <div>Remarque:<br />
 N’oubliez pas de déconnecter la session PowerShell distante dès que vous avez terminé. Si vous fermez la fenêtre Windows PowerShell sans déconnecter la session, vous pourriez épuiser toutes les sessions PowerShell distantes à votre disposition et vous devrez attendre l’expiration des sessions. Pour déconnecter la session PowerShell distante, exécutez la commande suivante.</div>

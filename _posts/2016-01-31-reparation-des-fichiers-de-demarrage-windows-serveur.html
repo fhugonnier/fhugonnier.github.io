@@ -30,28 +30,28 @@ permalink: "/2016/01/31/reparation-des-fichiers-de-demarrage-windows-serveur/"
 <li>Cliquez sur Suivant dans le premier écran.</li>
 <li>Cliquez sur <strong>Réparer votre ordinateur</strong>.</li>
 </ol>
-<p><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2016/01/1.jpg" rel="attachment wp-att-301"><img class="alignnone size-medium wp-image-301" src="{{site.baseurl}}/assets/images/2016/01/1.jpg?w=300" alt="1" width="300" height="219"></a></p>
+<p><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2016/01/1.jpg" rel="attachment wp-att-301"></a></p>
 <ol start="4">
 <li>Cliquez sur <strong>Invite de commande</strong>.</li>
-<li><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2016/01/2.jpg" rel="attachment wp-att-302"><img class="alignnone size-medium wp-image-302" src="{{site.baseurl}}/assets/images/2016/01/2.jpg?w=300" alt="2" width="300" height="165"></a></li>
+<li><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2016/01/2.jpg" rel="attachment wp-att-302"></a></li>
 <li>Saisissez <strong>DiskPart</strong> à l'invite de commande.</li>
-<li><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2016/01/3.jpg" rel="attachment wp-att-303"><img class="alignnone size-medium wp-image-303" src="{{site.baseurl}}/assets/images/2016/01/3.jpg?w=300" alt="3" width="300" height="65"></a></li>
+<li><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2016/01/3.jpg" rel="attachment wp-att-303"></a></li>
 <li>Tapez <strong>List vol</strong> (répertorier volumes) à l'invite DiskPart.</li>
-<li><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2016/01/4.jpg" rel="attachment wp-att-304"><img class="alignnone size-medium wp-image-304" src="{{site.baseurl}}/assets/images/2016/01/4.jpg?w=300" alt="4" width="300" height="74"></a></li>
+<li><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2016/01/4.jpg" rel="attachment wp-att-304"></a></li>
 <li>Notez la lettre de lecteur correspondant au lecteur DVD. Dans cet exemple, il s'agit de F.</li>
 <li>Notez la lettre de lecteur réservé au système. Dans cet exemple, il s'agit de C.</li>
 <li>Entrez <strong>Select vol 1</strong> (Sélectionner volume 1) (en supposant que volume 1 est le volume réservé au système, comme tel est le cas ici).</li>
-<li><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2016/01/5.jpg" rel="attachment wp-att-305"><img class="alignnone size-medium wp-image-305" src="{{site.baseurl}}/assets/images/2016/01/5.jpg?w=300" alt="5" width="300" height="52"></a></li>
+<li><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2016/01/5.jpg" rel="attachment wp-att-305"></a></li>
 <li>Tapez <strong>active</strong>. Ceci définit le volume sélectionné comme actif.</li>
-<li><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2016/01/6.jpg" rel="attachment wp-att-306"><img class="alignnone size-medium wp-image-306" src="{{site.baseurl}}/assets/images/2016/01/6.jpg?w=300" alt="6" width="300" height="41"></a></li>
+<li><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2016/01/6.jpg" rel="attachment wp-att-306"></a></li>
 <li>Entrez <strong>exit</strong> pour revenir à la ligne de commande.</li>
 </ol>
 <p>12 : Entrez copy f:\bootmgr c ;\</p>
 <ol start="13">
 <li>Tapez <strong>Bootrec /fixMBR</strong> à l'invite de commande.</li>
-<li><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2016/01/7.jpg" rel="attachment wp-att-307"><img class="alignnone size-medium wp-image-307" src="{{site.baseurl}}/assets/images/2016/01/7.jpg?w=300" alt="7" width="300" height="30"></a></li>
+<li><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2016/01/7.jpg" rel="attachment wp-att-307"></a></li>
 <li>Tapez <strong>Bootrec /Fixboot</strong> à l'invite de commande.</li>
-<li><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2016/01/8.jpg" rel="attachment wp-att-308"><img class="alignnone size-medium wp-image-308" src="{{site.baseurl}}/assets/images/2016/01/8.jpg?w=300" alt="8" width="300" height="30"></a></li>
+<li><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2016/01/8.jpg" rel="attachment wp-att-308"></a></li>
 <li>Tapez <strong>Bootrec /rebuildBCD</strong> à l'invite de commande.</li>
 </ol>
 <p>Si <strong>BootRec /RebuildBCD</strong> réussit, il répertorie les installations de Windows qu'il a détectées. Appuyez sur <strong>Y</strong> pour les accepter et les ajouter à la base de données BCD.</p>

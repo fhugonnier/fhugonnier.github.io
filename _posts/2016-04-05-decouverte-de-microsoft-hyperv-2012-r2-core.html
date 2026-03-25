@@ -89,20 +89,20 @@ permalink: "/2016/04/05/decouverte-de-microsoft-hyperv-2012-r2-core/"
 </thead>
 <tbody>
 <tr class="row2">
-<td class="col0 leftalign"><a class="media" title="hyperv:c_win8_1.png" href="http://techjp.net/wiki/_media/hyperv:c_win8_1.png"><img class="medialeft" title=" Composants HyperV à sélectionner" src="{{site.baseurl}}/assets/images/2016/04/hyperv:c_win8_1.png?w=200&amp;tok=f73a47" alt=" Composants HyperV à sélectionner" width="200"></a></td>
+<td class="col0 leftalign"><a class="media" title="hyperv:c_win8_1.png" href="http://techjp.net/wiki/_media/hyperv:c_win8_1.png"></a></td>
 <td class="col1">Aller dans le <code>Panneau de configuration → Programme et fonctionnalité → Activer ou désactiver des fonctionnalités Windows.</code></p>
 <p>Cocher <code>Outils d'administration Hyper-V</code></p>
 <p>Suite à l'installation vous retrouver la console <code>Hyper-V Manager</code> installé, vous pouvez essayé de vous connecter mais il y a de grande chance que cela ne fonctionne pas. Il y a quelques pré-requis nécessaire.</td>
 </tr>
 <tr class="row3">
-<td class="col0"><a class="media" title="hyperv:2-hypervconsole_w81_error.png" href="http://techjp.net/wiki/_media/hyperv:2-hypervconsole_w81_error.png"><img class="mediacenter" title=" Console HyperV avec serveur enregistré" src="{{site.baseurl}}/assets/images/2016/04/hyperv:2-hypervconsole_w81_error.png?w=200&amp;tok=c0bd95" alt=" Console HyperV avec serveur enregistré" width="200"></a></td>
+<td class="col0"><a class="media" title="hyperv:2-hypervconsole_w81_error.png" href="http://techjp.net/wiki/_media/hyperv:2-hypervconsole_w81_error.png"></a></td>
 <td class="col1">D'abord il est nécessaire que votre compte local ou de domaine de l'utilisateur de votre machine cliente soit connu de HyperV.</p>
 <p>Loguez vous à l'hyperv par la console local et via le <code>menu console</code> rajout votre compte dans le groupe administrateur local de l'HyperV (<code>choix 3</code> )<br />
 Si votre compte est hébergé sur un domaine AD : <code>domaine\login</code> ou si <code>workgroup</code> indiquer juste <code>le login et mot de passe</code> associé <strong>identique au client</strong>.</p>
 <p>Ensuite vous pouvez ressayer de vous connecter via la console HyperV de votre client vous devriez pouvoir rajouter votre serveur et le faire reconnaître.</td>
 </tr>
 <tr class="row4">
-<td class="col0"><a class="media" title="hyperv:3-hypervconsole_w81_error.png" href="http://techjp.net/wiki/_media/hyperv:3-hypervconsole_w81_error.png"><img class="mediacenter" title=" Serveur communique bien avec la console " src="{{site.baseurl}}/assets/images/2016/04/hyperv:3-hypervconsole_w81_error.png?w=200&amp;tok=fa6e57" alt=" Serveur communique bien avec la console " width="200"></a></td>
+<td class="col0"><a class="media" title="hyperv:3-hypervconsole_w81_error.png" href="http://techjp.net/wiki/_media/hyperv:3-hypervconsole_w81_error.png"></a></td>
 <td class="col1 leftalign">Mais cela n'est pas fini car la console a toujours encore des problèmes de connexion au niveau RPC. Pour les régler il va falloir télécharger un script <code>hvremote.wsh</code> de configuration <a class="urlextern" title="http://code.msdn.microsoft.com/windowsdesktop/Hyper-V-Remote-Management-26d127c6" href="http://code.msdn.microsoft.com/windowsdesktop/Hyper-V-Remote-Management-26d127c6" rel="nofollow">voir ici</a> ou faire une recherche sur google.<br />
 En gros suivant les cas il y a des commandes à exécuter pour déverrouiller ou changer les droits pour permettre l'accès. Nous allons prendre le cas ou le poste client et le serveur ne sont pas dans un domaine mais en workgroup. Il va falloir exécuter les commandes suivante :<em class="u">Sur le serveur:</em><br />
 <code>cscript hvremote.wsh /add:login</code> (rajoute le compte en admin de HyperV)</p>
@@ -126,7 +126,7 @@ En gros suivant les cas il y a des commandes à exécuter pour déverrouiller ou
 <table class="inline">
 <tbody>
 <tr class="row0">
-<td class="col0"><a class="media" title="hyperv:4-hypervconsole_w81_rdp.png" href="http://techjp.net/wiki/_media/hyperv:4-hypervconsole_w81_rdp.png"><img class="mediacenter" src="{{site.baseurl}}/assets/images/2016/04/hyperv:4-hypervconsole_w81_rdp.png?w=200&amp;tok=f07f3a" alt="" width="200"></a></td>
+<td class="col0"><a class="media" title="hyperv:4-hypervconsole_w81_rdp.png" href="http://techjp.net/wiki/_media/hyperv:4-hypervconsole_w81_rdp.png"></a></td>
 <td class="col1 leftalign">Pour activer le bureau à distance il y a 2 actions à effectuer sur le serveur:</p>
 <p>-D'abord il faut avoir activer <code>Remote Desktop</code> (<code>choix 7</code>) dans la console serveur.<br />
 -Maintenant il faut autoriser le service sur le parfeu du serveur avec la commande powershell suivante:</p>
@@ -227,7 +227,7 @@ Number successfully imported: 1</pre>
 <table class="inline">
 <tbody>
 <tr class="row0">
-<td class="col0"><a class="media" title="hyperv:5-hyperv_remotefx_w81.png" href="http://techjp.net/wiki/_media/hyperv:5-hyperv_remotefx_w81.png"><img class="mediacenter" title=" RemoteFX activé dans la console HyperV " src="{{site.baseurl}}/assets/images/2016/04/hyperv:5-hyperv_remotefx_w81.png?w=200&amp;tok=11dfb7" alt=" RemoteFX activé dans la console HyperV " width="200"></a></td>
+<td class="col0"><a class="media" title="hyperv:5-hyperv_remotefx_w81.png" href="http://techjp.net/wiki/_media/hyperv:5-hyperv_remotefx_w81.png"></a></td>
 <td class="col1">Il est possible qu'un redémarrage soit nécessaire pour la bonne prise en compte du driver. Ensuite il ne vous reste plus qu'a activer la fonction par le console HyperV dans les propriétés “Physical GPUs”</td>
 </tr>
 </tbody>
