@@ -486,3 +486,11 @@ pre code {
   .search-box button { width: 100%; }
   .post-nav { flex-direction: column; }
 }
+
+/* Fix URLs qui débordent des cartes */
+.post-card p,
+.post-card .meta,
+.post-content {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
