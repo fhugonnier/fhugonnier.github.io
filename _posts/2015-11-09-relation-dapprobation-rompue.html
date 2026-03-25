@@ -1,0 +1,40 @@
+---
+layout: post
+title: Relation d'approbation rompue
+date: 2015-11-09 19:57:10.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Windows
+tags: []
+meta:
+  _edit_last: '82119094'
+  geo_public: '0'
+  _publicize_job_id: '16693026895'
+author:
+  login: fhugonnier
+  email: fhugonnier@outlook.com
+  display_name: fhugonnier
+  first_name: ''
+  last_name: ''
+permalink: "/2015/11/09/relation-dapprobation-rompue/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body></p>
+<p>Si jamais la relation d'approbation entre une de vos machines virtuelles et votre contrôleur de domaine est rompue, on préconise de sortir la machine du domaine et de la refaire entrer dedans. Sauf que cette méthode n'est pas applicable aux machines dont le rôle est lié au domaine (Exchange par exemple).</p>
+<p>Dans ce cas, une solution rapide s'offre à vous :</p>
+<ul type="disc">
+<li>Se connecter en admin local sur la machine</li>
+<li>Ouvrir une CMD</li>
+<li>Tapez la commande suivante :</li>
+</ul>
+<p style="margin:0;font-family:'courier new';font-size:10pt;color:#0070c0;">&gt;netdom resetpwd /s:DC.domain.com /ud:domain\Administrator /pd:"password"</p>
+<ul type="disc">
+<li><span style="font-family:'courier new';font-size:10pt;">/s = FQDN du controleur de domaine principal</span></li>
+<li><span style="font-family:'courier new';font-size:10pt;">/ud = Compte d'administrateur du domaine</span></li>
+<li><span style="font-family:'courier new';font-size:10pt;">/pd = Mot de passe du compte d'admin du domaine</span></li>
+</ul>
+<p>Un petit reboot, et vous devriez être capable de vous authentifier auprès du contrôleur de domaine.</body></html></p>

@@ -1,0 +1,101 @@
+---
+layout: post
+title: Activation Anti-Spam et configuration pour Exchange 2013
+date: 2015-03-27 15:01:32.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Power Shell
+tags:
+- Exchange 2013
+meta:
+  _publicize_pending: '1'
+  _rest_api_published: '1'
+  _rest_api_client_id: "-1"
+author:
+  login: fhugonnier
+  email: fhugonnier@outlook.com
+  display_name: fhugonnier
+  first_name: ''
+  last_name: ''
+permalink: "/2015/03/27/activation-anti-spam-et-configuration-pour-exchange-2013/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body></p>
+<p>Si vous voulez utiliser l'outil natif antispam de exchange 2013, voici comment procéder.</p>
+<p>il est impossible d'activer cette fonctionnalité en mode graphique, il faut donc passer par des lignes de commandes en PowerShell.</p>
+<p>Voici ce que je fais généralement lors de la mise en place d'un nouveau serveur Exchange 2013.</p>
+<p>J'exécute le script install-AntispamAgents.ps1 qui se trouve dans le répertoire Scripts partir d'une invite de commande PowerShell.</p>
+<p>Une fois cela fait, je lance la commande suivante pour définir la base SpamConfidenceLevel à 8 et à rejeter les messages pour l'agent ContentFiltering:</p>
+<table>
+<tbody>
+<tr>
+<td>
+<div>1</div>
+</td>
+<td>
+<div>
+<div>
+<code>Set-ContentFilterConfig</code> <code>-SCLRejectEnabled</code> <code>$True</code> <code>-SCLRejectThreshold</code> <code>8</code>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Parce que je veux que tous les utilisateurs aient un certain contrôle sur leur gestion du spam, j'active tous les dossiers de SPAM et je met le SCL pour ces dossiers à un niveau inférieur du contenu mondiale bloquant SCL. Habituellement je le met à 6.</p>
+<table>
+<tbody>
+<tr>
+<td>
+<div>1</div>
+</td>
+<td>
+<div>
+<div>
+<code>Get-Mailbox</code> <code>|</code> <code>Set-Mailbox</code> <code>-SCLJunkEnabled</code> <code>$True</code> <code>-SCLJunkThreshold</code> <code>6</code>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Si je veux configurer le seuil indésirable SCL par défaut à 5 pour toute l'organisation, je peux utiliser ce script:</p>
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td>
+<div>1</div>
+</td>
+<td>
+<div>
+<div>
+<code>Set-OrganizationConfig</code> <code>-SCLJunkThreshold</code> <code>5</code>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Notez que si je configure un seuil directement sur n'importe quel utilisateur spécifique, la valeur de SCLJunkThreshold de niveau organisationnel ne se applique pas.</p>
+<p>Si je veux faire une exception pour un utilisateur (Alain Deloin) pour complètement contourner tous les filtres, je peux le faire:</p>
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td>
+<div>1</div>
+</td>
+<td>
+<div>
+<div>
+<code>Set-Mailbox</code> <span style="font-family:Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace;"><span style="font-size:13px;line-height:normal;">adeloin</span></span> <code>-AntiSpamBypassEnabled</code> <code>$True</code>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p></body></html></p>

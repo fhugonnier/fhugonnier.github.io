@@ -1,0 +1,346 @@
+---
+layout: post
+title: Découverte de Microsoft HyperV 2012 R2 Core
+date: 2016-04-05 13:51:03.000000000 +02:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Windows 2012 R2
+tags: []
+meta:
+  _edit_last: '82119094'
+  geo_public: '0'
+  _publicize_job_id: '21475766555'
+author:
+  login: fhugonnier
+  email: fhugonnier@outlook.com
+  display_name: fhugonnier
+  first_name: ''
+  last_name: ''
+permalink: "/2016/04/05/decouverte-de-microsoft-hyperv-2012-r2-core/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body></p>
+<div class="level1">
+<p>Installation de l'hyperviseur Microsoft HyperV Core 2012 R2 et configuration pour la gestion à distance via la console HyperV, la console MMC, Powershell et le bureau à distance. Activation des fonctionnalitées RemoteFX.</p>
+</div>
+<h2 id="presentation" class="sectionedit2">1. Présentation</h2>
+<div class="level2">
+<p>Installation de la version Core Hyper-V de Windows 2012 R2 , celui-ci est gratuit. (<a class="urlextern" title="http://technet.microsoft.com/library/hh833684.aspx" href="http://technet.microsoft.com/library/hh833684.aspx" rel="nofollow">http://technet.microsoft.com/library/hh833684.aspx</a>).</p>
+<p>Voici un petit comparatif des solutions de virtualisation <a class="urlextern" title="http://www.tomshardware.fr/articles/virtualisation-serveur-hyperviseur-gratuit-logiciels,2-9.html" href="http://www.tomshardware.fr/articles/virtualisation-serveur-hyperviseur-gratuit-logiciels,2-9.html" rel="nofollow"> Tomshardware.fr Comparatif virtualisation : les solutions gratuites</a></p>
+<p>Attention il n'y a pas d'interface graphique sur le serveur,la gestion se fait à la ligne de commande via Powershell. Une console texte se lance à la connexion au serveur qui permet d'aider à paramétrer quelques éléments essentiel. Ensuite pour le reste il s'agit soit de la console ou avec des outils de gestion distant ( MMC, console Hyper-V ou System Center ..) . Par contre les performances sont bien meilleur en mode core que graphique.</p>
+</div>
+<h2 id="recuperation_et_installation" class="sectionedit3">2. Récupération et installation</h2>
+<div class="level2">
+<ol>
+<li class="level1">
+<div class="li">Récupérer l'iso sur le site Microsoft</div>
+</li>
+<li class="level1">
+<div class="li">Graver ou booter via usb (voir article <a class="urlextern" title="http://techjp.net/installer-windows-7-sur-cle-usb/" href="http://techjp.net/installer-windows-7-sur-cle-usb/" rel="nofollow">comment créer une clé usb d'installation d'un système windows ?</a> )</div>
+</li>
+<li class="level1">
+<div class="li">Installer le serveur comme un système normal</div>
+</li>
+<li class="level1">
+<div class="li">Ensuite au premier boot on défini via la console texte :</div>
+<ul>
+<li class="level2">
+<div class="li">les paramètres du compte administrateur local</div>
+</li>
+<li class="level2">
+<div class="li">le nom du serveur</div>
+</li>
+<li class="level2">
+<div class="li">les paramètres réseaux</div>
+</li>
+<li class="level2">
+<div class="li">on effectue les mises à jour windows update</div>
+</li>
+<li class="level2">
+<div class="li">on active l'accès bureau à distance</div>
+</li>
+<li class="level2">
+<div class="li">et on peut activer la réponse au “ping”</div>
+</li>
+</ul>
+</li>
+</ol>
+<p>Voici un petit guide Microsoft pour Windows 2008 pour configurer votre serveur en mode core fraichement installé via la ligne de commande : <a class="urlextern" title="http://technet.microsoft.com/fr-fr/library/cc753802%28v=ws.10%29.aspx" href="http://technet.microsoft.com/fr-fr/library/cc753802%28v=ws.10%29.aspx" rel="nofollow">Guide pas à pas de l’option d’installation Server Core de Windows Server 2008</a></p>
+</div>
+<h2 id="installation_et_configuration_des_outils_de_gestion_distant" class="sectionedit4">3. Installation et configuration des outils de gestion distant</h2>
+<div class="level2"></div>
+<h3 id="installation_de_la_console_hyperv_de_gestion_distante" class="sectionedit5">3.1 Installation de la console HyperV de gestion distante</h3>
+<div class="level3">
+<p>Installation de la console client sous Windows 8.1. La console HyperV 2012 n'est pas compatible avec Windows 7 pour l'instant.</p>
+<div class="table sectionedit6">
+<table class="inline">
+<thead>
+<tr class="row0">
+<th class="col0 centeralign" colspan="2">Connexion à la console HyperV</th>
+</tr>
+<tr class="row1">
+<th class="col0 centeralign">Capture</th>
+<th class="col1 centeralign">Descriptions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row2">
+<td class="col0 leftalign"><a class="media" title="hyperv:c_win8_1.png" href="http://techjp.net/wiki/_media/hyperv:c_win8_1.png"><img class="medialeft" title=" Composants HyperV à sélectionner" src="{{site.baseurl}}/assets/images/2016/04/hyperv:c_win8_1.png?w=200&amp;tok=f73a47" alt=" Composants HyperV à sélectionner" width="200"></a></td>
+<td class="col1">Aller dans le <code>Panneau de configuration → Programme et fonctionnalité → Activer ou désactiver des fonctionnalités Windows.</code></p>
+<p>Cocher <code>Outils d'administration Hyper-V</code></p>
+<p>Suite à l'installation vous retrouver la console <code>Hyper-V Manager</code> installé, vous pouvez essayé de vous connecter mais il y a de grande chance que cela ne fonctionne pas. Il y a quelques pré-requis nécessaire.</td>
+</tr>
+<tr class="row3">
+<td class="col0"><a class="media" title="hyperv:2-hypervconsole_w81_error.png" href="http://techjp.net/wiki/_media/hyperv:2-hypervconsole_w81_error.png"><img class="mediacenter" title=" Console HyperV avec serveur enregistré" src="{{site.baseurl}}/assets/images/2016/04/hyperv:2-hypervconsole_w81_error.png?w=200&amp;tok=c0bd95" alt=" Console HyperV avec serveur enregistré" width="200"></a></td>
+<td class="col1">D'abord il est nécessaire que votre compte local ou de domaine de l'utilisateur de votre machine cliente soit connu de HyperV.</p>
+<p>Loguez vous à l'hyperv par la console local et via le <code>menu console</code> rajout votre compte dans le groupe administrateur local de l'HyperV (<code>choix 3</code> )<br />
+Si votre compte est hébergé sur un domaine AD : <code>domaine\login</code> ou si <code>workgroup</code> indiquer juste <code>le login et mot de passe</code> associé <strong>identique au client</strong>.</p>
+<p>Ensuite vous pouvez ressayer de vous connecter via la console HyperV de votre client vous devriez pouvoir rajouter votre serveur et le faire reconnaître.</td>
+</tr>
+<tr class="row4">
+<td class="col0"><a class="media" title="hyperv:3-hypervconsole_w81_error.png" href="http://techjp.net/wiki/_media/hyperv:3-hypervconsole_w81_error.png"><img class="mediacenter" title=" Serveur communique bien avec la console " src="{{site.baseurl}}/assets/images/2016/04/hyperv:3-hypervconsole_w81_error.png?w=200&amp;tok=fa6e57" alt=" Serveur communique bien avec la console " width="200"></a></td>
+<td class="col1 leftalign">Mais cela n'est pas fini car la console a toujours encore des problèmes de connexion au niveau RPC. Pour les régler il va falloir télécharger un script <code>hvremote.wsh</code> de configuration <a class="urlextern" title="http://code.msdn.microsoft.com/windowsdesktop/Hyper-V-Remote-Management-26d127c6" href="http://code.msdn.microsoft.com/windowsdesktop/Hyper-V-Remote-Management-26d127c6" rel="nofollow">voir ici</a> ou faire une recherche sur google.<br />
+En gros suivant les cas il y a des commandes à exécuter pour déverrouiller ou changer les droits pour permettre l'accès. Nous allons prendre le cas ou le poste client et le serveur ne sont pas dans un domaine mais en workgroup. Il va falloir exécuter les commandes suivante :<em class="u">Sur le serveur:</em><br />
+<code>cscript hvremote.wsh /add:login</code> (rajoute le compte en admin de HyperV)</p>
+<p><em class="u">Sur le client:</em><br />
+<code>cscript hvremote.wsh /anondcom:grant</code>(autoriser les connexions DCOM anonyme)</p>
+<p><strong>Si cela ne fonctionne toujours pas voir les points suivants:</strong></p>
+<p>-Vérifier si votre serveur et station ne sont pas connectées en NAT au niveau réseau (virtual box par exemple préférer l'accès par pont)<br />
+-Vérifier que le serveur le poste se ping par leur nom nebios. Si besoin rajouter dans <code>c:\windows\system32\drivers\etc\hosts</code> votre machine cliente sur le serveur et sur votre client le serveur HyperV<br />
+-Désactiver temporairement le parfeu de votre poste client pour vérifier qu'il ne bloque rien</td>
+</tr>
+<tr class="row5">
+<th class="col0 centeralign" colspan="2">Connexion via le bureau à distance</th>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<h3 id="connexion_via_le_bureau_a_distance" class="sectionedit7">3.2 Connexion via le bureau à distance</h3>
+<div class="level3">
+<div class="table sectionedit8">
+<table class="inline">
+<tbody>
+<tr class="row0">
+<td class="col0"><a class="media" title="hyperv:4-hypervconsole_w81_rdp.png" href="http://techjp.net/wiki/_media/hyperv:4-hypervconsole_w81_rdp.png"><img class="mediacenter" src="{{site.baseurl}}/assets/images/2016/04/hyperv:4-hypervconsole_w81_rdp.png?w=200&amp;tok=f07f3a" alt="" width="200"></a></td>
+<td class="col1 leftalign">Pour activer le bureau à distance il y a 2 actions à effectuer sur le serveur:</p>
+<p>-D'abord il faut avoir activer <code>Remote Desktop</code> (<code>choix 7</code>) dans la console serveur.<br />
+-Maintenant il faut autoriser le service sur le parfeu du serveur avec la commande powershell suivante:</p>
+<pre class="code">Enable-NetFirewallRule -DisplayGroup "Remote Desktop"</pre>
+<p><sub>Il s'agit d'une commande pour la version anglaise cela doit être adapté pour une autre langue.</sub>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<h3 id="connexion_via_une_console_mmc" class="sectionedit9">3.3 Connexion via une console MMC</h3>
+<div class="level3">
+<p>Il nous reste maintenant à autoriser les accès à distance par la MMC. Pour cela il faudra autoriser des règles du firewall et démarrer un service sur l'hyperviseur.</p>
+<ul>
+<li class="level1">
+<div class="li">Dans un premier temps on se connecte à l'HyperV via le bureau à distance par exemple</div>
+</li>
+<li class="level1">
+<div class="li">Ensuite d'autoriser les accès via les commande powershell suivante :</div>
+</li>
+</ul>
+<div class="table sectionedit10">
+<table class="inline">
+<thead>
+<tr class="row0">
+<th class="col0 centeralign">Cmd Powershell</th>
+<th class="col1 centeralign">A faire sur</th>
+<th class="col2 centeralign">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row1">
+<td class="col0">Enable-NetFirewallRule -DisplayGroup “Remote Event Log Management”</td>
+<td class="col1 centeralign">Serveur</td>
+<td class="col2">Pour autoriser l'accès aux log distant</td>
+</tr>
+<tr class="row2">
+<td class="col0">Enable-NetFirewallRule -DisplayGroup “Remote Volume Management”<br />
+Set-Service vds -StartupType “auto”<br />
+Start-Service vds</td>
+<td class="col1 centeralign">Serveur</td>
+<td class="col2">Activation du gestionnaire disque + règle firewall</td>
+</tr>
+<tr class="row3">
+<td class="col0">Enable-NetFirewallRule -DisplayGroup “Remote Volume Management”</td>
+<td class="col1 centeralign">Client</td>
+<td class="col2">Autorisation Firewall pour le gestionnaire disque</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<h2 id="activation_de_remotefx" class="sectionedit11">4. Activation de remotefx</h2>
+<div class="level2">
+<p>RemoteFX permet à un poste client qui se connecte via le bureau à distance sur une machine hébergé par HyperV d'avoir accès à une accélération 3D, flash, Video, Silverlight, Aero. La carte graphique du serveur HyperV doit être compatible.</p>
+</div>
+<h3 id="activation_des_roles_sur_l_hyperv" class="sectionedit12">4.1 Activation des rôles sur l'HyperV</h3>
+<div class="level3">
+<p>Pour la prise en charge de cet fonction il est nécessaire d'activer 3 rôles supplémentaires. Dans la version core nous devons utiliser powershell pour installer ces fonctions</p>
+<ul>
+<li class="level1">
+<div class="li">VmHostAgent</div>
+</li>
+</ul>
+<p>mais 2 autres rôles dépendes donc ils seront installés également</p>
+<ul>
+<li class="level1">
+<div class="li">Remote-Desktop-Services</div>
+</li>
+<li class="level1">
+<div class="li">ServerMediaFoundation</div>
+</li>
+</ul>
+<p>Pour se faire on va enter la commande suivante dans la console Powershell du serveur:</p>
+<pre class="code">DISM /online /enable-feature /featurename=VmHostAgent /all</pre>
+</div>
+<h3 id="installation_du_pilote_de_la_carte_graphique_sur_l_hyperv" class="sectionedit13">4.2 Installation du pilote de la carte graphique sur l'HyperV</h3>
+<div class="level3">
+<p>Pour déterminer le pilote graphique en cours</p>
+<pre class="code">Get-WmiObject -Class Win32_VideoController</pre>
+<p>Il s'agit normalement du pilote générique fourni par Windows qui ne prend pas en charge la fonctionnalité. Il est donc nécessaire de récupérer le modèle de votre carte graphique.</p>
+<p>Ensuite de télécharge le package du driver sur le site du constructeur de la carte (ici nvidia), on décompacte, on transfert sur le serveur hyperV et on lance la commande:</p>
+<pre class="code">PS C:\NVIDIA\Display.Driver&gt; pnputil -i -a .\nv_dispi.inf
+Microsoft PnP Utility
+
+Processing inf :            nv_dispi.inf
+Successfully installed the driver on a device on the system.
+Driver package added successfully.
+Published name :            oem0.inf
+
+Total attempted:              1
+Number successfully imported: 1</pre>
+<p>Pour plus d'informations sur la gestion des drivers via Powershell reportez vous à : <a class="urlextern" title="http://technet.microsoft.com/en-us/library/jj647787.aspx" href="http://technet.microsoft.com/en-us/library/jj647787.aspx" rel="nofollow">http://technet.microsoft.com/en-us/library/jj647787.aspx</a></p>
+<p>Ensuite il ne reste plus qu'a revérifier si le driver est bien prise en compte :</p>
+<pre class="code">Get-WmiObject -Class Win32_VideoController</pre>
+<div class="table sectionedit14">
+<table class="inline">
+<tbody>
+<tr class="row0">
+<td class="col0"><a class="media" title="hyperv:5-hyperv_remotefx_w81.png" href="http://techjp.net/wiki/_media/hyperv:5-hyperv_remotefx_w81.png"><img class="mediacenter" title=" RemoteFX activé dans la console HyperV " src="{{site.baseurl}}/assets/images/2016/04/hyperv:5-hyperv_remotefx_w81.png?w=200&amp;tok=11dfb7" alt=" RemoteFX activé dans la console HyperV " width="200"></a></td>
+<td class="col1">Il est possible qu'un redémarrage soit nécessaire pour la bonne prise en compte du driver. Ensuite il ne vous reste plus qu'a activer la fonction par le console HyperV dans les propriétés “Physical GPUs”</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<h3 id="installation_de_la_carte_graphique_sur_nos_vm_et_utilisation" class="sectionedit15">4.3 Installation de la carte graphique sur nos VM et utilisation</h3>
+<div class="level3">
+<p>Ensuite pour pouvoir utiliser la fonctionnalité il faut ajouter sur chaque machine via la console HyperV ou via powershell la carte RemoteFX 3D Adapter. Pour Powershell depuis le serveur :</p>
+<pre class="code">Get-VM # pour lister nos VM
+Add-VMRemoteFx3dVideoAdapter -VMName "NomDeMaVM"</pre>
+<p>Si vous avez l'erreur suivante : <em>Hyper-V was unable to find S3 Display</em> et que la carte n'apparait pas dans ajout de matériel dans la console Hyper-V. Il est problème que vous utilisez des VM de génération 2, attention <strong>RemoteFx ne fonctionne que sur les machines de génération 1</strong> !! J'ai effectué l'installation sur une VM Windows 8.1 Entreprise configurer en génération 1.</p>
+<p>Ensuite il ne vous reste plus qu'a vous connecter via le bureau à distance à la votre VM :</p>
+<ul>
+<li class="level1">
+<div class="li">Dans le gestionnnaire de préphérique vous verrez normalement apparaitre la carte</div>
+</li>
+<li class="level1">
+<div class="li">Au niveau de la console HyperV dans les paramètres de l'HyperV section GPU Physique vous devez voir le nombre et la mémoire graphique utilisée par vos VM.</div>
+</li>
+</ul>
+</div>
+<h2 id="configuration_du_stockage" class="sectionedit16">5. Configuration du stockage</h2>
+<div class="level2"></div>
+<h3 id="rajout_d_un_disque_iscsi" class="sectionedit17">5.1 Rajout d'un disque iSCSI</h3>
+<div class="level3">
+<p>Pour rajouter un disque externe iSCSI qui peut être partagé par nos deux hyperviseurs dans le cadre d'un cluster par exemple. Vous avez plusieurs possibilités :</p>
+<ul>
+<li class="level1">
+<div class="li">Utiliser un NAS (ex Sygnology ) qui permet de créer des disques iSCSI</div>
+</li>
+<li class="level1">
+<div class="li">Utiliser l'utilitaire iSCSI target 3.3 de Microsoft pour créer un target sur serveur de stockage.</div>
+</li>
+</ul>
+<p>Ensuite après avoir crée vos disques (1 pour le stockage des VM assez important et un autre de 1Go pour le quorum du cluster) Sur l'hyperviseur il faut activer le service iSCSI et accéder à l'interface de configuration des targets de nos disques. Pour cela il suffit de lancer:</p>
+<pre class="code">iscsicpl</pre>
+<p>Après avoir renseigner vos paramètres il va falloir:</p>
+<ul>
+<li class="level1">
+<div class="li">mettre en ligne</div>
+</li>
+<li class="level1">
+<div class="li">initialiser</div>
+</li>
+<li class="level1">
+<div class="li">formater</div>
+</li>
+<li class="level1">
+<div class="li">et enfin attribuer une lettre disque.</div>
+</li>
+</ul>
+<p>Pour cela on peut le faire avec</p>
+<pre class="code">diskpart</pre>
+<p>en ligne de commande sur le serveur ou bien avec une console MMC distante avec le gestionnaire de disque plus graphique.</p>
+<p>Suite à la création de mon volume j'ai rencontré par la suite un petit problème d'accès à celui-ci :</p>
+<pre class="code">Diskpart has encountered an error: The media is write protected.
+
+DISKPART&gt; attributes disk
+Current Read-only State : Yes
+Read-only  : Yes</pre>
+<p>Mon disque était passé en lecture seul pour le remettre en écriture il suffit d'effacer le paramètre read-only via la commande :</p>
+<pre class="code">DISKPART&gt; attributes disk clear readonly</pre>
+</div>
+<h3 id="configuration_et_installation_de_mpio" class="sectionedit18">5.2 Configuration et installation de MPIO</h3>
+<div class="level3">
+<p>Si l'on souhaite activer la fonctionnalité MPIO qui permet d'accéder aux disques iSCSI par plusieurs chemins. Cela peut être utile avec 2 cartes réseaux d'avoir une tolérance de panne en cas de coupure de l'un des chemins réseaux. Il est d'abord nécessaire d'activer la fonctionnalité via la commande :</p>
+<pre class="code">Install-WindowsFeature -Name Multipath-IO</pre>
+<p>Puis ensuite de lancer l'utilitaire de configuration via la commande :</p>
+<pre class="code">mpiocpl.exe</pre>
+<p>Ensuite dans l'onglet 'Discover Multi-Paths' on coche 'Add support for ISCSI devices' un redémarrage sera ensuite nécessaire.</p>
+</div>
+<h2 id="astuces" class="sectionedit19">6. Astuces</h2>
+<div class="level2"></div>
+<h3 id="convertir_un_fichier_vdi_en_vhd_puis_vhdx" class="sectionedit20">6.1 Convertir un fichier vdi en vhd puis vhdx</h3>
+<div class="level3">
+<p><strong>D'abord pour convertir votre fichier vdi (virtualbox vers vhd)</strong></p>
+<p>C:\Program Files\Oracle\VirtualBox&gt; (Pour Windows, fonctionne également pour Linux)</p>
+<pre class="code">VBoxManage.exe clonehd Disque.vdi Disque.vhd --format vhd</pre>
+<p><strong>Puis ensuite depuis HyperV par exemple en Powershell convertir en vhdx</strong></p>
+<pre class="code">Convert-VHD -Path 'Chemin\Disque.vhd' -DestinationPath 'Chemin\Disque.vhdx' -VHDType Dynamic</pre>
+<p>Il ne vous reste plus qu'a importer les disques sous HyperV et de les attacher à vos machines.</p>
+</div>
+<h3 id="quelques_commandes_powershell_utiles_a_la_gestion" class="sectionedit21">6.1 Quelques commandes powershell utiles à la gestion</h3>
+<div class="level3">
+<p>Pour réduire la taille d'un disque vhdx dynamique.</p>
+<ul>
+<li class="level1">
+<div class="li"><a class="urlextern" title="http://technet.microsoft.com/en-us/library/hh848458.aspx" href="http://technet.microsoft.com/en-us/library/hh848458.aspx" rel="nofollow">Optimize-VHD</a></div>
+</li>
+</ul>
+<p>Voici un guide rapide des tâches à effectuer sur un serveur Core 2012 <a class="urlextern" title="http://technet.microsoft.com/en-us/library/jj592694.aspx" href="http://technet.microsoft.com/en-us/library/jj592694.aspx" rel="nofollow">Quick Reference for Server Core Tasks</a></p>
+</div>
+<h2 id="problemes_rencontrees" class="sectionedit22">7 Problèmes rencontrées</h2>
+<div class="level2">
+<p><strong>Boot HyperV:</strong> Suite à un rajout de disque iSCSI le serveur ne boot plus. La réparation de boot du serveur via le DVD d'installation a bien fonctionné. Mais au redémarrage impossible de relancer mes machines virtuel. Le message d'erreur indique que l'hyperviseur n'est pas en fonction.</p>
+<pre class="code">PS C:\Users\test&gt; start-vm SRV2012DC
+start-vm : 'SRV2012DC' failed to restore virtual machine state. (Virtual
+machine ID 0C1E6745-513D-42E9-B350-BB57693E5BD9)
+Virtual machine 'SRV2012DC' could not be started because the hypervisor is not
+running (Virtual machine ID 0C1E6745-513D-42E9-B350-BB57693E5BD9).
+The following actions may help you resolve the problem:
+1) Verify that the processor of the physical computer has a supported version
+of hardware-assisted virtualization.
+2) Verify that hardware-assisted virtualization and hardware-assisted data
+execution protection are enabled in the BIOS of the physical computer.  (If
+you edit the BIOS to enable either setting, you must turn off the power to the
+physical computer and then turn it back on.  Resetting the physical computer
+is not sufficient.)
+3) If you have made changes to the Boot Configuration Data store, review these
+changes to ensure that the hypervisor is configured to launch automatically.</pre>
+<p>Effectivement problème 3 pour moi celui-ci se lance au boot mais la réparation du boot a fait perdre le paramètre. Pour vérifier via bcdedit /enum , l'entrer indiquant à l'hyperviseur de se lancer n'était plus présente. Pour la rajouter il suffit simplement de faire :</p>
+<pre class="code">bcdedit /set hypervisorlaunchtype auto</pre>
+<p>Ensuite après le reboot tout est entré dans l'ordre.</p>
+</div>
+<p></body></html></p>

@@ -1,0 +1,75 @@
+---
+layout: post
+title: Installer Windows 10 IoT sur Raspberry Pi 2
+date: 2015-11-11 12:28:36.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Raspberry Pi
+tags: []
+meta:
+  _edit_last: '82119094'
+  geo_public: '0'
+  _publicize_job_id: '16749292549'
+author:
+  login: fhugonnier
+  email: fhugonnier@outlook.com
+  display_name: fhugonnier
+  first_name: ''
+  last_name: ''
+permalink: "/2015/11/11/installer-windows-10-iot-sur-raspberry-pi-2/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body></p>
+<p>Microsoft a récemment publié la version finale de Windows 10 IoT pour les ordinateurs Raspberry Pi 2, une plateforme pour l’internet des objets. Voici un aperçu de l’installation et la configuration de Windows 10 IoT sur cette plateforme.</p>
+<h2>Prérequis Windows</h2>
+<ul>
+<li>Avoir un PC avec Windows 10</li>
+<li>Installer Visual Studio 2015 (installation personnalisée avec sélection <strong>Universal Windows App Development Tools</strong>, <strong>Tools and Windows SDK</strong>, et <strong>Emulators for Windows Mobile</strong>)</li>
+<li>Installer les modèles <strong>Windows IoT Core Project</strong> (optionnel)</li>
+<li>Activer le mode développeur
+<pre>reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" /t REG_DWORD /f /v "AllowDevelopmentWithoutDevLicense" /d "1"
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" /t REG_DWORD /f /v "AllowAllTrustedApps" /d</pre>
+</li>
+</ul>
+<h3>Installer les outils Windows 10 IoT Core</h3>
+<p><a class="shortbutton blue normal" href="http://download.microsoft.com/download/8/C/B/8CBE5D09-B5C5-462B-8043-DAC64938FDAC/IOT%20Core%20RPi.ISO" target="_blank">Télécharger le fichier ISO pour Raspberry Pi 2</a></p>
+<ul>
+<li>Monter le fichier ISO et installer le logiciel <strong>Windows_10_IoT_Core_RPi2.msi</strong> (Inclus les applications <strong>Windows IoT Core Watcher </strong>et <strong>IoTCoreImageHelper</strong>)<a href="http://www.msnloop.com/wp-content/uploads/2015/07/windows10iot-1.png"><img class="alignnone wp-image-36827 size-full" src="{{site.baseurl}}/assets/images/2015/11/windows10iot-1.png" alt="windows 10 iot " width="600" height="86"></a>
+</li>
+<li>Lorsque l’installation est terminée, récupérer le firmware <strong>flash.ffu</strong> à l’emplacement <strong><strong>C:\Program Files (x86)\Microsoft IoT\FFU\RaspberryPi2</strong></strong><a href="http://www.msnloop.com/wp-content/uploads/2015/07/windows10iot-2.png"><img class="alignnone wp-image-36828 size-full" src="{{site.baseurl}}/assets/images/2015/11/windows10iot-2.png" alt="windows 10 iot" width="600" height="69"></a>
+</li>
+</ul>
+<h2>Préparer le Raspberry</h2>
+<p>Assez évidemment, vous avez besoin d’un Raspberry Pi 2 avec une alimentation appropriée (une alimentation micro-USB 3.5V avec au moins 1.0A de courant), plus un câble HDMI et une carte micro SD (Classe 10 minimum avec 8 Go ou plus de stockage)</p>
+<h3>Installer le firmware sur la microSD</h3>
+<ul>
+<li>Insérer la carte micro SD dans le lecteur</li>
+<li>Utiliser l’application <strong>IoTCoreImageHelper.exe</strong> pour flasher la carte SD</li>
+<li>L’application énumère votre carte. Sélectionner la carte SD et récupérer le firmware (fichier <strong>flash.ffu</strong>)
+<div class="annotation">
+<p><a href="http://www.msnloop.com/wp-content/uploads/2015/07/windows10iot-3.png"><img class="alignnone wp-image-36846 " src="{{site.baseurl}}/assets/images/2015/11/windows10iot-3.png" alt="" width="543" height="596"></a></p>
+<div class="main">
+<h5>Firmware</h5>
+<p>Flash du firmare avec l’outil Windows IoT Core Image Helper</p>
+</div>
+</div>
+</li>
+</ul>
+<div class="alert gray">Les instructions suivantes peuvent servir si vous utilisez l’outil DISM pour installer le firmware sur la carte SD, une fois la carte identifiée avec l’outil diskpart (disque 3 dans cette commande)</div>
+<pre>dism.exe /Apply-Image /ImageFile:flash.ffu /ApplyDrive:\\.\PhysicalDrive3 /SkipPlatformCheck</pre>
+<h3>Brancher votre carte</h3>
+<p>Lire la notice pour le branchement et voir cette image</p>
+<div class="alert orange">Branchez l’alimentation électrique en dernier</div>
+<p><a href="http://www.msnloop.com/wp-content/uploads/2015/07/raspberrypi2.jpg"><img class="alignnone  wp-image-36840" src="{{site.baseurl}}/assets/images/2015/11/raspberrypi2.jpg" alt="raspberrypi2" width="587" height="428"></a></p>
+<h2>Démarrer le PC Raspberry Pi 2</h2>
+<p>Le PC démarrera sur Windows 10 IoT après quelques minutes et l’application principale s’affiche pour vous donner les informations IP. À ce stade, on peut suivre les commandes <a href="http://ms-iot.github.io/content/en-US/win10/samples/PowerShell.htm" target="_blank">PowerShell </a>ou <a href="http://ms-iot.github.io/content/en-US/win10/samples/SSH.htm" target="_blank">SSH </a>pour se connecter à l’appareil.</p>
+<p><a href="http://www.msnloop.com/wp-content/uploads/2015/07/windows10iot-4.jpg"><img class="alignnone wp-image-36843 " src="{{site.baseurl}}/assets/images/2015/11/windows10iot-4.jpg" alt="" width="594" height="449"></a></p>
+<p>Maintenant, commencez à déployer vos applications à partir de Visual Studio 2015!</p>
+<h4>Références</h4>
+<p><a href="https://msdn.microsoft.com/en-us/Library/Windows/Hardware/dn914597.aspx" target="_blank">https://msdn.microsoft.com/en-us/Library/Windows/Hardware/dn914597.aspx</a><br />
+<a href="http://ms-iot.github.io/content/en-US/win10/samples/PowerShell.htm" target="_blank">http://ms-iot.github.io/content/en-US/win10/samples/PowerShell.htm</a><br />
+</body></html></p>

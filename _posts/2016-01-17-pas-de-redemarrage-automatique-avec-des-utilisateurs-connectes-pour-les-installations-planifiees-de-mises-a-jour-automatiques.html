@@ -1,0 +1,50 @@
+---
+layout: post
+title: Pas de redémarrage automatique avec des utilisateurs connectés pour les installations
+  planifiées de mises à jour automatiques
+date: 2016-01-17 11:17:11.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Windows
+tags: []
+meta:
+  _rest_api_published: '1'
+  _rest_api_client_id: "-1"
+  _publicize_job_id: '18834930493'
+  _edit_last: '82119094'
+  geo_public: '0'
+author:
+  login: fhugonnier
+  email: fhugonnier@outlook.com
+  display_name: fhugonnier
+  first_name: ''
+  last_name: ''
+permalink: "/2016/01/17/pas-de-redemarrage-automatique-avec-des-utilisateurs-connectes-pour-les-installations-planifiees-de-mises-a-jour-automatiques/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body><br />
+<strong>Pas de redémarrage automatique avec des utilisateurs connectés pour les installations planifiées de mises à jour automatiques</strong></p>
+<p>En temps normal, Windows Update est configuré de façon automatique sur les serveurs – L’installation (la période de maintenance) se fait en pleine nuit mais pas le redémarrage…<br />
+Ainsi, lorsque Windows Server 2012 a terminé l’installation des mises à jour, Windows Update se met « en veille » et attendra au maximum 2 jours pour redémarrer automatiquement… lorsqu’un Administrateur (du domaine ou du système) ouvrira sa session !!<br />
+Sur des serveurs critiques, le redémarrage soudain et inopiné est forcément critique…</p>
+<p>Les anciennes versions de Windows (7 / Server 2008) n’ont pas ce problème là ; une configuration est déjà présente et activée.</p>
+<p>[line]</p>
+<p>Pour corriger le tir et reprendre le contrôle sur les redémarrages dûs à Windows Update dans un Windows Server 2012, il faut modifier des stratégies locales.</p>
+<p>Ouvrez la fenêtre « <strong>Exécuter</strong> » (Touche Windows + « R ») et entrez « <em>gpedit.msc</em>«</p>
+<p>Une fenêtre va alors s’ouvrir – Vous devez partir dans l’arborescence suivante :</p>
+<p><strong>Configuration ordinateur &gt; Stratégies &gt; Modèles d’administration &gt; Composants Windows &gt; Windows Update</strong></p>
+<p>Une GPO est à ajouter – Elle permet d’empêcher le redémarrage automatique lorsqu’un administrateur est connecté sur le serveur.</p>
+<p><img class="alignnone size-full wp-image-296" src="{{site.baseurl}}/assets/images/2016/01/gpo2.jpg" alt="gpo2" width="703" height="647"></p>
+<p> </p>
+<p>Passez cette GPO en mode « <strong>Activé</strong>« .<br />
+Si un utilisateur disposant de droits Administrateurs est connecté sur le serveur, Windows Update ne pourra pas faire redémarrer le serveur automatiquement. Une notification sera présente pour prévenir l’utilisateur courant quant aux MàJ à installer.</p>
+<p>[line]</p>
+<p>Une fois les configurations de GPO terminées, il faut effectuer une dernière commande :</p>
+<pre class="lang:batch decode:true">gpupdate.exe /force
+</pre>
+<p>Cette commande permet de prendre en compte immédiatement les modifications effectuées dans les GPO.<br />
+Vous ne serez pas obligé de redémarrer les sessions ou le serveur.</body></html></p>

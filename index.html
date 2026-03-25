@@ -1,0 +1,33 @@
+---
+layout: default
+title: Accueil
+---
+<div class="hero-text">
+  <h1>Des tutos IT pour les <em>vrais débutants</em></h1>
+  <p>Windows Server, VMware, Active Directory, PowerShell... Des guides pas à pas, testés et approuvés par Franck Hugonnier.</p>
+</div>
+
+<div class="post-grid">
+  {% for post in paginator.posts %}
+  <div class="post-card">
+    {% for cat in post.categories limit:1 %}
+      <span class="tag {{ cat | downcase }}">{{ cat }}</span>
+    {% endfor %}
+    <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+    <p>{{ post.excerpt | strip_html | truncate: 120 }}</p>
+    <div class="meta">{{ post.date | date: "%d %b %Y" }}</div>
+  </div>
+  {% endfor %}
+</div>
+
+{% if paginator.total_pages > 1 %}
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | relative_url }}">&larr; Précédent</a>
+  {% endif %}
+  <span class="current">Page {{ paginator.page }} / {{ paginator.total_pages }}</span>
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | relative_url }}">Suivant &rarr;</a>
+  {% endif %}
+</div>
+{% endif %}

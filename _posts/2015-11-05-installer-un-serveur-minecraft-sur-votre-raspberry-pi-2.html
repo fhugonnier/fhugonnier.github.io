@@ -1,0 +1,278 @@
+---
+layout: post
+title: Installer un serveur Minecraft sur votre Raspberry Pi 2 !
+date: 2015-11-05 11:36:53.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Raspberry Pi
+tags: []
+meta:
+  _edit_last: '82119094'
+  geo_public: '0'
+  _publicize_job_id: '16558825402'
+author:
+  login: fhugonnier
+  email: fhugonnier@outlook.com
+  display_name: fhugonnier
+  first_name: ''
+  last_name: ''
+permalink: "/2015/11/05/installer-un-serveur-minecraft-sur-votre-raspberry-pi-2/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body><br />
+<b><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2015/11/minecraft-637x320.jpg"><img class="alignnone size-medium wp-image-215" src="{{site.baseurl}}/assets/images/2015/11/minecraft-637x320.jpg?w=300" alt="minecraft-637x320" width="300" height="151"></a></b></p>
+<p>Suite à la sortie récente <a title="Raspberry Pi 2" href="http://www.amazon.fr/gp/product/B00T2U7R7I/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;camp=1642&amp;creative=6746&amp;creativeASIN=B00T2U7R7I&amp;linkCode=as2&amp;tag=raspbianfranc-21&amp;linkId=2DCECXHBPLWGSGNR" target="_blank" rel="nofollow">de la Raspberry pi 2</a>, avec son lot de <a title="La Raspberry Pi 2, une vraie révolution !" href="http://raspbian-france.fr/raspberry-pi-2/" target="_blank">nouveautés techniques</a>,<strong>nous avons repensé aux projets que nous avions refoulés à cause de la vitesse des anciens modèles de Raspberry Pi.</strong></p>
+<p>Pour rappel, la Raspberry pi 2 dispose maintenant d’un processeur ARMv7, 4 cœurs, cadencé à 1GHz, ainsi que d’une RAM boostée à 1Go ! <strong>Cette nouvelle raspberry pi ouvre donc la porte à une multitude de projets inenvisageables jusqu’à aujourd’hui.</strong></p>
+<p>Dans l’ensemble de ces projets, nous avons notamment pensé <strong>à la création d’un serveur Minecraft sur la Raspberry Pi.</strong><br />
+Nous allons donc ici vous proposer un tutoriel qui portera sur <strong>comment installer un serveur Minecraft sur la Raspberry Pi 2.</strong></p>
+<p> </p>
+<h2>Minecraft, c’est quoi ?</h2>
+<p>D’accord, si vous êtes ici il est quasiment certain que vous savez déjà tout de Minecraft, mais reprécisons tout de même au cas où.</p>
+<p>Minecraft est un jeu sorti officiellement en 2011 et fruit du travail intensif du développeur Notch et aujourd’hui développé par la société Mojang. Minecraft est une référence dans le monde du jeu dit « Bac à sable ».</p>
+<p><strong>Minecraft a connu un succès absolument énorme, au point d’être aujourd’hui un des jeux les plus populaires au monde !</strong></p>
+<p> </p>
+<h2>Un serveur Minecraft sur la Raspberry Pi, pourquoi faire ?</h2>
+<p>Minecraft propose un mode multijoueurs, où plusieurs utilisateurs se connectent sur un serveur central. C<strong>’est ce serveur Minecraft central que nous vous proposons d’installer ici sur votre Raspberry Pi.</strong></p>
+<p>Il existe des solutions payantes afin d’avoir son propre serveur, néanmoins, ceux-ci sont très rapidement bridés par le nombre de joueurs connectés simultanément ou par l’administration du serveur.<br />
+Avec la puissance de la <a title="Raspberry Pi modèle 2B" href="http://www.amazon.fr/gp/product/B00T2U7R7I/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;camp=1642&amp;creative=6746&amp;creativeASIN=B00T2U7R7I&amp;linkCode=as2&amp;tag=raspbianfranc-21&amp;linkId=2DCECXHBPLWGSGNR" target="_blank" rel="nofollow">Raspberry Pi 2</a>, nous pouvons maintenant réellement monter nous même<strong> notre propre serveur Minecraft.</strong></p>
+<p>En effet, si il était déjà possible d’installer un serveur Minecraft sur les anciennes Raspberry Pi, celles-ci se retrouvaient très rapidement submergées, faute de puissance de calcul, <strong>un problème aujourd’hui réglé avec la Raspberry Pi 2.</strong></p>
+<p> </p>
+<h2>Installer le serveur Minecraft sur la Raspberry Pi 2.</h2>
+<p>L’installation d’un serveur Minecraft sur la Raspberry Pi 2 est relativement simple (plus que sur les générations précédentes qui demandaient souvent d’êtres overclockées, ce qui n’est plus le cas).</p>
+<p>Tout d’abord, nous allons mettre à jour notre Raspberry Pi 2,<strong> une opération que l’on devrait toujours effectuer avant toute installation.</strong> Pour cela, il vous suffit d’utiliser la commande suivante :</p>
+<div>
+<div id="highlighter_714303" class="syntaxhighlighter  bash">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+<div class="line number2 index1 alt1">2</div>
+<div class="line number3 index2 alt2">3</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2">
+<code class="bash functions">sudo</code> <code class="bash plain">apt-get update -y</code>
+</div>
+<div class="line number2 index1 alt1"></div>
+<div class="line number3 index2 alt2">
+<code class="bash functions">sudo</code> <code class="bash plain">apt-get upgrade -y</code>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<h3>Installer Java sur votre Raspberry Pi</h3>
+<p>Vous le savez peut-être,<strong> Minecraft est un jeu développé en Java</strong>. Nous allons donc devoir <strong>installer Java 7 sur notre Raspberry Pi.</strong> Pour ce faire, nous allons le chercher dans les dépôts Raspbian. Il vous suffit pour cela de lancer la commande suivante :</p>
+<div>
+<div id="highlighter_857998" class="syntaxhighlighter  bash">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2">
+<code class="bash functions">sudo</code> <code class="bash plain">apt-get </code><code class="bash functions">install</code> <code class="bash plain">oracle-java7-jdk</code>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Java est maintenant installé sur votre Raspberry Pi.</p>
+<h3>Télécharger le serveur sur la Raspberry Pi</h3>
+<p>Afin de garder<strong> un système Raspbian propre et bien organisé,</strong> nous allons créer un dossier spécialement pour le serveur Minecraft.</p>
+<p>Le dossier peut être placé n’importe où sur la Raspberry Pi, et peut s’appeler comme bon vous semble, mais pour des raisons de lisibilité, <strong>nous vous conseillons d’appeler le dossier « ServeurMinecraft », et de le mettre dans le dossier de l’utilisateur « pi ».</strong> Pour cela, exécutez la commande suivante :</p>
+<div>
+<div id="highlighter_692208" class="syntaxhighlighter  bash">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2">
+<code class="bash functions">mkdir</code> <code class="bash plain">/home/pi/ServeurMinecraft</code>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><strong>Nous allons entrer dans le dossier créé et télécharger les fichiers du serveur Minecraft sur la Raspberry Pi 2.</strong><br />
+Le lien ici fourni retourne systématiquement la dernière version de Minecraft, si vous souhaitez installer une version plus ancienne, vous devrez chercher le lien sur le site officiel.</p>
+<div>
+<div id="highlighter_596758" class="syntaxhighlighter  bash">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+<div class="line number2 index1 alt1">2</div>
+<div class="line number3 index2 alt2">3</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2">
+<code class="bash functions">cd</code> <code class="bash plain">/home/pi/ServeurMinecraft</code>
+</div>
+<div class="line number2 index1 alt1"></div>
+<div class="line number3 index2 alt2">
+<code class="bash plain">wget -O minecraft-server.jar https:</code><code class="bash plain">//s3</code><code class="bash plain">.amazonaws.com</code><code class="bash plain">/Minecraft</code><code class="bash plain">.Download</code><code class="bash plain">/versions/1</code><code class="bash plain">.8.7</code><code class="bash plain">/minecraft_server</code><code class="bash plain">.1.8.7.jar</code>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Nous avons donc <strong>téléchargé le serveur Minecraft sur notre Raspberry Pi</strong>, nous allons maintenant lui donner les droits adaptés pour qu’il puisse se lancer, pour cela, dans un souci de simplicité, n<strong>ous allons ajouter les droits d’exécution sur le fichier à tous les utilisateurs.</strong> Les linuxiens les plus barbus d’entre-vous peuvent biens sûr chercher comment réduire les autorisations au strict minimum.<br />
+Pour ajouter les droits d’exécution sur le serveur, utilisez la commande suivante :</p>
+<div>
+<div id="highlighter_700780" class="syntaxhighlighter  bash">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2">
+<code class="bash functions">sudo</code> <code class="bash functions">chmod</code> <code class="bash plain">+x minecraft-server.jar</code>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<h3>Lancer le serveur Minecraft</h3>
+<p>Notre serveur Minecraft est désormais installé sur la Raspberry Pi, et possède les droits nécessaires à son exécution, <strong>il ne nous reste donc plus qu’à le lancer !</strong><br />
+Pour lancer le serveur Minecraft, il vous suffit de lancer la commande suivante :</p>
+<div>
+<div id="highlighter_140065" class="syntaxhighlighter  bash">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2"><code class="bash plain">java -Xms512M -Xmx900M -jar minecraft-server.jar nogui</code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Détaillons rapidement la commande, le paramètre -Xms défini la RAM minimum allouée à Minecraft, ici 512Mo, -Xmx défini la RAM maximum, ici 900Mo, enfin le paramètre nogui indique de lancer le serveur sans interface graphique. Les autres paramètres indiquent simplement à Java de lancer le serveur Minecraft.</p>
+<h3>Accepter les conditions d’utilisation</h3>
+<p>Lors de ce premier lancement, le serveur devrait retourner une erreur de ce type : « You need to agree to the EULA in order to run the server. Go to eula.txt for more info. »</p>
+<p>Cela signifie simplement que vous devez accepter les conditions d’utilisation de EULA, un système mis en place à partir de la version 1.7. Pour cela modifiez le fichier « /home/pi/ServeurMinecraft/eula.txt » et remplacez la ligne « eula=false » en « eula=true ».</p>
+<p>Maintenant que vous avez accepté les conditions d’utilisation, vous pouvez relancer la commande précédente.</p>
+<p>Une fois cette commande exécutée, le serveur se lance. <strong>Étant donné que nous le lançons pour la première fois sur la Raspberry Pi, cela va prendre un peu de temps, le serveur doit en effet créer les fichiers nécessaires et générer la carte du jeu.</strong></p>
+<p> </p>
+<h3>Lancer automatiquement le serveur Minecraft au démarrage de la Raspberry Pi</h3>
+<p>Il peut se révéler très utile que le serveur Minecraft se lance automatiquement quand la Raspberry Pi démarre,<strong> notamment dans le cas où vous auriez une coupure de courant ou tout autre événement qui amènerait votre Raspberry Pi à redémarrer.</strong></p>
+<p>Dans un premier temps, nous allons créer un fichier « runMinecraftServer.sh » dans le dossier du serveur, qui permettra de lancer le serveur quand il est exécuté, <strong>pour le créer vous pouvez utiliser l’éditeur de votre choix, par exemple Nano</strong>, la commande sera alors « sudo nano runMinecraftServer.sh ».<br />
+Le fichier « runMinecraftServer.sh » devra contenir les lignes suivantes :</p>
+<div>
+<div id="highlighter_482264" class="syntaxhighlighter  bash">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+<div class="line number2 index1 alt1">2</div>
+<div class="line number3 index2 alt2">3</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2"><code class="bash preprocessor bold">#!/bin/sh</code></div>
+<div class="line number2 index1 alt1"></div>
+<div class="line number3 index2 alt2">
+<code class="bash plain">java -Xms512M -Xmx900M -jar </code><code class="bash plain">/home/pi/ServeurMinecraft/minecraft-server</code><code class="bash plain">.jar nogui</code>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Nous allons maintenant ajouter les droits d’exécution sur le fichier, comme nous l’avions fait pour le serveur Minecraft :</p>
+<div>
+<div id="highlighter_78669" class="syntaxhighlighter  bash">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2">
+<code class="bash functions">chmod</code> <code class="bash plain">+x runMinecraftServer.sh</code>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><strong>Enfin, nous allons lancer ce fichier au démarrage de la Raspberry Pi, de façon à ce que le serveur Minecraft se lance automatiquement.</strong> Pour cela il nous suffit de le placer dans le dossier « /etc/init.d » à l’aide de la commande suivante :</p>
+<div>
+<div id="highlighter_355491" class="syntaxhighlighter  bash">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2">
+<code class="bash functions">sudo</code> <code class="bash functions">mv</code> <code class="bash plain">runMinecraftServer.sh </code><code class="bash plain">/etc/init</code><code class="bash plain">.d/</code>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Voilà, votre serveur Minecraft démarrera en même temps que votre Raspberry Pi !</p>
+<p> </p>
+<h2>Rendre le serveur Minecraft accessible par internet</h2>
+<p>Nous disposons maintenant d’un serveur Minecraft sur notre Raspberry Pi. C’est bien joli, <strong>mais si nous ne pouvons pas accéder au serveur depuis l’extérieur, cela n’est pas très utile.</strong></p>
+<p>Nous allons donc devoir<strong> permettre l’accès à la Raspberry Pi par internet.</strong> Pour cela, nous vous redirigeons vers notre article sur la <a title="Mettre en ligne votre serveur web Raspbian, DynDNS et port forwarding" href="http://raspbian-france.fr/mettre-en-ligne-serveur-web-raspbian-dydns-port-forwarding/" target="_blank">mise en ligne d’un serveur web raspbian dydns port forwarding</a>, section « Rediriger les requêtes vers le serveur Apache sur Raspbian ».</p>
+<p>Dans cet article nous parlons d’apache pour Raspbian, mais la technique pour Minecraft est la même. <strong>Seule différence, vous devrez à la place du port 80 ouvrir le port TCP 25565, qui est le port par défaut de Minecraft.</strong></p>
+<h2>Conclusion</h2>
+<p><strong>Nous avons installé un serveur Minecraft sur notre Raspberry Pi 2.</strong><br />
+Un tel serveur devrait permettre de gérer entre 8 et 10 personnes de façon simultanée, <strong>à condition que votre connexion internet vous offre un débit suffisant.</strong><br />
+Il ne s’agit bien-entendu pas d’un serveur surpuissant, mais il devrait être largement suffisant pour une utilisation personnelle.</p>
+<p>Vous avez maintenant tous les cubes en mains pour gérer votre serveur Minecraft sur votre Raspberry Pi, <strong>n’hésitez pas à faire un tour sur nos autres tutoriels,<a title="Installer un serveur web sur votre Raspberry" href="http://raspbian-france.fr/installer-serveur-web-raspberry/" target="_blank">comme l’installation d’un serveur web</a>, ou à <a title="Bien choisir les accessoires pour votre Raspberry Pi 2." href="http://raspbian-france.fr/accessoires-raspberry-pi-2/">allez faire un tour du coté des accessoires.</a></strong><br />
+</body></html></p>

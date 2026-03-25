@@ -1,0 +1,45 @@
+---
+layout: post
+title: Commandes PowerShell pour administrer des BAL Exchange
+date: 2015-03-05 17:42:23.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Exchange 2013
+- Power Shell
+tags: []
+meta:
+  _publicize_pending: '1'
+  _edit_last: '82119094'
+  geo_public: '0'
+author:
+  login: fhugonnier
+  email: fhugonnier@outlook.com
+  display_name: fhugonnier
+  first_name: ''
+  last_name: ''
+permalink: "/2015/03/05/commandes-powershell-pour-administrer-des-bal-exchange/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body></p>
+<p>Les possibilités offertes par le langage PowerShell pour administrer Exchange sont innombrables. Le plus difficile finalement est peut-être de trouver la bonne idée, c’est à dire le script ou la simple commande PowerShell qui facilitera votre travail. Je vous propose de découvrir dans ce tutoriel 5 commandes PowerShell utiles pour administrer les BAL Exchange</p>
+<p>Afficher les 30 plus grosses BAL Exchange</p>
+<p>Avec cette commande sous la main vous aurez rapidement un aperçu des boites aux lettres les plus grosses.</p>
+<pre>Get-Mailbox -ResultSize Unlimited | Get-MailboxStatistics | Sort-Object TotalItemSize -Descending | Select-Object DisplayName,TotalItemSize -First 30</pre>
+<h3>Actualiser le carnet d’adresse globale après avoir ajouté des nouvelles boites aux lettres</h3>
+<p>Le processus d’actualisation de l’annuaire prend un certain temps. Avec cette commande vous pouvez forcer la mise à jour du carnet d’adresse globale (GAL) lorsque vous modifiez l’annuaire.</p>
+<pre>Get-Globaladdresslist | update-Globaladdresslist</pre>
+<pre>Get-Addresslist | Update-Addresslist</pre>
+<h3>Afficher les statistiques d’utilisation d’une boite aux lettres</h3>
+<p>Cette simple commande permet d’afficher les statistiques d’utilisation d’une boite aux lettres pour l’utilisateur dont le login est <strong>FHolla</strong>.</p>
+<pre>Get-MailboxStatistics -Identity FHolla</pre>
+<h3>Afficher les statistiques d’utilisation de toutes les boites aux lettres d’un serveur</h3>
+<p>Cette simple commande permet d’afficher les statistiques d’utilisation de toutes les boites aux lettres présentent sur un serveur nommé <strong>VS-EXCH01</strong>.</p>
+<pre>Get-MailboxStatistics -Server VS-EXCH01</pre>
+<h3>Lister tous les événements relatifs à Exchange</h3>
+<p>Cette dernière commande permet de récupérer dans l’observateur d’événements des informations relatives à Exchange.</p>
+<pre>Get-EventLog Application | Where { $_.Source -Ilike “*Exchange*” }</pre>
+<p></body></html></p>

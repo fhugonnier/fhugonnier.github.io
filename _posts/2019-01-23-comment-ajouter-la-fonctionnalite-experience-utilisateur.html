@@ -1,0 +1,76 @@
+---
+layout: post
+title: Comment ajouter la fonctionnalité "Expérience utilisateur" 
+date: 2019-01-23 09:39:13.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Windows 2008 R2
+- Windows 2012 R2
+tags: []
+meta:
+  _edit_last: '82119094'
+  timeline_notification: '1548232758'
+  geo_public: '0'
+  _publicize_job_id: '26833951745'
+author:
+  login: fhugonnier
+  email: fhugonnier@outlook.com
+  display_name: fhugonnier
+  first_name: ''
+  last_name: ''
+permalink: "/2019/01/23/comment-ajouter-la-fonctionnalite-experience-utilisateur/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body></p>
+<h1 class="post-name"></h1>
+<div class="post-content user-defined-markup">La fonctionnalité "Expérience utilisateur" vous permet d'avoir les diverses fonctionnalités du client Windows 8.1 sur Windows Server 2012 R2.</p>
+<p>Elle comprend :</p>
+<p>&gt; Paramètres du PC<br />
+&gt; Panneau de saisie mathématique<br />
+&gt; Magnétophone<br />
+&gt; Outil de Capture d'écran<br />
+&gt; Nettoyage de disque<br />
+&gt; Table des caractères<br />
+&gt; Lecteur Windows Media<br />
+&gt; Programmes par défaut<br />
+&gt; Windows Store</p>
+<p>Vous pouvez être amené à faire des captures d'écran pour une documentation d'installation ou une procédure technique particulière et donc avoir besoin de l'outil "Outil de Capture d'écran" ou utiliser "Table des caractères" pour obtenir des caractères spéciaux pour écrire un script particulier ou encore utiliser le "Nettoyeur de disque" pour effectuer un nettoyage du disque système ... vous aurez compris la fonctionnalité "Expérience utilisateur" vous permettra d'avoir cet ensemble d'outils natifs sur un serveur exécutant Windows Server 2012 R2.</p>
+<p>Cette fonctionnalité n'est pas installée par défaut et peut être activée /installée à l'aide de :</p>
+<p>=&gt; Gestionnaire de serveur<br />
+=&gt; Windows PowerShell<br />
+=&gt; DISM</p>
+<p><strong>#Méthode N°1 : Installation via le Gestionnaire de serveur</strong></p>
+<p>1. Lancez le <strong>Gestionnaire de serveur</strong> ensuite depuis le "<strong>Tableau de bord</strong>", cliquez sur "<strong>Ajouter des rôles et des fonctionnalités</strong>"</p>
+<p><a href="http://social.technet.microsoft.com/wiki/cfs-file.ashx/__key/communityserver-wikis-components-files/00-00-00-00-05/5100.IMG106.png"><img src="{{site.baseurl}}/assets/images/2019/01/5100.IMG106.png" alt=" "></a></p>
+<p>2. Depuis "<strong>l'Assistant Ajout de rôles et de fonctionnalités</strong>", naviguez jusqu'au "<strong>Fonctionnalités</strong>" en sélectionnant le serveur sur lequel vous voulez activer la fonctionnalité "Expérience utilisateur" (si vous gérez plusieurs serveurs depuis le même Gestionnaire de serveur).</p>
+<p><a href="http://social.technet.microsoft.com/wiki/cfs-file.ashx/__key/communityserver-wikis-components-files/00-00-00-00-05/6136.IMG107.png"><img src="{{site.baseurl}}/assets/images/2019/01/6136.IMG107.png" alt=" "></a></p>
+<p>3. Enfin, cochez "<strong>Expérience utilisateu</strong>r" et cliquez ensuite sur "<strong>Suivant</strong>" et enfin sur "<strong>Installer</strong>".</p>
+<p><strong>Note : un redémarrage est requis pour que l'ajout de la fonctionnalité "Expérience utilisateur" soit pris en compte.</strong></p>
+<p><strong>#Méthode N°2 : Installation via Windows PowerShell<br />
+</strong><br />
+1. Lancez Windows PowerShell en tant qu'Administrateur et saisissez :</p>
+<p><strong>Add-WindowsFeature Desktop-Experience<br />
+</strong><br />
+2. Cliquez sur Entrée pour exécuter la commande, l'installation de la fonctionnalité "Expérience utilisateur" démarre :</p>
+<p><a href="http://social.technet.microsoft.com/wiki/cfs-file.ashx/__key/communityserver-wikis-components-files/00-00-00-00-05/2018.IMG108.png"><img src="{{site.baseurl}}/assets/images/2019/01/2018.IMG108.png" alt=" "></a></p>
+<p>3. A la fin de l'installation, vous êtes invité à redémarrer le serveur pour que l'ajout de la fonctionnalité "Expérience utilisateur" soit pris en compte.</p>
+<p><a href="http://social.technet.microsoft.com/wiki/cfs-file.ashx/__key/communityserver-wikis-components-files/00-00-00-00-05/2604.IMG109.png"><img src="{{site.baseurl}}/assets/images/2019/01/2604.IMG109.png" alt=" "></a></p>
+<p><strong>#Méthode N°3 : Installation via DISM</strong></p>
+<p>1. Le nom du package correspondant à la fonctionnalité "Expérience utilisateur" sous DISM est différent de celui utilisé précédemment sous Windows PowerShell, pour connaître le nom du package exacte, lancez l'invite de commande (cmd.exe) en tant qu'Administrateur et saisissez la commande suivante, localisez ensuite la fonctionnalité "Expérience utilisateur":</p>
+<p><strong>DISM /Online /Get-Features</strong></p>
+<p><a href="http://social.technet.microsoft.com/wiki/cfs-file.ashx/__key/communityserver-wikis-components-files/00-00-00-00-05/1106.IMG110.png"><img src="{{site.baseurl}}/assets/images/2019/01/1106.IMG110.png" alt=" "></a></p>
+<p>2. Saisissez la commande suivante pour installer la fonctionnalité "Expérience utilisateur" :</p>
+<p><strong>DISM /Online /Enable-Feature:DesktopExperience<br />
+</strong><br />
+<a href="http://social.technet.microsoft.com/wiki/cfs-file.ashx/__key/communityserver-wikis-components-files/00-00-00-00-05/3173.IMG111.png"><img src="{{site.baseurl}}/assets/images/2019/01/3173.IMG111.png" alt=" "></a></p>
+<p>3. Enfin, saisissez Y (comme Yes) pour confirmer le redémarrage du serveur afin que l'ajout de la fonctionnalité soit pris en compte.</p>
+<p>Après le redémarrage du serveur, depuis l'interface UI, vous pouvez constater la notification  : 9 nouvelles applications installées, il s'agit tout simplement des 9 outils inclut dans la fonctionnalité "Expérience utilisateur".</p>
+<p><a href="http://social.technet.microsoft.com/wiki/cfs-file.ashx/__key/communityserver-wikis-components-files/00-00-00-00-05/5381.IMG112.png"><img src="{{site.baseurl}}/assets/images/2019/01/5381.IMG112.png" alt=" "></a></p>
+<p>Si vous cliquez sur "9 nouvelles applications installées" ou vous affichez toutes les applications avec un tri "par date d'installation", vous aurez la liste des divers outils cités plutôt dans cet article :</p>
+<p><a href="http://social.technet.microsoft.com/wiki/cfs-file.ashx/__key/communityserver-wikis-components-files/00-00-00-00-05/1754.IMG113.png"><img src="{{site.baseurl}}/assets/images/2019/01/1754.IMG113.png" alt=" "></a>
+</div>
+<p></body></html></p>

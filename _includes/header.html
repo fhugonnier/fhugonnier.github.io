@@ -1,0 +1,10 @@
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="{{ '/' | relative_url }}" class="logo">NOOBS<span>.dev</span></a>
+    <ul class="menu">
+      <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Accueil</a></li>
+      <li><a href="{{ '/categories/' | relative_url }}" {% if page.url contains '/categories' %}class="active"{% endif %}>Catégories</a></li>
+      <li><a href="{{ '/about/' | relative_url }}" {% if page.url contains '/about' %}class="active"{% endif %}>À propos</a></li>
+    </ul>
+  </div>
+</nav>

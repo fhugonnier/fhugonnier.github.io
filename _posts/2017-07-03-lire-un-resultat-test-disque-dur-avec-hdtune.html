@@ -1,0 +1,130 @@
+---
+layout: post
+title: Lire un résultat test disque dur avec hdtune
+date: 2017-07-03 13:30:23.000000000 +02:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Matériel
+tags: []
+meta:
+  _edit_last: '82119094'
+  geo_public: '0'
+  _publicize_job_id: '6724385733'
+author:
+  login: fhugonnier
+  email: fhugonnier@outlook.com
+  display_name: fhugonnier
+  first_name: ''
+  last_name: ''
+permalink: "/2017/07/03/lire-un-resultat-test-disque-dur-avec-hdtune/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body><br />
+<strong>Les paramètres SMART permettent de contrôler l'état physique d'un disque dur et donc de prévenir la perte de fichiers parce que le disque est défaillant. Mais tout comme chez les sportifs de haut niveau, personne ne peut prévenir une défaillance cardiaque brusque.</strong></p>
+<p><img src="{{site.baseurl}}/assets/images/2017/07/smart.gif" width="504" height="389" align="right"><span class="c">CRITICAL: condition d'erreur critique</span><br />
+Remplacer le disque</p>
+<p><span class="p">PRE_FAIL: condition prémonitoire</span><br />
+Faire régulièrement des sauvegardes et penser à acheter un nouveau disque</p>
+<p><span class="n">OLD_AGE: usure normale</span><br />
+Condition normale, tenir les autres paramètres à l'œil.</p>
+<p>Il n'est pas possible de "corriger" la condition SMART. C'est le logiciel sur le disque qui indique l'état physique général du disque dur. Si des conditions d'erreur se produisent, il faut remplacer le disque, car ces erreurs iront en s'amplifiant.</p>
+<hr>
+<dl>
+<dt>
+<h1><strong><span class="c">1 - Raw Read Error Rate</span></strong></h1>
+</dt>
+<dd>Cette valeur indique le nombre de fois que l'électronique a du relire des blocs, parce que la lecture n'a pas réussi du premier coup. Ce paramètre est très important et doit attirer l'attention s'il devient brusquement moins bon.</dd>
+<dt>
+<h1><span class="n">2 - Throughput Performance</span></h1>
+</dt>
+<dd>Performance générale du disque qui dépend en grande partie de la vitesse d'accès (seek time).</dd>
+<dt>
+<h1><span class="p">3 - Spin up time</span></h1>
+</dt>
+<dd>Temps nécessaire pour accélérer les plateaux jusqu'à la vitesse nominale. Cette valeur avait une grande importance à l'époque: il arrivait qu'un disque dur n'arrivait plus à démarrer parce que l'huile des paliers était devenue trop visqueuse (les premiers disques durs avaient même une découpe pour permettre de débloquer le disque avec une clef spéciale). La valeur absolue est le temps en seconde pour atteindre la vitesse de rotation nominale. Cette valeur peut varier du simple au double.</dd>
+<dt>
+<h1><span class="n">4 - Start/stop count</span></h1>
+</dt>
+<dd>Nombre de fois que le disque a été mis en route. Le démarrage et le retrait des têtes de la rampe de repos provoque une légère usure.</dd>
+<dt>
+<h1><span class="c">5 - Reallocated sector count</span></h1>
+</dt>
+<dd>Nombre de secteurs mis hors fontion. Le firmware va essayer de déplacer les donneées des secteurs défectueux (cette opération est totalement automatique et n'est pas remarquée par le système d'exploitation). C'est pour cela que la plupart des systèmes d'exploitation ne remarquent pas que le disque est défaillant. Chaque disque dispose de secteurs en réserves qui vont être utilisés quand le secteur original est devenu instable.</dd>
+<dt>
+<h1><span class="n">6 - Read Channel Margin</span></h1>
+</dt>
+<dd>Réserve de signal à la lecture, correspond au rapport signal/bruit de fond qu'on retrouve en électronique. La piste n'est plus lisible si le signal disparait dans le bruit.</dd>
+<dt>
+<h1><span class="n">7 - Seek Error Rate</span></h1>
+</dt>
+<dd>Nombre d'erreurs de positionnement. La tête a été déplacée vers une piste donnée, mais s'est retrouvé sur une piste adjacente. La réduction de la valeur normalisée indique une usure mécanique.</dd>
+<dt>
+<h1><span class="n">8 - Seek Performance</span></h1>
+</dt>
+<dd>Vitesse de recherche de la piste correcte. Une réduction de ce paramètre indique ici aussi une usure.</dd>
+<dt>
+<h1><span class="n">9 - Power on hours</span></h1>
+</dt>
+<dd>Nombre d'heures en fonctionnement. La réduction de ce paramètre n'indique pas directement une réduction de la fiabilité du disque, il s'agit plutot d'une valeur informative.</dd>
+<dt>
+<h1><span class="p">10 - Spin retry count</span></h1>
+</dt>
+<dd>Nombre de temtatives de lancer le moteur. Indique que le disque à tendance à se bloquer à l'arrêt.</dd>
+<dt>
+<h1><span class="p">11 - calibration retry count</span></h1>
+</dt>
+<dd>Quand le disque a des difficultés à lire une piste, il effectue un cycle de calibration. Tous les paramètres électroniques sont calculés à nouveau (gain, tracking, kick, etc). Indique que les paramètres de fonctionnement ont changé (changement de température, montage dans un autre ordinateur et passage d'un positionnement vertical à horizontal, par exemple)</dd>
+<dt>
+<h1><span class="n">12 - Power cycle count</span></h1>
+</dt>
+<dd>Nombre de fois que le courant a été coupé. Ce paramètres correspond fort au paramètre 4, mais ici on note le nombre de coupures de courant.</p>
+<table align="right">
+<tbody>
+<tr>
+<th></th>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>
+<h1><span class="n">192 - Power Off retract count</span></h1>
+</dt>
+<dd>Les disques actuels n'utilisent plus de zone d'aterrisage des têtes (landing zone), mais une rampe qui tire les têtes des plateaux des disques. Les têtes ne peuvent absolument plus entrer en contact avec la couche magnétique. non seulement elles ne résistent plus au choc, mais de plus les têtes vont immédiatement coller à la surface du disque (stiction).Il faut absolument éviter ce phénomème, c'est pour cela que les disques utilisent l'énergie cinétique des plateaux en rotation pour retirer le têtes de la surface. Cette opération d'urgence produit un stress qui réduit la fiabilité du disque à long terme.</dd>
+<dt>
+<h1><span class="n">193 - Load/Unload cycle</span></h1>
+</dt>
+<dd>Nombre de fois que les têtes ont été parquées en dehors du disque. Cette opération produit une légère usure (moins qu'un retract d'urgence).</dd>
+<dt>
+<h1><span class="n">194 - Temperature</span></h1>
+</dt>
+<dd>Température de l'&amp;électronique du disque dur (tempéraure externe). Le paramètre BE indique la température de la circulation d'air à l'intérieur de l'enceinte du disque.</dd>
+<dt>
+<h1><span class="n">194 - Hardware ECC recovered</span></h1>
+</dt>
+<dd>Il y a souvent des erreurs de lecture. Celles-ci sont automatiquement corrigées par le système de correction d'erreurs (chaque secteur de 512 bytes dispose de 40 bytes supplémentaires pour corriger les erreurs). Ce compteur compte les erreurs corrigées. Regelmatig zijn er leesfouten; deze fouten kunnen echter bijna altijd opgevangen worden door de ingebouwde foutcorrectie. Iedere keer dat een dergelijke fout optreed wordt een teller verhoogd.</dd>
+<dt>
+<h1><span class="c">196 - Reallocated event count</span></h1>
+</dt>
+<dd>Nombre de temtatives de relire un secteur défectueux pour placer les données sur un secteur de réserve. Indique que le disque est défaillant.</dd>
+<dt>
+<h1><span class="c">197 - Current pending sector count</span></h1>
+</dt>
+<dd>Nombre de secteurs illisibles en attente d'un déménagement. Les secteurs défectueux sont marqués, mais le déplacement des données n'est effectué que si le secteur peut être lu.</dd>
+<dt>
+<h1><span class="c">198 - Uncorrectable sector count</span></h1>
+</dt>
+<dd>Nombre de secteurs en erreur, donc le nombre de secteurs qui ont été déménagés et le nombre de secteurs en attente.</dd>
+<dt>
+<h1><span class="n">199 - Ultra DMA CRC errors</span></h1>
+</dt>
+<dd>Nombres d'erreurs entre l'ordinateur et le disque dur. peut être causé par un controller défectueux.</dd>
+<dt>
+<h1><span class="n">200 - Multi-zone error rate</span></h1>
+</dt>
+<dd>Il s'agit d'un controle qui est effectué en mode offline (le disque lit tous les secteurs un à un et rapporte l'état de l'analyse).</dd>
+</dl>
+<p></body></html></p>

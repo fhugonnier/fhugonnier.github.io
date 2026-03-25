@@ -1,0 +1,60 @@
+---
+layout: post
+title: 'Windows Server 2012 / R2 : configurer un NIC teaming (trunk)'
+date: 2018-03-22 12:12:47.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Windows 2012 R2
+tags: []
+meta:
+  _edit_last: '82119094'
+  geo_public: '0'
+  _publicize_job_id: '15989194279'
+  timeline_notification: '1521717172'
+author:
+  login: fhugonnier
+  email: fhugonnier@outlook.com
+  display_name: fhugonnier
+  first_name: ''
+  last_name: ''
+permalink: "/2018/03/22/windows-server-2012-r2-configurer-un-nic-teaming-trunk/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body><br />
+<img src="{{site.baseurl}}/assets/images/2018/03/w8f-windows-server-2012.png" alt="Windows Server 2012 / R2 : configurer un NIC teaming (trunk)"></p>
+<p><strong>Windows Server 2012</strong> et <strong>2012 R2</strong> intègrent une nouvelle fonction intéressante pour décupler la vitesse réseau : le <strong>NIC teaming</strong>. <a title="Wikipedia : NIC Teaming" href="https://fr.wikipedia.org/wiki/Agr%C3%A9gation_de_liens" target="_blank" rel="noopener">Agrégation de liens</a> en Français, il s’agit de regrouper plusieurs cartes réseau pour en former une seule, virtuelle, qui additionne les débits maximum de chaque carte. Il devient donc facile d’obtenir des transferts réseau supérieurs à la norme Gigabit et dépasser la limite des 125Mo/s théoriques.</p>
+<p> </p>
+<h2>Configurer un « trunk virtuel » sous Windows Server 2012 / R2</h2>
+<p>1. Dans le <strong>Gestionnaire de serveur</strong>, aller dans <strong>Serveur local</strong>.</p>
+<p>2. La ligne « <strong>Association de cartes réseau</strong> » (NIC Teaming) doit être en « <strong>Désactivé</strong> » : <strong>cliquer dessus</strong>. En dessous sont listées les différentes cartes réseau du serveur physique ou virtuel.</p>
+<p><img class="aligncenter size-full wp-image-6610" src="{{site.baseurl}}/assets/images/2018/03/nic-teaming-0-manager.jpg" alt="NIC teaming trunk configuration" width="611" height="374"></p>
+<p>3. Dans le bloc <strong>Equipes</strong>, cliquer sur <strong>Tâches</strong> et « <strong>Nouvelle équipe</strong> » (New Team en Anglais).</p>
+<p><img class="aligncenter size-full wp-image-6612" src="{{site.baseurl}}/assets/images/2018/03/nic-teaming-1-config.jpg" alt="NIC teaming trunk configuration" width="600" height="410"></p>
+<p>4. <strong>Donner un nom</strong> à ce Teaming et <strong>sélectionner les cartes membres</strong> de ce groupe.</p>
+<p><img class="aligncenter size-full wp-image-6611" src="{{site.baseurl}}/assets/images/2018/03/nic-teaming-1-cartes.jpg" alt="NIC teaming trunk configuration" width="535" height="330"></p>
+<p>5. Le menu « <strong>Propriétés supplémentaires</strong> » propose différentes options :</p>
+<p><img class="aligncenter size-full wp-image-6613" src="{{site.baseurl}}/assets/images/2018/03/nic-teaming-2-options.jpg" alt="NIC teaming trunk option" width="455" height="180"></p>
+<ul>
+<li>
+<strong>Mode d’équipe</strong> (Teaming mode) : si le lag est statique sur le switch (IEEE 802.3ad), choisir « <strong>Association statique</strong> » ; si le lag (latence) est configurée en dynamique (IEEE 802.1ax), choisir « <strong>LACP</strong> » ; l’option « <strong>Indépendant du commutateur</strong> » doit permettre de s’affranchir d’une quelconque configuration du switch (par défaut).</li>
+<li>
+<strong>Mode d’équilibrage de charge</strong> (Load balaing mode) : « <strong>Hachage d’adresse</strong> » utilise les adresses MAC, les adresses IP et les ports TCP ; « <strong>Port Hyper-V</strong> » est à sélectionner pour dédier le trunk à l’hyperviseur ; « <strong>Dynamique</strong> » pour automatique.</li>
+<li>
+<strong>Carte réseau en attente</strong> (Standby adaptater) : choisir « Aucun » pour utiliser toutes les cartes réseau dans le NIC Teaming ; sinon choisir celle qui sera en attente.</li>
+<li>
+<strong>Interface d’équipe principale</strong> (Primary team interface) : possibilité d’assigner le trunk à un VLAN spécifique.</li>
+</ul>
+<p>6. Valider par <strong>OK</strong> et patienter car l’avertissement « Echec » peut prendre quelques instants pour passer en statut « OK » .</p>
+<p><img class="aligncenter size-full wp-image-6614" src="{{site.baseurl}}/assets/images/2018/03/nic-teaming-3-ok.jpg" alt="NIC teaming trunk Windows Server 2012 R2" width="433" height="260"></p>
+<p><img class="aligncenter size-full wp-image-6615" src="{{site.baseurl}}/assets/images/2018/03/nic-teaming-4-trunk.jpg" alt="NIC teaming trunk Windows Server 2012 R2" width="477" height="90"></p>
+<p>7. Les deux cartes réseau sont maintenant vues comme une seule connexion.</p>
+<p><img class="aligncenter size-full wp-image-6616" src="{{site.baseurl}}/assets/images/2018/03/nic-teaming-5-trunk-cartes-reseau.jpg" alt="NIC teaming trunk Windows Server 2012 R2" width="534" height="179"></p>
+<p>Il ne reste plus qu’à tester des transferts réseau pour vérifier que le débit est bien doublé. Evidemment, il faudra avoir une source qui dispose d’une connexion réseau supérieure à 1Gbits ou plusieurs sources Gigabit.</p>
+<p>Pour en savoir plus, Microsoft propose un <a title="Windows Server 2012 NIC Teaming (LBFO) Deployment and Management " href="http://www.microsoft.com/en-us/download/details.aspx?id=30160" target="_blank" rel="noopener">document de 36 pages</a> sur le NIC Teaming de Windows Server 2012.</p>
+<p> </p>
+<h3>Cas particulier</h3>
+<p>Il se peut que le Teaming mette quelques instants pour démarrer, on remarque ce problème lorsqu’après un redémarrage de Windows Server, un message d’erreur indique qu’il ne trouve pas le domaine. La première idée est de se connecter en Administrateur local mais la solution est de passer le service en « Démarrage différé » . Ainsi, après un reboot système, on patiente moins d’une minute et la connexion au domaine sera opérationnelle.</body></html></p>

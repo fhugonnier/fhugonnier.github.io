@@ -1,0 +1,79 @@
+---
+layout: post
+title: Domoticz configuration
+date: 2015-11-05 12:08:57.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Raspberry Pi
+tags: []
+meta:
+  _edit_last: '82119094'
+  _publicize_job_id: '16559551481'
+  geo_public: '0'
+author:
+  login: fhugonnier
+  email: fhugonnier@outlook.com
+  display_name: fhugonnier
+  first_name: ''
+  last_name: ''
+permalink: "/2015/11/05/domoticz-configuration/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body></p>
+<p>Dans cet article nous allons passer à la configuration de <a href="http://www.geekland-leblog.fr/a-la-decouverte-de-domoticz/">domoticz</a> ,ouvrez le navigateur et tapez http://votre.ip.raspberry:8080.<br />
+<span id="more-65"></span><br />
+Vous allez arriver sur cette page, pour l’instant aucun module n’est associé.</p>
+<p><a href="http://www.geekland-leblog.fr/wordpress/wp-content/uploads/2015/02/1erdasboard.jpg" rel="prettyPhoto"><img class="alignnone wp-image-66 size-full lazy-loaded" src="{{site.baseurl}}/assets/images/2015/11/1erdasboard.jpg" alt="1erdasboard" width="580" height="95"></a></p>
+<p>Pour commencer, aller dans Setup et Application Settings, réglez la langue sur français et indiquer votre localisation grâce au lien.</p>
+<p><a href="http://www.geekland-leblog.fr/wordpress/wp-content/uploads/2015/02/config-lang-domoticz.jpg" rel="prettyPhoto"><img class="alignnone wp-image-67 size-full lazy-loaded" src="{{site.baseurl}}/assets/images/2015/11/config-lang-domoticz.jpg" alt="config-lang-domoticz" width="580" height="168"></a></p>
+<p>On descend un peu plus bas, on définit son identifiant et mot de passe de connexion, on peut autoriser des ip du réseau local à se connecter sans authentification c’est assez pratique, on active les onglets que l’on veut.</p>
+<p><a href="http://www.geekland-leblog.fr/wordpress/wp-content/uploads/2015/02/config-mail_domoticz.jpg" rel="prettyPhoto"><img class="alignnone wp-image-68 lazy-loaded" src="{{site.baseurl}}/assets/images/2015/11/config-mail_domoticz.jpg" alt="config-mail_domoticz" width="637" height="385"></a></p>
+<p>On configure son compte Email</p>
+<p>Exemple pour gmail:</p>
+<ul>
+<li>
+<strong>serveur:</strong> smtp.gmail.com.</li>
+<li>
+<strong>port:</strong> 587.</li>
+<li>
+<strong>identifiant:</strong> ton.adresse.mail@gmail.com.</li>
+<li>
+<strong>mot de passe:</strong> MDP du compte Email.</li>
+</ul>
+<p>Dans notification on peut donner la clef API d’une application IOS/Android pour pouvoir gérer Domoticz depuis un Smartphone.</p>
+<p>c’est tout pour la configuration.</p>
+<h2>Installation du rfx433 sur Domoticz</h2>
+<p>Notre rfxcom est branché sur l’usb du pi ,on va dans configuration, materiel.</p>
+<p><a href="http://www.geekland-leblog.fr/wp-content/uploads/2015/02/rfxcom-domoticz1.jpg" rel="prettyPhoto"><img class="alignnone wp-image-209 lazy-loaded" src="{{site.baseurl}}/assets/images/2015/11/rfxcom-domoticz1.jpg" alt="rfxcom-domoticz" width="580" height="275"></a></p>
+<p>On cherche le rfxcom dans la liste déroulante, on laisse le délai d’attente désactiver, on clique sur ajouter et notre box domotique est prête à communiquer en RF433 avec tous nos modules.</p>
+<h2>Association des modules.</h2>
+<p>Pour associer un module RF433 à domoticz, il faut aller dans configuration, dispositifs, pour les modules de la gamme chacon de ce <a title="type" href="http://www.chacon.be/index.php/module-on-off-1000w.html" target="_blank">type</a> ou <a title="celui la" href="http://www.domadoo.fr/fr/peripheriques/597-chacon-di-o-module-douille-e27-100w-5411478547785.html" target="_blank">celui la</a> avec un bouton d’apprentissage, il faut aller dans <strong>interrupteur/ajout manuelle</strong> sélectionner votre rfx433, nommez votre module, choisissez <strong>switch type</strong>: on/off <strong>type</strong>: arc et choisissez les 2 derniers au hasard mais chaque code corresponde à un module ou un groupe,  appuyiez sur le bouton d’apprentissage du module et dans les 5 secondes Cliquer sur test le module va faire un bruit de claquement pour dire qu’il est associé.</p>
+<h2>Module variateur.</h2>
+<p>Pour ajouter un module variateur de type  <a title="Chacon 54514" href="http://www.domotique-store.fr/domotique/modules-domotiques/micromodules/micromodule-domotique-variateur-lumiere-sans-fil/228-awmd-250-micro-module-variateur-ultra-plat-250w-fonctionnant-sans-neutre-et-connexion-pour-interrupteur-coco-.html" target="_blank">Chacon 54514</a>, il faut choisir <strong>Switcth Type</strong>: dimmer <strong>Type</strong>: AC, <strong>Unit Code</strong>: 1, même procédure pour l’apprentissage.</p>
+<p><a href="http://www.geekland-leblog.fr/wp-content/uploads/2015/02/dimmer_domoticz.jpg" rel="prettyPhoto"><img class="alignnone wp-image-74 lazy-loaded" src="{{site.baseurl}}/assets/images/2015/11/dimmer_domoticz.jpg" alt="dimmer_domoticz" width="637" height="440"></a></p>
+<h2>  Contacteur de porte sans-fil.</h2>
+<p>Pour associer un module de type <a title="Contacteur CH54781" href="http://www.domotique-store.fr/domotique/usages/domotique-alarme-securite/detection-intrusion-sans-fil-domotique/detection-d-ouverture-sans-fil-domotique/127-ch54781-contacteur-de-porte-sans-fil-433mhz-di-o-chacon.html" target="_blank">Contacteur CH54781</a>, on va dans<strong>Configuration/dispositif,</strong> on ouvre notre capteur, il devrait apparaître dans la liste Cliquez sur la flèche verte pour ajouter un dispositif, nommez le et le tour est joué.</p>
+<p><a href="http://www.geekland-leblog.fr/wordpress/wp-content/uploads/2015/02/porte_salon_domoticz.jpg" rel="prettyPhoto"><img class="alignnone wp-image-75 lazy-loaded" src="{{site.baseurl}}/assets/images/2015/11/porte_salon_domoticz.jpg" alt="porte_salon_domoticz" width="640" height="548"></a></p>
+<h2>Sonde de température.</h2>
+<p>Je dispose de 2 sondes de température type <a title="Oregon" href="http://www.amazon.fr/Oregon-Scientific-THN-D%C3%A9tecteur-temp%C3%A9rature/dp/B000PEDJVI/ref=sr_1_1?s=kitchen&amp;ie=UTF8&amp;qid=1422875654&amp;sr=1-1&amp;keywords=oregon+scientific" target="_blank">Oregon</a>, elle relève que la température mais d’autre modèle <a title="celle-ci" href="http://www.amazon.fr/Oregon-Scientific-THGR-D%C3%A9tecteur-temp%C3%A9rature/dp/B000M98NAI/ref=sr_1_3?s=kitchen&amp;ie=UTF8&amp;qid=1422875654&amp;sr=1-3&amp;keywords=oregon+scientific" target="_blank">celle-ci</a> relève la température et l’humidité.</p>
+<p>On reste dans <strong>configuration/Dispositif</strong>, cette fois-ci on cherche notre sonde de température.</p>
+<p><a href="http://www.geekland-leblog.fr/wordpress/wp-content/uploads/2015/02/temp_domoticz.jpg" rel="prettyPhoto"><img class="alignnone wp-image-76 lazy-loaded" src="{{site.baseurl}}/assets/images/2015/11/temp_domoticz.jpg" alt="temp_domoticz" width="650" height="550"></a></p>
+<p>On Clique sur la flèche verte, nomme notre sonde même opération pour la seconde ainsi que tous nos autres modules.</p>
+<h2>Résultat :</h2>
+<p>Pour finir, on se retrouve avec notre jolie petite interface avec nos Interrupteurs et nos sondes de Température.</p>
+<p><a href="http://www.geekland-leblog.fr/wp-content/uploads/2015/02/domoticz-interupteur1.jpg" rel="prettyPhoto"><img class="alignnone wp-image-77 lazy-loaded" src="{{site.baseurl}}/assets/images/2015/11/domoticz-interupteur1.jpg" alt="domoticz-interupteur" width="663" height="423"></a></p>
+<p><a href="http://www.geekland-leblog.fr/wordpress/wp-content/uploads/2015/02/temp-all.jpg" rel="prettyPhoto"><img class="alignnone wp-image-78 lazy-loaded" src="{{site.baseurl}}/assets/images/2015/11/temp-all.jpg" alt="temp all" width="661" height="276"></a></p>
+<p>Cliquez sur les <strong>logs</strong> pour voir l’historique des modules, et température.</p>
+<h2>Scénarios</h2>
+<p>Pour créer une scène, on va aller dans <strong>Scénario/Crée</strong> un scénario. On va créer un scénario maison entière, on ajoute toutes les devises qu’on veut grouper et éteindre ou allumer d’un clique.</p>
+<p><a href="http://www.geekland-leblog.fr/wordpress/wp-content/uploads/2015/02/maison-entier.jpg" rel="prettyPhoto"><img class="alignnone wp-image-79 lazy-loaded" src="{{site.baseurl}}/assets/images/2015/11/maison-entier.jpg" alt="maison-entier" width="670" height="431"></a></p>
+<p>On crée un scénario pour associer la télécommande, on le nomme comme on veut.<strong>Exemple:</strong> cuisine pour associer la lumière de ma cuisine à un bouton de la télécommande.</p>
+<p><a href="http://www.geekland-leblog.fr/wordpress/wp-content/uploads/2015/02/telecomande_cuisine.jpg" rel="prettyPhoto"><img class="alignnone wp-image-80 lazy-loaded" src="{{site.baseurl}}/assets/images/2015/11/telecomande_cuisine.jpg" alt="telecomande_cuisine" width="672" height="355"></a></p>
+<p>On Clique sur <strong>Composer un code</strong>, on appuie sur le bouton de la télécommande, on choisit sa <strong>devise</strong> et on recommence pour toutes les touches de la télécommande.</p>
+<p>On définit des favoris dans les modules pour les réunir sur l’accueil afin d’avoir une vue d’ensemble.</p>
+<p><a href="http://www.geekland-leblog.fr/wordpress/wp-content/uploads/2015/02/domoticz-dashboard1.jpg" rel="prettyPhoto"><img class="alignnone wp-image-81 lazy-loaded" src="{{site.baseurl}}/assets/images/2015/11/domoticz-dashboard1.jpg" alt="domoticz-dashboard" width="659" height="469"></a></p>
+<p>source : http://www.geekland-leblog.fr/</body></html></p>

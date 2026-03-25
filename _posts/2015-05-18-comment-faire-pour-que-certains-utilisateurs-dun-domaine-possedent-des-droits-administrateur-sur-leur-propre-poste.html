@@ -1,0 +1,60 @@
+---
+layout: post
+title: Comment faire pour que certains utilisateurs d'un domaine possèdent des droits
+  administrateur sur leur propre poste ?
+date: 2015-05-18 09:23:24.000000000 +02:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- GPO
+- Windows
+tags: []
+meta:
+  _edit_last: '82119094'
+  _publicize_pending: '1'
+  geo_public: '0'
+author:
+  login: fhugonnier
+  email: fhugonnier@outlook.com
+  display_name: fhugonnier
+  first_name: ''
+  last_name: ''
+permalink: "/2015/05/18/comment-faire-pour-que-certains-utilisateurs-dun-domaine-possedent-des-droits-administrateur-sur-leur-propre-poste/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body><br />
+<b><span style="color:#000000;font-family:Calibri;">Comment faire pour que certains utilisateurs d'un domaine possèdent des droits administrateur sur leur propre poste ?</span></b></p>
+<p><span style="color:#000000;font-family:Calibri;"> </span></p>
+<p><span style="font-family:Calibri;"><span style="color:#000000;"><span style="text-decoration:underline;">1ère méthode</span> : tout utilisateur se connectant à l'ordinateur se retrouvera</span></span></p>
+<p><span style="color:#000000;font-family:Calibri;">automatiquement administrateur local.</span></p>
+<p><span style="color:#000000;font-family:Calibri;"> </span></p>
+<p><span style="color:#000000;font-family:Calibri;">1- Création d'une UO si nécessaire et y déplacer les ordinateurs concernés</span></p>
+<p><span style="color:#000000;font-family:Calibri;">2- Création d'une GPO liée à l'UO :</span></p>
+<p><span style="color:#000000;font-family:Calibri;">               &gt; Configuration ordinateur</span></p>
+<p><span style="color:#000000;font-family:Calibri;">                              &gt; Paramètres Windows</span></p>
+<p><span style="color:#000000;font-family:Calibri;">                                            &gt; Paramètres de sécurité</span></p>
+<p><span style="color:#000000;font-family:Calibri;">                                                           &gt; Groupes restreints</span></p>
+<p><span style="color:#000000;font-family:Calibri;">                                                                          &gt; Ajout d'un groupe "Builtin/Administrateurs"</span></p>
+<p><span style="color:#000000;font-family:Calibri;">                                                                                         &gt; Ajout d'un membre "INTERACTIF"</span></p>
+<p><span style="color:#000000;font-family:Calibri;">                                                                                         </span></p>
+<p><span style="color:#000000;font-family:Calibri;">--------------------------------------------------------------------------------</span></p>
+<p><span style="color:#000000;font-family:Calibri;"> </span></p>
+<p><span style="font-family:Calibri;"><span style="color:#000000;"><span style="text-decoration:underline;">2ème méthode</span> : utilisation d'un groupe "local admins" permettant de définir</span></span></p>
+<p><span style="color:#000000;font-family:Calibri;">dynamiquement qui peut être administrateur local.</span></p>
+<p><span style="color:#000000;font-family:Calibri;"> </span></p>
+<p><span style="color:#000000;font-family:Calibri;">1- Création d'une UO si nécessaire et y déplacer les ordinateurs concernés</span></p>
+<p><span style="color:#000000;font-family:Calibri;">2- Création d'un groupe global de sécurité "local admins"</span></p>
+<p><span style="color:#000000;font-family:Calibri;">3- Création d'une GPO liée à l'UO :</span></p>
+<p><span style="color:#000000;font-family:Calibri;">               &gt; Configuration ordinateur</span></p>
+<p><span style="color:#000000;font-family:Calibri;">                              &gt; Paramètres Windows</span></p>
+<p><span style="color:#000000;font-family:Calibri;">                                            &gt; Paramètres de sécurité</span></p>
+<p><span style="color:#000000;font-family:Calibri;">                                                           &gt; Groupes restreints</span></p>
+<p><span style="color:#000000;font-family:Calibri;">                                                                          &gt; Ajout d'un groupe "monDomaine\local admins"</span></p>
+<p><span style="color:#000000;font-family:Calibri;">                                                                                         &gt; Ajout d'une appartenance à "Builtin/Administrateurs"</span></p>
+<p><span style="color:#000000;font-family:Calibri;">4- Il suffit désormais d'ajouter des utilisateurs au groupe "local admins" pour qu'ils soient automatiquement administrateurs locaux des ordinateurs</span></p>
+<p><span style="color:#000000;font-family:Calibri;">   concernés.</span></p>
+<p><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2015/05/18-05-2015-10-26-22.png"><img class="alignnone  wp-image-148" src="{{site.baseurl}}/assets/images/2015/05/18-05-2015-10-26-22.png?w=300" alt="18-05-2015 10-26-22" width="519" height="294"></a></p>
+<p> </body></html></p>

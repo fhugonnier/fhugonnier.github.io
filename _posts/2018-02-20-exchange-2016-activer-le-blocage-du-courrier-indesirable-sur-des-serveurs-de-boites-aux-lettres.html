@@ -1,0 +1,332 @@
+---
+layout: post
+title: Exchange 2016 Activer le blocage du courrier indésirable sur des serveurs de
+  boîtes aux lettres
+date: 2018-02-20 19:16:52.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Echange 2016
+tags: []
+meta:
+  _edit_last: '82119094'
+  timeline_notification: '1519150616'
+  geo_public: '0'
+  _publicize_job_id: '14949610974'
+author:
+  login: fhugonnier
+  email: fhugonnier@outlook.com
+  display_name: fhugonnier
+  first_name: ''
+  last_name: ''
+permalink: "/2018/02/20/exchange-2016-activer-le-blocage-du-courrier-indesirable-sur-des-serveurs-de-boites-aux-lettres/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body></p>
+<div>
+<div>
+<a class="LW_CollapsibleArea_TitleAhref" title="Réduire" role="heading"><span class="LW_CollapsibleArea_Title">Étape 1 : Exécuter le script PowerShell Install-AntispamAgents.ps1</span></a></p>
+<div class="LW_CollapsibleArea_HrDiv"></div>
+</div>
+<div class="sectionblock">
+<p>Exécutez la commande suivante dans l’Environnement de ligne de commande Exchange Management Shell sur le serveur de boîte aux lettres :</p>
+<div id="code-snippet-1" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_87043aef-1fdb-4e4f-9294-5b8be79d2095" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>&amp; $env:ExchangeInstallPath\Scripts\Install-AntiSpamAgents.ps1
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<a class="LW_CollapsibleArea_TitleAhref" title="Réduire" role="heading"><span class="LW_CollapsibleArea_Title">Comment savoir si cette étape a fonctionné ?</span></a></p>
+<div class="LW_CollapsibleArea_HrDiv"></div>
+</div>
+<div class="sectionblock">
+<p>Cette étape a fonctionné si le script s’exécute sans erreur et vous demande de redémarrer le service de transport Microsoft Exchange. Le résultat doit ressembler à ceci :</p>
+<div id="code-snippet-2" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_23282c8b-9fce-4237-9f92-ac0ea89d2b56" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>WARNING: Please exit Windows PowerShell to complete the installation.
+WARNING: The following service restart is required for the change(s) to take effect : MSExchangeTransport
+WARNING: The following service restart is required for the change(s) to take effect : MSExchangeTransport
+
+Identity                                           Enabled         Priority
+--------                                           -------         --------
+Content Filter Agent                               True            8
+WARNING: Please exit Windows PowerShell to complete the installation.
+WARNING: The following service restart is required for the change(s) to take effect : MSExchangeTransport
+WARNING: The following service restart is required for the change(s) to take effect : MSExchangeTransport
+Sender Id Agent                                    True            9
+WARNING: Please exit Windows PowerShell to complete the installation.
+WARNING: The following service restart is required for the change(s) to take effect : MSExchangeTransport
+WARNING: The following service restart is required for the change(s) to take effect : MSExchangeTransport
+Sender Filter Agent                                True            10
+WARNING: Please exit Windows PowerShell to complete the installation.
+WARNING: The following service restart is required for the change(s) to take effect : MSExchangeTransport
+WARNING: The following service restart is required for the change(s) to take effect : MSExchangeTransport
+Recipient Filter Agent                             True            11
+WARNING: Please exit Windows PowerShell to complete the installation.
+WARNING: The following service restart is required for the change(s) to take effect : MSExchangeTransport
+WARNING: The following service restart is required for the change(s) to take effect : MSExchangeTransport
+Protocol Analysis Agent                            True            12
+
+WARNING: The agents listed above have been installed. Please restart the Microsoft Exchange Transport service for
+changes to take effect.
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p> </p>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<a class="LW_CollapsibleArea_TitleAhref" title="Développer" role="heading"><span class="LW_CollapsibleArea_Title">Étape 2 : Redémarrer le service de transport Microsoft Exchange.</span></a></p>
+<div class="LW_CollapsibleArea_HrDiv"></div>
+</div>
+<div class="sectionnone">
+<p>Exécutez la commande suivante dans l’Environnement de ligne de commande Exchange Management Shell sur le serveur de boîte aux lettres :</p>
+<div id="code-snippet-3" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_eabf5563-fcbc-44d5-9520-704c3ee5079f" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Restart-Service MSExchangeTransport
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<a class="LW_CollapsibleArea_TitleAhref" title="Réduire" role="heading"><span class="LW_CollapsibleArea_Title">Comment savoir si cette étape a fonctionné ?</span></a></p>
+<div class="LW_CollapsibleArea_HrDiv"></div>
+</div>
+<div class="sectionblock">
+<p>Cette étape a fonctionné si le service de transport Microsoft Exchange redémarre sans erreur. Le résultat doit ressembler à ceci :</p>
+<div id="code-snippet-4" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_739f81ee-e420-405a-abba-d2bd0adb4971" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>WARNING: Waiting for service 'Microsoft Exchange Transport (MSExchangeTransport)' to start...
+WARNING: Waiting for service 'Microsoft Exchange Transport (MSExchangeTransport)' to start...
+WARNING: Waiting for service 'Microsoft Exchange Transport (MSExchangeTransport)' to start...
+WARNING: Waiting for service 'Microsoft Exchange Transport (MSExchangeTransport)' to start...
+WARNING: Waiting for service 'Microsoft Exchange Transport (MSExchangeTransport)' to start...
+WARNING: Waiting for service 'Microsoft Exchange Transport (MSExchangeTransport)' to start...
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p> </p>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<a class="LW_CollapsibleArea_TitleAhref" title="Réduire" role="heading"><span class="LW_CollapsibleArea_Title">Étape 3 : Spécifier les serveurs SMTP internes dans votre organisation</span></a></p>
+<div class="LW_CollapsibleArea_HrDiv"></div>
+</div>
+<div class="sectionblock">
+<p>Vous devez spécifier les adresses IP de chaque serveur SMTP interne que l’agent d’ID de l’expéditeur doit ignorer. En fait, vous devez spécifier les adresses IP d’au moins un serveur SMTP interne. Si le serveur de boîtes aux lettres sur lequel vous exécutez les agents de blocage du courrier indésirable est le seul serveur SMTP de votre organisation, spécifiez l’adresse IP de cet ordinateur.</p>
+<p>Pour ajouter des adresses IP des serveurs SMTP internes sans affecter aucune valeur existante, exécutez la commande suivante dans l’Environnement de ligne de commande Exchange Management Shell sur le serveur de boîtes aux lettres :</p>
+<div id="code-snippet-5" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_29ab7528-10dd-4f61-8ce2-eb4028ddf584" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Set-TransportConfig -InternalSMTPServers @{Add="&lt;ip address1&gt;","&lt;ip address2&gt;"...}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p>Cet exemple montre comment ajouter les adresses 10.0.1.10 et 10.0.1.11 d’un serveur SMTP interne à la configuration de transport de votre organisation.</p>
+<div id="code-snippet-6" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_ede31fc5-3847-4585-9adb-8107467160bf" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Set-TransportConfig -InternalSMTPServers @{Add="10.0.1.10","10.0.1.11"}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<a class="LW_CollapsibleArea_TitleAhref" title="Réduire" role="heading"><span class="LW_CollapsibleArea_Title">Comment savoir si cette étape a fonctionné ?</span></a></p>
+<div class="LW_CollapsibleArea_HrDiv"></div>
+</div>
+<div class="sectionblock">
+<p>Pour vérifier que vous avez bien spécifié l’adresse IP d’au moins un serveur SMTP interne, exécutez la commande suivante dans l’Environnement de ligne de commande Exchange Management Shell sur le serveur de boîtes aux lettres, et vérifiez que l’adresse IP d’au moins un serveur SMTP interne valide est affichée.</p>
+<div id="code-snippet-7" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_8df97359-0cc4-49b4-b32c-32bfaa04795e" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Get-TransportConfig | Format-List InternalSMTPServers
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p> </p>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<a class="LW_CollapsibleArea_TitleAhref" title="Réduire" role="heading"><span class="LW_CollapsibleArea_Title">Étape 4 : Étapes suivantes</span></a></p>
+<div class="LW_CollapsibleArea_HrDiv"></div>
+</div>
+<div class="sectionblock">
+<ul>
+<li>L’agent de filtrage du contenu, l’agent d’ID de l’expéditeur, l’agent de filtrage des expéditeurs et l’agent d’analyse de protocole (réputation de l’expéditeur) doivent maintenant être installés et en cours d’exécution sur le serveur de boîtes aux lettres. Pour le vérifier, exécutez la commande suivante dans l’Environnement de ligne de commande Exchange Management Shell sur le serveur de boîtes aux lettres :
+<div id="code-snippet-8" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_a5603f38-fb33-476f-a030-4c0aac495448" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Get-TransportAgent
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="code-snippet-9" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_b6c23ca2-4195-4af4-8927-5c453717e3ad" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Get-ContentFilterConfig | Format-Table Name,Enabled; Get-SenderFilterConfig | Format-Table Name,Enabled; Get-SenderIDConfig | Format-Table Name,Enabled; Get-SenderReputationConfig | Format-Table Name,Enabled
+</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>Pour afficher des informations détaillées sur la configuration de chaque agent, exécutez les commandes suivantes :
+<div id="code-snippet-10" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_9dd1dc78-fd4d-45fc-8263-07905d62d4d7" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Get-ContentFilterConfig | Format-List *Enabled,RejectionResponse,*Postmark*,Bypassed*,Quarantine*;
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="code-snippet-11" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_8322a753-2c70-4cd1-8374-eebb08555fb9" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Get-SenderFilterConfig | Format-List *Enabled,*Block*
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="code-snippet-12" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_5b260910-6bbf-40b1-a8ce-b2355daa9f04" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Get-SenderIDConfig | Format-List *Enabled*,*Action,Bypassed*
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="code-snippet-13" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_2db5e5cf-3f27-4bba-af01-1f26e91e4c70" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Get-SenderReputationConfig | Format-List *Enabled*,*Proxy*,*Block*,*Ports*
+</pre>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li> </li>
+</ul>
+</li>
+<li>Par défaut, l’agent de filtrage du contenu, l’agent de filtrage des expéditeurs et l’agent d’ID de l’expéditeur consignent leurs activités dans le journal de l’agent de blocage du courrier indésirable sur le serveur de boîtes aux lettres. Vous pouvez vérifier le fonctionnement de ces agents de blocage du courrier indésirable quand des informations sont écrites dans le journal. Pour consulter l’emplacement et la configuration du journal, exécutez la commande suivante dans l’Environnement de ligne de commande Exchange Management Shell sur le serveur de boîtes aux lettres :
+<div id="code-snippet-14" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_dbdf843c-44c8-4286-9f5e-3a5865d30b74" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Get-TransportService | Format-List AgentLog*</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<p></body></html></p>

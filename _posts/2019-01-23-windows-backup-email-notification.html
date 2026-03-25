@@ -1,0 +1,112 @@
+---
+layout: post
+title: Windows Backup Email Notification
+date: 2019-01-23 16:07:00.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Windows 2008 R2
+- Windows 2012 R2
+tags: []
+meta:
+  _edit_last: '82119094'
+  geo_public: '0'
+  _publicize_job_id: '26844948011'
+  timeline_notification: '1548256027'
+author:
+  login: fhugonnier
+  email: fhugonnier@outlook.com
+  display_name: fhugonnier
+  first_name: ''
+  last_name: ''
+permalink: "/2019/01/23/windows-backup-email-notification/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body></p>
+<h3 class="post-title entry-title">Dans cet article je vais vous expliquer comment mettre en place une notification par email pour Windows Backup</h3>
+<div id="post-body-5449848110273696045" class="post-body entry-content">
+<div></div>
+<div><b>Prérequis :</b></div>
+<ul>
+<li>- Un serveur avec Windows Backup d'installé</li>
+<li>- Quelques notions de Powershell</li>
+</ul>
+<div></div>
+<p><a name="more"></a></p>
+<div></div>
+<div>Allez c'est partie :)</div>
+<div></div>
+<div>Tout d'abord le script :</div>
+<blockquote class="tr_bq">
+<blockquote class="tr_bq"><p>#------------------------------------------------------------</p></blockquote>
+<blockquote class="tr_bq"><p>#Envoi des Erreur de sauvegarde Windows Backup par mail</p></blockquote>
+<blockquote class="tr_bq"><p>#------------------------------------------------------------</p></blockquote>
+<blockquote class="tr_bq"><p>function EmailNotification() {</p></blockquote>
+<blockquote class="tr_bq"><p>#Adresse de l'expéditeur</p></blockquote>
+<blockquote class="tr_bq"><p>$Expediteur = "adresse@mail.expediteur"</p></blockquote>
+<blockquote class="tr_bq"><p>#Adresse du destinataire</p></blockquote>
+<blockquote class="tr_bq"><p>$Destinataire = "adresse@mail.destinataire"</p></blockquote>
+<blockquote class="tr_bq"><p>#Serveur SMTP</p></blockquote>
+<blockquote class="tr_bq"><p>$Serveur = "adresse serveur smtp"</p></blockquote>
+<blockquote class="tr_bq"><p>#Objet du message</p></blockquote>
+<blockquote class="tr_bq"><p>$Objet = $env:computername+": Rapport de sauvegarde du "+(Get-Date)</p></blockquote>
+<blockquote class="tr_bq"><p>#Corps du message</p></blockquote>
+<blockquote class="tr_bq"><p>$Corps = "Succès de sauvegarde Windows Backup sur le serveur "+$env:computername</p></blockquote>
+<blockquote class="tr_bq"><p>$SMTPclient = new-object System.Net.Mail.SmtpClient $Serveur</p></blockquote>
+<blockquote class="tr_bq"><p>#Spécifier le port SMTP</p></blockquote>
+<blockquote class="tr_bq"><p>$SMTPClient.port = 25</p></blockquote>
+<blockquote class="tr_bq"><p>#Activer la fonction SSL</p></blockquote>
+<blockquote class="tr_bq"><p>#$SMTPclient.EnableSsl = $true</p></blockquote>
+<blockquote class="tr_bq"><p>#Informations d'authentification SMTP</p></blockquote>
+<blockquote class="tr_bq"><p>#$SMTPAuthUsername = "login"</p></blockquote>
+<blockquote class="tr_bq"><p>#$SMTPAuthPassword = "password"</p></blockquote>
+<blockquote class="tr_bq"><p>#$SMTPClient.Credentials = New-Object System.Net.NetworkCredential($SMTPAuthUsername,$SMTPAuthPassword)</p></blockquote>
+<blockquote class="tr_bq"><p>$Message = new-object System.Net.Mail.MailMessage $Expediteur, $Destinataire, $Objet, $Corps</p></blockquote>
+<blockquote class="tr_bq"><p>$Message.IsBodyHtml = $true</p></blockquote>
+<blockquote class="tr_bq"><p>$SMTPclient.Send($Message)</p></blockquote>
+<blockquote class="tr_bq"><p>}</p></blockquote>
+<blockquote class="tr_bq"><p>#Appel de la fonction de notification par mail</p></blockquote>
+<blockquote class="tr_bq"><p>EmailNotification</p></blockquote>
+</blockquote>
+<div>Le copier dans un fichier avec l'extension "<b>.ps1</b>". Mettre le fichier dans un dossier c:\Scripts (ceci est un exemple, vous le mettez ou vous le voulez). Adaptez le script en fonction de vos besoins.</div>
+<div></div>
+<div>Ensuite nous allons créer un tâche planifée. Pour cela Demarrez-&gt;Executer : <b>TASKSCHD.MSC</b>
+</div>
+<div class="separator"></div>
+<div class="separator"><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2019/01/1ef69-capture01.png"><img src="{{site.baseurl}}/assets/images/2019/01/1ef69-capture01.png?w=300" width="320" height="151" border="0"></a></div>
+<div class="separator"></div>
+<div class="separator">Dans le menu Action à gauche, cliquez sur "Créer une tâche..."</div>
+<div class="separator">Indiquez un nom à la tâche et sélectionnez les options à l'identique de la capture d'écran ci-dessous</div>
+<div class="separator"></div>
+<div class="separator"><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2019/01/1c2c4-capture02.png"><img src="{{site.baseurl}}/assets/images/2019/01/1c2c4-capture02.png?w=300" width="320" height="242" border="0"></a></div>
+<div class="separator"></div>
+<div class="separator">Cliquez sur l'onglet "Déclenchement"</div>
+<div class="separator"></div>
+<div class="separator"><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2019/01/01d17-capture03.png"><img src="{{site.baseurl}}/assets/images/2019/01/01d17-capture03.png?w=300" width="320" height="241" border="0"></a></div>
+<div class="separator"></div>
+<div class="separator">Puis sur "Nouveau", faites les mêmes paramètres que ci-dessous (Dans notre cas se sera une notification pour les sauvegardes s'étant exécuter correctement)(Vous trouverez la liste des numéros d’événements concernant Windows Backup <a href="http://technet.microsoft.com/en-us/library/cc734488(v=ws.10).aspx" target="_blank" rel="noopener">ici</a>)</div>
+<div class="separator">Cliquez sur "Ok" pour revenir à la fenêtre précédente</div>
+<div class="separator"></div>
+<div class="separator"><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2019/01/9d0f1-capture04.png"><img src="{{site.baseurl}}/assets/images/2019/01/9d0f1-capture04.png?w=300" width="320" height="275" border="0"></a></div>
+<div class="separator"></div>
+<div class="separator">Cliquez sur l'onglet "Action"</div>
+<div class="separator"></div>
+<div class="separator"></div>
+<div class="separator"><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2019/01/3e1db-capture05.png"><img src="{{site.baseurl}}/assets/images/2019/01/3e1db-capture05.png?w=300" width="320" height="241" border="0"></a></div>
+<div class="separator"></div>
+<div class="separator">Cliquez sur "Nouveau"</div>
+<div class="separator">Remplissez les champs comme suit :</div>
+<div class="separator"></div>
+<div class="separator"><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2019/01/d5d5c-capture06.png"><img src="{{site.baseurl}}/assets/images/2019/01/d5d5c-capture06.png?w=278" width="296" height="320" border="0"></a></div>
+<div class="separator"></div>
+<div class="separator">Cliquez deux fois sur "Ok" afin de finaliser la création de la tâche, une fenêtre vous demandant vos information d'identification vas s'ouvrir. Saisissez le mot de passe du compte et cliquez sur "Ok"</div>
+<div class="separator"></div>
+<div class="separator"><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2019/01/5c07e-capture07.png"><img src="{{site.baseurl}}/assets/images/2019/01/5c07e-capture07.png?w=300" width="320" height="269" border="0"></a></div>
+<div class="separator"></div>
+<div class="separator"></div>
+<div class="separator">Afin de vous assurez que la tâche fonctionne correctement, effectuez un clic droit sur la tâche et sélectionnez "Exécuter"</div>
+</div>
+<p></body></html></p>

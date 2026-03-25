@@ -1,0 +1,150 @@
+---
+layout: post
+title: Utiliser des ressources locales sur un ordinateur virtuel Hyper-V avec VMConnect
+date: 2016-04-05 13:53:31.000000000 +02:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Windows 2012 R2
+tags: []
+meta:
+  _edit_last: '82119094'
+  geo_public: '0'
+  _publicize_job_id: '21475831487'
+author:
+  login: fhugonnier
+  email: fhugonnier@outlook.com
+  display_name: fhugonnier
+  first_name: ''
+  last_name: ''
+permalink: "/2016/04/05/utiliser-des-ressources-locales-sur-un-ordinateur-virtuel-hyper-v-avec-vmconnect/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body>
+<div id="mainSection">
+<div id="mainBody">
+<p><span id="mt1" class="sentence">Vous pouvez permettre à un ordinateur virtuel d'accéder aux ressources locales d'un ordinateur, comme un lecteur flash USB amovible, quand vous utilisez le gestionnaire de connexion à un ordinateur virtuel (VMConnect).</span><span id="mt2" class="sentence">Pour ce faire, activez le mode de session étendu sur l'hôte Hyper-V, utilisez VMConnect pour vous connecter à l'ordinateur virtuel et, avant de vous connecter, choisissez la ressource locale à utiliser.</span></p>
+<div>
+<div>
+<a class="LW_CollapsibleArea_TitleAhref" title="Cliquez ici pour réduire. Double-cliquez ici pour réduire tout."><span class="LW_CollapsibleArea_Title">Activer le mode de session étendu sur l'hôte Hyper-V</span></a></p>
+<div id="Anchor_0" class="LW_CollapsibleArea_Anchor_Div"></div>
+<div class="LW_CollapsibleArea_HrDiv"></div>
+</div>
+<div class="sectionblock">
+<div class="section">
+<p><span id="mt4" class="sentence">Si votre hôte Hyper-V exécute Windows 8 ou Windows 8.1, il n'est peut-être pas nécessaire d'exécuter la procédure suivante pour activer le mode de session étendu.</span><span id="mt5" class="sentence">Il est activé par défaut.</span><span id="mt6" class="sentence">En revanche, si votre hôte exécute Windows Server 2012 ou Windows Server 2012 R2, vous devez activer le mode de session étendu pour l'utiliser.</span><span id="mt7" class="sentence">Il est désactivé par défaut pour ces systèmes d'exploitation.</span></p>
+<p><span id="mt8" class="sentence">Pour activer le mode de session étendu</span></p>
+<ol class="ordered">
+<li><span id="mt9" class="sentence">Connectez-vous à l'ordinateur qui héberge l'ordinateur virtuel.</span></li>
+<li>
+<span id="mt10" class="sentence">Dans le Gestionnaire Hyper-V, sélectionnez le nom d'ordinateur de l'hôte.</span></p>
+<div class="inset"><img id="2f0b95e0-ef07-4fd1-b4db-e4fe4405b60d" title="Screen shot of Hyper-V Manager with host name" src="{{site.baseurl}}/assets/images/2016/04/IC798713.jpeg" alt="Screen shot of Hyper-V Manager with host name"></div>
+</li>
+<li>
+<span id="mt11" class="sentence">Sélectionnez <strong>Paramètres Hyper-V</strong>.</span></p>
+<div class="inset"><img id="03f738a4-9d17-401a-a302-fa208e41f4fc" title="Screen shot of Hyper-V Actions pane" src="{{site.baseurl}}/assets/images/2016/04/IC798714.jpeg" alt="Screen shot of Hyper-V Actions pane"></div>
+</li>
+<li>
+<span id="mt12" class="sentence">Sous <strong>Serveur</strong>, sélectionnez <strong>Stratégie de mode de session étendu</strong>.</span></p>
+<div class="inset"><img id="6275c15f-e945-469f-a430-bea3b283541e" title="Screen shot of enhanced session mode policy" src="{{site.baseurl}}/assets/images/2016/04/IC798715.jpeg" alt="Screen shot of enhanced session mode policy"></div>
+</li>
+<li>
+<span id="mt13" class="sentence">Cochez la case <strong>Autoriser le mode de session étendu</strong>.</span></p>
+<div class="inset"><img id="0b1e3015-fec9-4384-a525-a36aa3309aa6" title="Screen shot of enhanced session mode policy" src="{{site.baseurl}}/assets/images/2016/04/IC798716.jpeg" alt="Screen shot of enhanced session mode policy"></div>
+</li>
+<li>
+<span id="mt14" class="sentence">Sous <strong>Utilisateur</strong>, sélectionnez <strong>Mode de session étendu</strong>.</span></p>
+<div class="inset"><img id="e56fed0a-a1a4-4294-a1be-12fa2c52165f" title="Screen shot of user setting enhanced session mode" src="{{site.baseurl}}/assets/images/2016/04/IC798717.jpeg" alt="Screen shot of user setting enhanced session mode"></div>
+</li>
+<li><span id="mt15" class="sentence">Cochez la case <strong>Autoriser le mode de session étendu</strong>.</span></li>
+<li><span id="mt16" class="sentence"> Click </span></li>
+</ol>
+</div>
+</div>
+</div>
+<div>
+<div>
+<a class="LW_CollapsibleArea_TitleAhref" title="Cliquez ici pour réduire. Double-cliquez ici pour réduire tout."><span class="LW_CollapsibleArea_Title">Choisir la ressource locale à utiliser</span></a></p>
+<div id="Anchor_1" class="LW_CollapsibleArea_Anchor_Div"></div>
+<div class="LW_CollapsibleArea_HrDiv"></div>
+</div>
+<div class="sectionblock">
+<div class="section">
+<p><span id="mt18" class="sentence">Vous pouvez choisir une ressource locale, comme une imprimante, le Presse-papiers ou un lecteur local sur l'ordinateur que vous utilisez pour vous connecter à l'ordinateur virtuel.</span></p>
+<p><span id="mt19" class="sentence">Pour sélectionner une ressource locale comme un lecteur</span></p>
+<ol class="ordered">
+<li><span id="mt20" class="sentence">Ouvrez VMConnect.</span></li>
+<li><span id="mt21" class="sentence">Sélectionnez l'ordinateur virtuel auquel vous souhaitez vous connecter.</span></li>
+<li>
+<span id="mt22" class="sentence"> Click </span></p>
+<div class="inset"><img id="d17f1faa-7eff-4f2d-abd3-6136ffe8c788" title="Screen shot shows Show Options button" src="{{site.baseurl}}/assets/images/2016/04/IC798718.jpeg" alt="Screen shot shows Show Options button"></div>
+</li>
+<li>
+<span id="mt23" class="sentence">Sélectionnez <strong>Ressources locales</strong>.</span></p>
+<div class="inset"><img id="10cbb465-8d54-4cd4-8f2a-5854f53e786a" title="Screen shot shows Local Resources tab" src="{{site.baseurl}}/assets/images/2016/04/IC798719.jpeg" alt="Screen shot shows Local Resources tab"></div>
+</li>
+<li>
+<span id="mt24" class="sentence"> Click </span></p>
+<div class="inset"><img id="18c06d89-c5ad-47c5-866b-5250c58830ea" title="Screen shot shows More button on Local Resources" src="{{site.baseurl}}/assets/images/2016/04/IC798720.jpeg" alt="Screen shot shows More button on Local Resources"></div>
+</li>
+<li>
+<span id="mt25" class="sentence">Sélectionnez le lecteur que vous souhaitez utiliser sur l'ordinateur virtuel, puis cliquez sur <strong>Ok</strong>.</span></p>
+<div class="inset"><img id="bbc1ed6d-147c-4db9-8be1-268b24acb0a4" title="Screen shot shows local resource drives." src="{{site.baseurl}}/assets/images/2016/04/IC798721.jpeg" alt="Screen shot shows local resource drives."></div>
+</li>
+<li>
+<span id="mt26" class="sentence">Sélectionnez <strong>Enregistrer mes paramètres pour les futures connexions à cet ordinateur virtuel</strong>.</span></p>
+<div class="inset"><img id="33873aa8-066b-4dc8-abd2-6a7cea238042" title="Screen shot shows save settings check box" src="{{site.baseurl}}/assets/images/2016/04/IC798722.jpeg" alt="Screen shot shows save settings check box"></div>
+</li>
+<li><span id="mt27" class="sentence"> Click </span></li>
+</ol>
+</div>
+</div>
+</div>
+<div>
+<div>
+<a class="LW_CollapsibleArea_TitleAhref" title="Cliquez ici pour réduire. Double-cliquez ici pour réduire tout."><span class="LW_CollapsibleArea_Title">Modifier les paramètres VMConnect</span></a></p>
+<div id="Anchor_2" class="LW_CollapsibleArea_Anchor_Div"></div>
+<div class="LW_CollapsibleArea_HrDiv"></div>
+</div>
+<div class="sectionblock">
+<div class="section">
+<p><span id="mt29" class="sentence">Vous pouvez facilement modifier vos paramètres de connexion pour VMConnect en exécutant la commande suivante dans Windows PowerShell ou l'invite de commandes :</span></p>
+<p><span class="code">VMConnect.exe &lt;ServerName&gt; &lt;VMName&gt; /edit </span></p>
+</div>
+</div>
+</div>
+<p><a id="BKMK_NEW"></a></p>
+<div>
+<div>
+<a class="LW_CollapsibleArea_TitleAhref" title="Cliquez ici pour réduire. Double-cliquez ici pour réduire tout."><span class="LW_CollapsibleArea_Title">Éléments nécessaires pour utiliser les ressources locales d'un ordinateur</span></a></p>
+<div id="Anchor_3" class="LW_CollapsibleArea_Anchor_Div"></div>
+<div class="LW_CollapsibleArea_HrDiv"></div>
+</div>
+<div class="sectionblock">
+<div class="section">
+<p><span id="mt31" class="sentence">Pour pouvoir utiliser les ressources locales d'un ordinateur sur un ordinateur virtuel :</span></p>
+<ul class="unordered">
+<li><span id="mt32" class="sentence">Les paramètres <strong>Stratégie de mode de session étendu</strong> et <strong>Mode de session étendu</strong> de l'hôte Hyper-V doivent être activés.</span></li>
+<li><span id="mt33" class="sentence">L'ordinateur que vous utilisez pour vous connecter à l'ordinateur virtuel avec VMConnect doit exécuter Windows 8, Windows 8.1, Windows Server 2012 ou Windows Server 2012 R2.</span></li>
+<li><span id="mt34" class="sentence">Les services Bureau à distance doivent être activés sur l'ordinateur virtuel qui doit exécuter Windows Server 2012 R2 ou Windows 8.1 comme système d'exploitation invité.</span></li>
+</ul>
+<p><span id="mt35" class="sentence">Si votre ordinateur virtuel répond à ces critères, vous pouvez utiliser toutes les ressources locales suivantes disponibles à partir de l'ordinateur où vous utilisez VMConnect.</span></p>
+<ul class="unordered">
+<li><span id="mt36" class="sentence">Configuration de l'affichage</span></li>
+<li><span id="mt37" class="sentence">Audio</span></li>
+<li><span id="mt38" class="sentence">Imprimantes</span></li>
+<li><span id="mt39" class="sentence">Presse-papiers pour copier et coller</span></li>
+<li><span id="mt40" class="sentence">Cartes à puce</span></li>
+<li><span id="mt41" class="sentence">Périphériques USB</span></li>
+<li><span id="mt42" class="sentence">Lecteurs</span></li>
+<li><span id="mt43" class="sentence">Périphériques Plug-and-Play pris en charge</span></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p></body></html></p>

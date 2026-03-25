@@ -1,0 +1,37 @@
+---
+layout: default
+---
+<article class="post-single">
+  <header>
+    <div class="post-meta">
+      <time>{{ page.date | date: "%d %b %Y" }}</time>
+      {% for cat in page.categories %}
+        <span class="tag">{{ cat }}</span>
+      {% endfor %}
+    </div>
+    <h1>{{ page.title }}</h1>
+    {% if page.excerpt %}
+      <p class="post-excerpt">{{ page.excerpt | strip_html }}</p>
+    {% endif %}
+  </header>
+  <div class="post-content">
+    {{ content }}
+  </div>
+  <footer class="post-footer">
+    {% if page.tags.size > 0 %}
+      <div class="post-tags">
+        {% for tag in page.tags %}
+          <span class="tag-pill">{{ tag }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+    <div class="post-nav">
+      {% if page.previous.url %}
+        <a href="{{ page.previous.url | relative_url }}" class="nav-prev">&larr; {{ page.previous.title | truncate: 40 }}</a>
+      {% endif %}
+      {% if page.next.url %}
+        <a href="{{ page.next.url | relative_url }}" class="nav-next">{{ page.next.title | truncate: 40 }} &rarr;</a>
+      {% endif %}
+    </div>
+  </footer>
+</article>

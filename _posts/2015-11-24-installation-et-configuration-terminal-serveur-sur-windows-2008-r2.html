@@ -1,0 +1,150 @@
+---
+layout: post
+title: INSTALLATION ET CONFIGURATION TERMINAL SERVEUR SUR WINDOWS 2008 R2
+date: 2015-11-24 12:48:14.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Windows
+- Windows 2008 R2
+tags: []
+meta:
+  _edit_last: '82119094'
+  geo_public: '0'
+  _publicize_job_id: '17155163141'
+author:
+  login: fhugonnier
+  email: fhugonnier@outlook.com
+  display_name: fhugonnier
+  first_name: ''
+  last_name: ''
+permalink: "/2015/11/24/installation-et-configuration-terminal-serveur-sur-windows-2008-r2/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body></p>
+<p>Terminal Server (TSE) est un composant de Microsoft Windows qui permet à un utilisateur d’accéder à des applications et des données sur un ordinateur distant. Nous allons voir comment mettre en œuvre cette solution.</p>
+<p>Pré-requis : Microsoft Windows 2008R2 Installé, mis à jour et rejoint au domaine</p>
+<p>Sources :</p>
+<p><a href="http://technet.microsoft.com/">http://technet.microsoft.com<span id="more-1882"></span></a></p>
+<h1>1 – Installation des services TSE</h1>
+<p>Ouvrir le Gestionnaire de serveur.</p>
+<p>Démarrer &gt; Outils d’Administration &gt; Gestionnaire de serveur</p>
+<p>La fenêtre suivante s’ouvre</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_1.png" alt=""></p>
+<p>Cliquer sur Rôles puis Ajouter des rôles</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_2.png" alt=""></p>
+<p>Cliquer sur Suivant</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_3.png" alt=""></p>
+<p>Cocher Services Bureau à distance puis cliquer sur Suivant</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_4.png" alt=""></p>
+<p>Cliquer sur Suivant</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_5.png" alt=""></p>
+<p>Cocher les lignes suivantes puis cliquer sur Suivant</p>
+<ul>
+<li>
+<strong>Hôte de session Bureau à distance :</strong> Serveur hôte de session Bureau à distance qui héberge les programmes Windows</li>
+<li>
+<strong>Gestionnaire de licence des services Bureau à distance</strong> : Gère les licences TSE que vous avez acquis</li>
+<li>
+<strong><em>Service Broker pour les connexions Bureau à distance</em></strong> : Équilibrage de charge et accès aux RemoteApp</li>
+<li>
+<strong><em>Passerelle des services Bureau à distance</em> :</strong> Permet aux utilisateurs de se connecter depuis Internet</li>
+<li>
+<strong><em>Accès Bureau à distance par le Web :</em></strong> Permet aux utilisateurs d’accéder aux RemoteApp et aux services Bureau à distance depuis un navigateur web</li>
+</ul>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_6.png" alt=""></p>
+<p>En cliquant sur Passerelle des services Bureau à distance et Accès Bureau à distance par le Web la fenêtre suivante s’ouvre, cliquer sur Ajouter les services de rôle requis</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_7.png" alt=""></p>
+<p>Cliquer sur Suivant</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_8.png" alt=""></p>
+<p>Choisir la méthode d’authentification, dans notre cas, ne nécessite pas l’authentification au niveau du bureau. Cela permettra au anciennes versions de se connecter au serveur.</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_9.png" alt=""></p>
+<p>Choisir le mode de licence, dans mon cas je suis sur un serveur de test donc je coche Configurer ultérieurement (Période d’essai de 120j), sinon choisissez le mode de licence en fonction de ce que vous avez acheté.</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_10.png" alt=""></p>
+<p>Choisir les groupes d’utilisateurs autorisés à accéder au service TSE puis cliquer sur Suivant</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_11.png" alt=""></p>
+<p>Afin de ne pas consommer trop de bande passante, dans mon cas je ne coche rien. Cliquer sur Suivant</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_12.png" alt=""></p>
+<p>Définir l’étendue de découverte, dans mon cas, ce domaine puis cliquer sur Suivant</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_13.png" alt=""></p>
+<p>Dans mon cas, un serveur de test, je n’ai pas installé l’autorité de certification, dans un environnement de prod, il serait préférable de passer par une autorité de certification.</p>
+<p>Cocher créer un certificat auto-signé pour le chiffrement SSL puis cliquer sur Suivant</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_14.png" alt=""></p>
+<p>Créer une stratégie d’autorisation ultérieurement puis cliquer sur Suivant</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_15.png" alt=""></p>
+<p>Cliquer sur Suivant</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_16.png" alt=""></p>
+<p>Cliquer sur Suivant</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_17.png" alt=""></p>
+<p>Cliquer sur Suivant</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_18.png" alt=""></p>
+<p>Cliquer sur Suivant</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_19.png" alt=""></p>
+<p>Cliquer sur Installer</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_20.png" alt=""></p>
+<p>Cliquer sur Fermer pour redémarrer le serveur</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_21.png" alt=""></p>
+<p>Après avoir redémarrer, l’installation continue</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_22.png" alt=""></p>
+<p>Cliquer sur Fermer pour terminer l’installation</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_23.png" alt=""></p>
+<p>Redémarrer le serveur. Le rôle TSE est maintenant installé.</p>
+<h1>2- Configuration de TSE</h1>
+<p>Cliquer sur Démarrer &gt; Outils d’administration &gt; Services Bureau à distance &gt; Configuration d’hôte de session Bureau à distance</p>
+<p>Faire un clic droit sur RDP-Tcp &gt; Propriétés</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_24.png" alt=""></p>
+<p>Afin d’éviter l’utilisation inutile de licences, modifier les paramètres suivants. Cliquer sur Sessions puis Cocher Remplacer les paramètres de l’utilisateur, choisir les paramètres souhaités. Cocher “Remplacer les paramètres de l’utilisateur” puis choisir ce que vous souhaitez.</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_25.png" alt=""></p>
+<h1>3 – Configuration Remote App</h1>
+<p>Les programmes RemoteApp sont des programmes auxquels vous pouvez accéder à distance par le biais des services Terminal Server et qui apparaissent comme s’ils étaient exécutés sur l’ordinateur local de l’utilisateur final. Les utilisateurs peuvent exécuter côte à côte des programmes RemoteApp et leurs programmes locaux.</p>
+<p>La configuration minimale doit être Windows XP SP2 sur lesquels le nouveau client Connexion bureau à distance a été installé.</p>
+<p>Dans ce cas, je vais configurer la calculette en Remote App.</p>
+<p>Cliquer sur Démarrer &gt; Outils d’Administration &gt; Services Bureau à distance &gt; Gestionnaire RemoteApp</p>
+<p>La fenêtre suivante s’ouvre. Cliquer sur Ajouter des programmes.</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_26.png" alt=""></p>
+<p>Cliquer sur Suivant</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_27.png" alt=""></p>
+<p>Cocher les programmes que vous souhaitez, dans mon cas, Calculatrice. Puis cliquer sur Suivant</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_28.png" alt=""></p>
+<p>Cliquer sur Terminer</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_29.png" alt=""></p>
+<p>On peut maintenant voir la calculette apparaitre dans la liste des programmes RemoteApp.</p>
+<p>Cliquer sur Créer le fichier .rdp</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_30.png" alt=""></p>
+<p>Cliquer sur Suivant</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_31.png" alt=""></p>
+<p>Cliquer sur Suivant. Le fichier .rdp va se placer dans C:\Program Files\Packaged Programs</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_32.png" alt=""></p>
+<p>Cliquer sur Terminer</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_33.png" alt=""></p>
+<p>Le fichier .rdp est créé. Il suffit simplement de le mettre sur un poste client, pour que celui-ci est accès à la calculette en Remote.</p>
+<p>Il est aussi possible de créer un fichier .msi afin par exemple de le déployer via GPO.</p>
+<p>Toujours avec l’exemple de la calculette,</p>
+<p>Cliquer sur Créer le package Windows</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_34.png" alt=""></p>
+<p>Cliquer sur Suivant</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_35.png" alt=""></p>
+<p>Cliquer sur Suivant. Le fichier .msi va se placer dans C:\Program Files\Packaged Programs</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_36.png" alt=""></p>
+<p>Choisir l’Emplacement des icônes puis cliquer sur Suivant</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_37.png" alt=""></p>
+<p>Cliquer sur Terminer</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_38.png" alt=""></p>
+<p>Pour afficher la calculette sur l’accès web, sélectionner l’application puis cliquer sur Afficher dans l’accès Bureau à distance par le web</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_39.png" alt=""></p>
+<h1>4 – Différents accès aux serveurs</h1>
+<p>Plusieurs solutions sont possibles pour accéder au serveur TSE, par le web, par les RemoteApp et pour finir en bureau à distance</p>
+<h2>4-1 Accès via le web</h2>
+<p>Dans un navigateur internet (De préférence Internet Explorer) saisir l’adresse suivante</p>
+<p><a href="https://nomdevotreserveur/RDWeb/">https://<strong>NomDeVotreServeur</strong>/RDWeb/</a></p>
+<p>La fenêtre suivante s’ouvre, saisir un nom d’utilisateur et un mot de passe autorisés à se connecter aux services Bureau à distance, puis cliquer sur s’inscrire.</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_40.png" alt=""></p>
+<p> </p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_41.png" alt=""></p>
+<h2>4-2 Accès via le bureau à distance</h2>
+<p>Sur un Windows 7, cliquer sur démarrer &gt; Tous les programmes &gt; Accessoires &gt; Connexion Bureau à Distance puis cliquer sur Connexion</p>
+<p><img src="{{site.baseurl}}/assets/images/2015/11/062013_1107_42.png" alt=""><br />
+</body></html></p>

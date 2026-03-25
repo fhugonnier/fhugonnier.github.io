@@ -1,0 +1,652 @@
+---
+layout: post
+title: Exchange 2016 Utiliser l’Environnement de ligne de commande Exchange Management
+  Shell pour activer ou désactiver le filtrage du contenu
+date: 2018-02-20 19:15:07.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Echange 2016
+tags: []
+meta:
+  _edit_last: '82119094'
+  timeline_notification: '1519150510'
+  geo_public: '0'
+  _publicize_job_id: '14949547833'
+author:
+  login: fhugonnier
+  email: fhugonnier@outlook.com
+  display_name: fhugonnier
+  first_name: ''
+  last_name: ''
+permalink: "/2018/02/20/exchange-2016-utiliser-lenvironnement-de-ligne-de-commande-exchange-management-shell-pour-activer-ou-desactiver-le-filtrage-du-contenu/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body></p>
+<div id="mainBody">
+<div>
+<div class="sectionblock">
+<div>
+<div class="sectionnone">
+<p>Pour désactiver le filtrage du contenu, exécutez la commande suivante :</p>
+<div id="code-snippet-1" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_96238542-7e0b-4d5d-b292-93295e1aa0fa" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Set-ContentFilterConfig -Enabled $false
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p>Pour activer le filtrage du contenu, exécutez la commande suivante :</p>
+<div id="code-snippet-2" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_9b3784b4-3d53-430f-b915-ef2b44c75738" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Set-ContentFilterConfig -Enabled $true
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="alert">
+<div class="contentTableWrapper">
+<table summary="table">
+<tbody>
+<tr>
+<th scope="col" align="left">
+<img id="note" class="cl_IC101471" title="note" src="{{site.baseurl}}/assets/images/2018/02/clear.gif" alt="note">Remarque :</th>
+</tr>
+<tr>
+<td>Lorsque vous désactivez le filtrage du contenu, l’agent de filtrage du contenu sous-jacent est toujours activé. Pour désactiver l’agent de filtrage du contenu, exécutez la commande suivante : <code>Disable-TransportAgent "Content Filter Agent"</code>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div>
+<div>
+<a class="LW_CollapsibleArea_TitleAhref" title="Réduire" role="heading"><span class="LW_CollapsibleArea_Title">Comment savoir si cela a fonctionné ?</span></a></p>
+<div class="LW_CollapsibleArea_HrDiv"></div>
+</div>
+<div class="sectionblock">
+<p>Pour savoir si vous avez réussi à activer ou désactiver le filtrage du contenu, exécutez la commande suivante pour vérifier la valeur de la propriété <strong>Enabled</strong> :</p>
+<div id="code-snippet-3" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_731b9202-1c16-4195-9a40-351eb19f1de6" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Get-ContentFilterConfig | Format-List Enabled
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<a class="LW_CollapsibleArea_TitleAhref" title="Développer" role="heading"><span class="LW_CollapsibleArea_Title">Utiliser l’Environnement de ligne de commande Exchange Management Shell pour activer ou désactiver le filtrage du contenu dans les messages externes</span></a></p>
+<div class="LW_CollapsibleArea_HrDiv"></div>
+</div>
+<div class="sectionnone">
+<p>Par défaut, la fonctionnalité de filtrage du contenu est activée pour les messages externes.</p>
+<p>Pour désactiver le filtrage du contenu dans les messages externes, exécutez la commande suivante :</p>
+<div id="code-snippet-4" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_dc3ef049-9773-481c-8add-cfca7c6e0a20" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Set-ContentFilterConfig -ExternalMailEnabled $false
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p>Pour activer le filtrage du contenu dans les messages externes, exécutez la commande suivante :</p>
+<div id="code-snippet-5" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_8428ab64-eb8a-4ff5-b1a0-c964140d1967" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Set-ContentFilterConfig -ExternalMailEnabled $true
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<a class="LW_CollapsibleArea_TitleAhref" title="Réduire" role="heading"><span class="LW_CollapsibleArea_Title">Comment savoir si cela a fonctionné ?</span></a></p>
+<div class="LW_CollapsibleArea_HrDiv"></div>
+</div>
+<div class="sectionblock">
+<p>Pour savoir si vous avez réussi à activer ou désactiver le filtrage du contenu dans les messages externes, exécutez la commande suivante pour vérifier la valeur de la propriété <strong>ExternalMailEnabled</strong> :</p>
+<div id="code-snippet-6" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_7cf6ecb4-401e-4dde-ad6b-ca0020a2a797" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Get-ContentFilterConfig | Format-List ExternalMailEnabled
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<a class="LW_CollapsibleArea_TitleAhref" title="Développer" role="heading"><span class="LW_CollapsibleArea_Title">Utiliser l’Environnement de ligne de commande Exchange Management Shell pour activer ou désactiver le filtrage du contenu dans les messages internes</span></a></p>
+<div class="LW_CollapsibleArea_HrDiv"></div>
+</div>
+<div class="sectionnone">
+<p>Il est conseillé de ne pas appliquer de filtres de courrier indésirable aux messages provenant de partenaires approuvés ou de l’intérieur de l’organisation. Il est toujours possible que les filtres détectent des faux positifs. Pour éviter autant que possible de filtrer des messages électroniques légitimes, vous devez configurer les agents de blocage du courrier indésirable pour qu’ils agissent uniquement sur les messages en provenance de sources non approuvées et inconnues.</p>
+<p>Pour activer le filtrage du contenu dans les messages internes, exécutez la commande suivante :</p>
+<div id="code-snippet-7" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_cf1493b0-e22e-4cb0-8193-cb7e13296da6" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Set-ContentFilterConfig -InternalMailEnabled $true
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p>Pour désactiver le filtrage du contenu dans les messages internes, exécutez la commande suivante :</p>
+<div id="code-snippet-8" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_cc4d62ce-e287-4ab8-9207-b0eac0164602" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Set-ContentFilterConfig -InternalMailEnabled $false
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<a class="LW_CollapsibleArea_TitleAhref" title="Réduire" role="heading"><span class="LW_CollapsibleArea_Title">Comment savoir si cela a fonctionné ?</span></a></p>
+<div class="LW_CollapsibleArea_HrDiv"></div>
+</div>
+<div class="sectionblock">
+<p>Pour savoir si vous avez réussi à activer ou désactiver le filtrage du contenu dans les messages internes, exécutez la commande suivante pour vérifier la valeur de la propriété <strong>InternalMailEnabled</strong> :</p>
+<div id="code-snippet-9" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_5facda30-23b1-46a9-b02f-26c9f1e7aa45" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Get-ContentFilterConfig | Format-List InternalMailEnabled
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><a id="ShellExceptions"></a></p>
+<div>
+<div>
+<a class="LW_CollapsibleArea_TitleAhref" title="Développer" role="heading"><span class="LW_CollapsibleArea_Title">Utiliser l’Environnement de ligne de commande Exchange Management Shell pour configurer des exceptions de destinataires et d’expéditeurs pour le filtrage du contenu</span></a></p>
+<div class="LW_CollapsibleArea_HrDiv"></div>
+</div>
+<div class="sectionnone">
+<p>Vous pouvez spécifier des exceptions de destinataires et d’expéditeurs qui remplacent les valeurs existantes, ou vous pouvez ajouter ou supprimer des exceptions de destinataires et d’expéditeurs spécifiques sans affecter les autres valeurs existantes.</p>
+<p>Pour remplacer les valeurs existantes, utilisez la syntaxe suivante :</p>
+<div id="code-snippet-10" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_f063612f-db65-438b-b512-1e6355e41790" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Set-ContentFilterConfig -BypassedRecipients &lt;recipient1,recipient2...&gt; -BypassedSenders &lt;sender1,sender2...&gt; -BypassedSenderDomains &lt;domain1,domain2...&gt;
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p>Cet exemple permet de configurer les exceptions suivantes dans le filtrage du contenu :</p>
+<ul>
+<li>Le filtrage du contenu ne vérifie pas les destinataires laura@contoso.com et julia@contoso.com.</li>
+<li>Le filtrage du contenu ne vérifie pas les expéditeurs steve@fabrikam.com et cindy@fabrikam.com.</li>
+<li>Le filtrage du contenu ne vérifie aucun expéditeur du domaine nwtraders.com ni aucun sous-domaine.</li>
+</ul>
+<div id="code-snippet-11" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_a81e7654-9c88-4124-b6b5-08373bb68dad" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Set-ContentFilterConfig -BypassedRecipients laura@contoso.com,julia@contoso.com -BypassedSenders steve@fabrikam.com,cindy@fabrikam.com -BypassedSenderDomains *.nwtraders.com
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p>Pour ajouter ou supprimer des entrées sans modifier d’autres valeurs existantes, utilisez la syntaxe suivante :</p>
+<div id="code-snippet-12" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_35cb46f2-a379-4e24-9c3b-f6947d58d7af" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Set-ContentFilterConfig -BypassedRecipients @{Add="&lt;recipient1&gt;","&lt;recipient2&gt;"...; Remove="&lt;recipient1&gt;","&lt;recipient2&gt;"...} -BypassedSenders @{Add="&lt;sender1&gt;","&lt;sender2&gt;"...; Remove="&lt;sender1&gt;","&lt;sender2&gt;"...} -BypassedSenderDomains @{Add="&lt;domain1&gt;","&lt;domain2&gt;"...; Remove="&lt;domain1&gt;","&lt;domain2&gt;"...}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p>Cet exemple permet de configurer les exceptions suivantes dans le filtrage du contenu :</p>
+<ul>
+<li>Ajoutez tiffany@contoso.com et chris@contoso.com à la liste des destinataires qui ne sont pas vérifiés par le filtrage du contenu.</li>
+<li>Ajoutez joe@fabrikam.com et michelle@fabrikam.com à la liste des expéditeurs qui ne sont pas vérifiés par le filtrage du contenu.</li>
+<li>Ajoutez blueyonderairlines.com à la liste des domaines dont les expéditeurs ne sont pas vérifiés par le filtrage du contenu.</li>
+<li>Supprimez le domaine woodgrovebank.com et tous les sous-domaines de la liste des domaines dont les expéditeurs ne sont pas vérifiés par le filtrage du contenu.</li>
+</ul>
+<div id="code-snippet-13" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_c3e6d89d-6add-401d-bab1-5f68c85cc3c7" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Set-ContentFilterConfig -BypassedRecipients @{Add="tiffany@contoso.com","chris@contoso.com"} -BypassedSenders @{Add="joe@fabrikam.com","michelle@fabrikam.com"} -BypassedSenderDomains @{Add="blueyonderairlines.com"; Remove="*.woodgrovebank.com"}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<a class="LW_CollapsibleArea_TitleAhref" title="Réduire" role="heading"><span class="LW_CollapsibleArea_Title">Comment savoir si cela a fonctionné ?</span></a></p>
+<div class="LW_CollapsibleArea_HrDiv"></div>
+</div>
+<div class="sectionblock">
+<p>Pour savoir si vous avez réussi à configurer les exceptions de destinataires et d’expéditeurs, exécutez la commande suivante pour vérifier les valeurs de la propriété :</p>
+<div id="code-snippet-14" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_1fd0f484-e7d8-4e60-b84a-b39f7934d109" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Get-ContentFilterConfig | Format-List Bypassed*
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><a id="ShellCustomWords"></a></p>
+<div>
+<div>
+<a class="LW_CollapsibleArea_TitleAhref" title="Développer" role="heading"><span class="LW_CollapsibleArea_Title">Utiliser l’Environnement de ligne de commande Exchange Management Shell pour configurer des expressions autorisées et bloquées pour le filtrage du contenu</span></a></p>
+<div class="LW_CollapsibleArea_HrDiv"></div>
+</div>
+<div class="sectionnone">
+<p>Pour ajouter des expressions et des mots autorisés et bloqués, utilisez la syntaxe suivante :</p>
+<div id="code-snippet-15" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_a4e817a2-8c81-41c6-9d18-941dbd95cafc" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Add-ContentFilterPhrase -Influence GoodWord -Phrase &lt;Phrase&gt; -Influence BadWord -Phrase &lt;Phrase&gt;
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p>Dans cet exemple, tous les messages contenant l’expression « customer feedback » sont autorisés.</p>
+<div id="code-snippet-16" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_a47a849b-77bb-46ab-b36a-46316db5d284" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Add-ContentFilterPhrase -Influence GoodWord -Phrase "customer feedback"
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p>Dans cet exemple, tous les messages contenant l’expression « stock tip » sont bloqués.</p>
+<div id="code-snippet-17" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_3bbaf72d-7b39-4a24-bc69-3c77d90427d6" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Add-ContentFilterPhrase -Influence BadWord -Phrase "stock tip"
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p>Pour supprimer des expressions autorisées ou bloquées, utilisez la syntaxe suivante :</p>
+<div id="code-snippet-18" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_c2f444d2-0837-491f-8180-446702dcc97e" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Remove-ContentFilterPhrase -Phrase &lt;Phrase&gt;
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p>Dans cet exemple, l’expression « stock tip » est supprimée :</p>
+<div id="code-snippet-19" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_1f0fb348-ea50-4bc9-940d-1af901feb84b" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Remove-ContentFilterPhrase -Phrase "stock tip"
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<a class="LW_CollapsibleArea_TitleAhref" title="Réduire" role="heading"><span class="LW_CollapsibleArea_Title">Comment savoir si cela a fonctionné ?</span></a></p>
+<div class="LW_CollapsibleArea_HrDiv"></div>
+</div>
+<div class="sectionblock">
+<p>Pour savoir si vous avez réussi à configurer les expressions autorisées et bloquées, exécutez la commande suivante pour vérifier les valeurs de la propriété :</p>
+<div id="code-snippet-20" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_7841e536-513a-4048-8b65-729f478793fe" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Get-ContentFilterPhrase | Format-Table -Auto Influence,Phrase
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><a id="ShellSCL"></a></p>
+<div>
+<div>
+<a class="LW_CollapsibleArea_TitleAhref" title="Développer" role="heading"><span class="LW_CollapsibleArea_Title">Utiliser l’Environnement de ligne de commande Exchange Management Shell pour configurer les niveaux du seuil de probabilité de courrier indésirable (SCL) pour le filtrage du contenu</span></a></p>
+<div class="LW_CollapsibleArea_HrDiv"></div>
+</div>
+<div class="sectionnone">
+<p>Pour configurer les niveaux du seuil de probabilité de courrier indésirable (SCL) et ses actions, utilisez la syntaxe suivante :</p>
+<div id="code-snippet-21" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_25135cb9-1502-485f-8808-fba728cf9255" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Set-ContentFilterConfig -SCLDeleteEnabled &lt;$true | $false&gt; -SCLDeleteThreshold &lt;Value&gt; -SCLRejectEnabled &lt;$true | $false&gt; -SCLRejectThreshold &lt;Value&gt; -SCLQuarantineEnabled &lt;$true | $false&gt; -SCLQuarantineThreshold &lt;Value&gt;
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="alert">
+<div class="contentTableWrapper">
+<table summary="table">
+<tbody>
+<tr>
+<th scope="col" align="left">
+<img id="note" class="cl_IC101471" title="note" src="{{site.baseurl}}/assets/images/2018/02/clear.gif" alt="note">Remarque :</th>
+</tr>
+<tr>
+<td>L’action de suppression prévaut sur l’action de rejet, laquelle prévaut sur l’action de mise en quarantaine. Ainsi, le seuil SCL de l’action de suppression doit être supérieur au seuil SCL de l’action de rejet, lequel doit être supérieur au seuil SCL de l’action de mise en quarantaine. Seule l’action de rejet est activée par défaut. Son seuil SCL a la valeur 7.<br />
+L’action de mise en quarantaine nécessite une boîte aux lettres de mise en quarantaine du courrier indésirable. Pour plus d’informations, consultez la rubrique Configuration d’une boîte aux lettres de mise en quarantaine du courrier indésirable.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Cet exemple permet de configurer les valeurs de seuil SCL suivantes :</p>
+<ul>
+<li>L’action <strong>Supprimer</strong> est activée et le niveau SCL correspondant est défini sur 9.</li>
+<li>L’action <strong>Rejeter</strong> est activée et le niveau SCL correspondant est défini sur 8.</li>
+<li>L’action <strong>Mettre en quarantaine</strong> est activée et le niveau SCL correspondant est défini sur 7.</li>
+</ul>
+<div id="code-snippet-22" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_e0525c2b-1e2a-4ebc-8aa9-74ebac314d3c" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Set-ContentFilterConfig -SCLDeleteEnabled $true -SCLDeleteThreshold 9 -SCLRejectEnabled $true -SCLRejectThreshold 8 -SCLQuarantineEnabled $true -SCLQuarantineThreshold 7
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<a class="LW_CollapsibleArea_TitleAhref" title="Réduire" role="heading"><span class="LW_CollapsibleArea_Title">Comment savoir si cela a fonctionné ?</span></a></p>
+<div class="LW_CollapsibleArea_HrDiv"></div>
+</div>
+<div class="sectionblock">
+<p>Pour savoir si vous avez réussi à configurer les niveaux du seuil de probabilité de courrier indésirable, exécutez la commande suivante pour vérifier les valeurs de la propriété :</p>
+<div id="code-snippet-23" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_bf23dbb7-5ade-465e-9927-afb2ad98f5c2" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Get-ContentFilterConfig | Format-List SCL*
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><a id="ShellRejectionResponse"></a></p>
+<div>
+<div>
+<a class="LW_CollapsibleArea_TitleAhref" title="Développer" role="heading"><span class="LW_CollapsibleArea_Title">Utiliser l’Environnement de ligne de commande Exchange Management Shell pour configurer la réponse de rejet pour le filtrage du contenu</span></a></p>
+<div class="LW_CollapsibleArea_HrDiv"></div>
+</div>
+<div class="sectionnone">
+<p>Lorsque l’action de rejet est activée, vous pouvez personnaliser la réponse de rejet envoyée à l’expéditeur du message. La réponse de rejet ne peut pas dépasser 240 caractères.</p>
+<p>Pour configurer une réponse de rejet personnalisée, utilisez la syntaxe suivante :</p>
+<div id="code-snippet-24" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_7ef6a9d4-45a3-4c30-96f0-dae0a8cbeb1e" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Set-ContentFilterConfig -RejectionResponse "&lt;Custom Text&gt;"
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p>L’exemple suivant permet de configurer l’agent de filtrage du contenu afin qu’il envoie une réponse de rejet personnalisée.</p>
+<div id="code-snippet-25" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_7d284f3f-63d4-49f5-b150-12fa6f41515f" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Set-ContentFilterConfig -RejectionResponse "Your message was rejected because it appears to be SPAM."
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<a class="LW_CollapsibleArea_TitleAhref" title="Réduire" role="heading"><span class="LW_CollapsibleArea_Title">Comment savoir si cela a fonctionné ?</span></a></p>
+<div class="LW_CollapsibleArea_HrDiv"></div>
+</div>
+<div class="sectionblock">
+<p>Pour savoir si vous avez réussi à configurer la réponse de rejet, exécutez la commande suivante pour vérifier les valeurs de la propriété :</p>
+<div id="code-snippet-26" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_a9938e4c-c9b7-4126-a733-a9296d3c581a" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Get-ContentFilterConfig | Format-List *Reject*
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><a id="ShellOutlookPostmark"></a></p>
+<div>
+<div>
+<a class="LW_CollapsibleArea_TitleAhref" title="Développer" role="heading"><span class="LW_CollapsibleArea_Title">Utiliser l’Environnement de ligne de commande Exchange Management Shell pour activer ou désactiver le cachet électronique Outlook</span></a></p>
+<div class="LW_CollapsibleArea_HrDiv"></div>
+</div>
+<div class="sectionnone">
+<p>La validation du <em>cachet électronique Outlook</em> est une preuve de calcul que MicrosoftOutlook applique aux messages sortants pour permettre aux systèmes de messagerie de différencier les messages électroniques légitimes du courrier indésirable (et réduire les faux positifs). Le cachet électronique est apparu avec Outlook 2007, et est activé par défaut dans Outlook.</p>
+<p>Pour désactiver le cachet électronique Outlook, exécutez la commande suivante :</p>
+<div id="code-snippet-27" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_26955499-d727-4162-a5c3-3a40d6062318" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Set-ContentFilterConfig -OutlookEmailPostmarkValidationEnabled $false
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p>Pour activer le cachet électronique Outlook, exécutez la commande suivante :</p>
+<div id="code-snippet-28" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_f03944eb-a3ad-4e04-a921-808e8aee5a09" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Set-ContentFilterConfig -OutlookEmailPostmarkValidationEnabled $true
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<a class="LW_CollapsibleArea_TitleAhref" title="Réduire" role="heading"><span class="LW_CollapsibleArea_Title">Comment savoir si cela a fonctionné ?</span></a></p>
+<div class="LW_CollapsibleArea_HrDiv"></div>
+</div>
+<div class="sectionblock">
+<p>Pour savoir si vous avez réussi à configurer le cachet électronique Outlook, exécutez la commande suivante pour vérifier la valeur de la propriété <strong>OutlookEmailPostmarkValidationEnabled</strong> :</p>
+<div id="code-snippet-29" class="codeSnippetContainer">
+<div class="codeSnippetContainerTabs"></div>
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText"></div>
+</div>
+<div id="CodeSnippetContainerCode_55240845-8ec3-4687-9832-5f64f27bc993" class="codeSnippetContainerCode" dir="ltr">
+<div>
+<pre>Get-ContentFilterConfig | Format-List OutlookEmailPostmarkValidationEnabled
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><span id="fb" class="feedbackcss"> </span><br />
+</body></html></p>

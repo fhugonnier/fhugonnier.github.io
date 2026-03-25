@@ -1,0 +1,196 @@
+---
+layout: post
+title: Install macOS High Sierra on VMware on Windows
+date: 2018-01-04 12:14:03.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- OSX
+tags: []
+meta:
+  _edit_last: '82119094'
+  geo_public: '0'
+  _publicize_job_id: '13196771932'
+author:
+  login: fhugonnier
+  email: fhugonnier@outlook.com
+  display_name: fhugonnier
+  first_name: ''
+  last_name: ''
+permalink: "/2018/01/04/install-macos-high-sierra-on-vmware-on-windows/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body></p>
+<p>Thanks to http://www.wikigain.com</p>
+<p> </p>
+<p>Before you get started to install macOS High Sierra on VMware on Windows there are some requirement and tasks to do.</p>
+<div class="WQoqYRyW"></div>
+<p><strong>Requirements:</strong></p>
+<ul>
+<li>Minimum <strong>2 GB</strong> Memory</li>
+<li>Minimum <strong>2 cores</strong> of processors</li>
+<li>Hard disk free space <strong>80 GB</strong>
+</li>
+<li>Graphics memory <strong>256 MB</strong>
+</li>
+<li>Your system should support <strong>Intel or AMD VT</strong> (Virtualization Technology)</li>
+<li>VT (Virtualization Technology) Should be <strong>enabled</strong> from BIOS setup.</li>
+</ul>
+<p>As mentioned in the section above your system should have the virtualization technology and after that, you should enable that from your system BIOS. First, you should boot into your system BIOS then find the <strong>VT option</strong> and enable that. You can find how to boot into your system BIOS by <a href="http://www.wikigain.com/boot-menu-option-keys-for-all-laptops-desktops/" target="_blank" rel="noopener">this guide</a>.</p>
+<p>To get started you need to download the following materials in order to install macOS High Sierra on VMware on Windows.</p>
+<ul>
+<li><a href="http://www.vmware.com/products/workstation/workstation-evaluation.html?ClickID=cwvvnwwxxin77esqe47vxififq4sqxkeanea" rel="noopener noreferrer">Download VMware Workstation</a></li>
+<li>
+<a href="https://drive.google.com/file/d/0B0EsZGPuNAPvVDlicGt1NUx0Y0E/view?usp=sharing" target="_blank" rel="noopener">Download macOS High Sierra Final </a>(1 Part)</li>
+<li>
+<a href="https://drive.google.com/drive/folders/0B0EsZGPuNAPvM3VvU2twYzU1Mmc?usp=sharing" target="_blank" rel="noopener">Download macOS High Sierra Final</a> (8 Parts)</li>
+<li><a href="https://drive.google.com/open?id=0B0EsZGPuNAPvVXRRVW5OSFFnM2s" target="_blank" rel="noopener">Download Patch Tool Folder</a></li>
+</ul>
+<h3><strong>Step #1: Extract macOS High Sierra Image</strong></h3>
+<p>Once you have downloaded the macOS High Sierra image file, then you should extract it via <a href="http://www.win-rar.com/download.html?&amp;L=0" rel="noopener noreferrer">WinRAR </a>or <a href="http://www.7-zip.org/download.html" target="_blank" rel="noopener">7zip</a> after that you can use this image. To unzip the file, just <strong>right-click</strong> on file then select“<strong>Extract Here</strong>.“ It will take around 5 minutes.</p>
+<div id="attachment_11260" class="wp-caption aligncenter">
+<a href="https://i0.wp.com/www.wikigain.com/wp-content/uploads/2017/06/Extract-macOS-Hig-Sierra-Final-Image.png"><img class="size-full wp-image-11260" style="margin:0;padding:0;border:0 none;font-style:inherit;font-variant:inherit;font-weight:inherit;font-stretch:inherit;font-size:inherit;line-height:inherit;font-family:inherit;vertical-align:baseline;max-width:98.5%;height:auto;width:auto;" src="{{site.baseurl}}/assets/images/2018/01/Extract-macOS-Hig-Sierra-Final-Image.png?zoom=1.25&amp;resize=480%252C508" alt="Install macOS High Sierra on VMware on Windows" width="456" height="482"></a></p>
+<p class="wp-caption-text">Extract macOS High Sierra Final Image</p>
+</div>
+<h3><strong>Step #2: Install VMware on Your PC</strong></h3>
+<p>Get the VMware from the link above. Once you have downloaded the VMware Workstation, then Install it on your Windows PC. To install VMware, just click on the setup then hit <strong>Next</strong> and <strong>Next</strong>. Finally, click “<strong>Finished</strong>.” If you have installed already, then skip this step.</p>
+<h3><strong>Step #3: Unlock VMware via Patch Tools</strong></h3>
+<p>Firstly, make sure you download the latest version of Patch tools from the link mentioned above. Then <strong>Extract</strong> the file from Zip format. Open <strong>“Patch Tool &gt; Unlocker Master”</strong> then right-click on <strong>win-install.cmd</strong> and select <strong>Run as Administrator</strong>. It will install the patch file in the VMware for macOS High Sierra and older versions in order to unlock VMware and let you install macOS on it.</p>
+<div id="attachment_11261" class="wp-caption aligncenter">
+<a href="https://i0.wp.com/www.wikigain.com/wp-content/uploads/2017/06/Patch-VMware-to-Unlock-macOS-Option.png"><img class="size-full wp-image-11261" style="margin:0;padding:0;border:0 none;font-style:inherit;font-variant:inherit;font-weight:inherit;font-stretch:inherit;font-size:inherit;line-height:inherit;font-family:inherit;vertical-align:baseline;max-width:98.5%;height:auto;width:auto;" src="{{site.baseurl}}/assets/images/2018/01/Patch-VMware-to-Unlock-macOS-Option.png?zoom=1.25&amp;resize=711%252C514" alt="Install macOS High Sierra on VMware on Windows" width="711" height="514"></a></p>
+<p class="wp-caption-text">Patch VMware to Unlock macOS Option</p>
+</div>
+<p>Wait for a little while then the command prompt window will disappear automatically when the VMware is patched or unlocked.</p>
+<h3><strong>Step #4: Create &amp; Edit New Virtual Machine</strong></h3>
+<p><strong>#1.</strong> Now open VMware and click on “<strong>Create a New Virtual Machine”</strong>(Ctrl+N) then select <strong>Typical </strong>(Recommended) and click <strong>Next</strong>.</p>
+<div id="attachment_11263" class="wp-caption aligncenter">
+<a href="https://i2.wp.com/www.wikigain.com/wp-content/uploads/2017/06/Create-A-New-macOS-VM.png"><img class="size-full wp-image-11263" style="margin:0;padding:0;border:0 none;font-style:inherit;font-variant:inherit;font-weight:inherit;font-stretch:inherit;font-size:inherit;line-height:inherit;font-family:inherit;vertical-align:baseline;max-width:98.5%;height:auto;width:auto;" src="{{site.baseurl}}/assets/images/2018/01/Create-A-New-macOS-VM.png?zoom=1.25&amp;resize=711%252C525" alt="Install macOS High Sierra on VMware on Windows" width="711" height="525"></a></p>
+<p class="wp-caption-text">Create A New macOS VM</p>
+</div>
+<p><strong>#2.</strong> Select“<strong>I will install the operating system later”</strong> and click <strong>Next</strong>.</p>
+<div id="attachment_11269" class="wp-caption aligncenter">
+<a href="https://i2.wp.com/www.wikigain.com/wp-content/uploads/2017/06/Select-Install-From.png"><img class="size-full wp-image-11269" style="margin:0;padding:0;border:0 none;font-style:inherit;font-variant:inherit;font-weight:inherit;font-stretch:inherit;font-size:inherit;line-height:inherit;font-family:inherit;vertical-align:baseline;max-width:98.5%;height:auto;width:auto;" src="{{site.baseurl}}/assets/images/2018/01/Select-Install-From.png?zoom=1.25&amp;resize=426%252C395" alt="Install macOS High Sierra on VMware on Windows" width="404" height="375"></a></p>
+<p class="wp-caption-text">Select Install From</p>
+</div>
+<p><strong>#3.</strong> Now choose“<strong>Apple Mac OS X”</strong> from operating system list then select <strong>mac</strong><strong>OS 10.12</strong> from version and click <strong>Next</strong>.</p>
+<div id="attachment_11262" class="wp-caption aligncenter">
+<a href="https://i1.wp.com/www.wikigain.com/wp-content/uploads/2017/06/Choose-macOS-Guest-OS.png"><img class="size-full wp-image-11262" style="margin:0;padding:0;border:0 none;font-style:inherit;font-variant:inherit;font-weight:inherit;font-stretch:inherit;font-size:inherit;line-height:inherit;font-family:inherit;vertical-align:baseline;max-width:98.5%;height:auto;width:auto;" src="{{site.baseurl}}/assets/images/2018/01/Choose-macOS-Guest-OS.png?zoom=1.25&amp;resize=426%252C395" alt="Install macOS High Sierra on VMware on Windows" width="404" height="375"></a></p>
+<p class="wp-caption-text">Choose macOS Guest OS</p>
+</div>
+<p><strong>#4.</strong> Name the virtual machine <strong>macOS High Sierra </strong>or any other name that you like then browse a location to save virtual machine files like the VMX file and click <strong>Next</strong>. I suggest you leave the location as default and name it as shown in the shot below if it’s your first time.</p>
+<div id="attachment_11267" class="wp-caption aligncenter">
+<a href="https://i0.wp.com/www.wikigain.com/wp-content/uploads/2017/06/Name-the-VM-macOS-High-Sierra.png"><img class="size-full wp-image-11267" style="margin:0;padding:0;border:0 none;font-style:inherit;font-variant:inherit;font-weight:inherit;font-stretch:inherit;font-size:inherit;line-height:inherit;font-family:inherit;vertical-align:baseline;max-width:98.5%;height:auto;width:auto;" src="{{site.baseurl}}/assets/images/2018/01/Name-the-VM-macOS-High-Sierra.png?zoom=1.25&amp;resize=426%252C395" alt="Install macOS High Sierra on VMware on Windows" width="404" height="375"></a></p>
+<p class="wp-caption-text">Name the VM macOS High Sierra</p>
+</div>
+<p><strong>Note</strong>: You need to save it somewhere you remember and in a separate folder because later on, you will need to edit on of this file.</p>
+<p><strong>#5.</strong> Don’t Specify the disk space just select<strong> Store virtual disk as a single file</strong> and click <strong>Next</strong>.</p>
+<div id="attachment_11270" class="wp-caption aligncenter">
+<a href="https://i2.wp.com/www.wikigain.com/wp-content/uploads/2017/06/Specify-Disk-Capacity.png"><img class="size-full wp-image-11270" style="margin:0;padding:0;border:0 none;font-style:inherit;font-variant:inherit;font-weight:inherit;font-stretch:inherit;font-size:inherit;line-height:inherit;font-family:inherit;vertical-align:baseline;max-width:98.5%;height:auto;width:auto;" src="{{site.baseurl}}/assets/images/2018/01/Specify-Disk-Capacity.png?zoom=1.25&amp;resize=426%252C395" alt="Install macOS High Sierra on VMware on Windows" width="404" height="375"></a></p>
+<p class="wp-caption-text">Specify Disk Capacity</p>
+</div>
+<p><strong>#6.</strong> The essential VM files for macOS High Sierra has been created, so go ahead and click <strong>Finish</strong>.</p>
+<div id="attachment_11268" class="wp-caption aligncenter">
+<a href="https://i2.wp.com/www.wikigain.com/wp-content/uploads/2017/06/Ready-to-Create-the-VM.png"><img class="size-full wp-image-11268" style="margin:0;padding:0;border:0 none;font-style:inherit;font-variant:inherit;font-weight:inherit;font-stretch:inherit;font-size:inherit;line-height:inherit;font-family:inherit;vertical-align:baseline;max-width:98.5%;height:auto;width:auto;" src="{{site.baseurl}}/assets/images/2018/01/Ready-to-Create-the-VM.png?zoom=1.25&amp;resize=426%252C395" alt="Install macOS High Sierra on VMware on Windows" width="426" height="395"></a></p>
+<p class="wp-caption-text">Ready to Create the VM</p>
+</div>
+<p><strong>#7.</strong> Open the macOS High Sierra VM window on VMware workstation or player then click on <strong>Edit virtual machine settings</strong>.</p>
+<p><strong>Note</strong>: Don’t run the Virtual Machine until you made the essential steps.</p>
+<div id="attachment_11264" class="wp-caption aligncenter">
+<a href="https://i2.wp.com/www.wikigain.com/wp-content/uploads/2017/06/Edit-the-VM-Settings.png"><img class="size-full wp-image-11264" style="margin:0;padding:0;border:0 none;font-style:inherit;font-variant:inherit;font-weight:inherit;font-stretch:inherit;font-size:inherit;line-height:inherit;font-family:inherit;vertical-align:baseline;max-width:98.5%;height:auto;width:auto;" src="{{site.baseurl}}/assets/images/2018/01/Edit-the-VM-Settings.png?zoom=1.25&amp;resize=711%252C525" alt="Install macOS High Sierra on VMware on Windows" width="711" height="525"></a></p>
+<p class="wp-caption-text">Edit the VIrtual Machine Settings</p>
+</div>
+<p><strong>#8.</strong> Increase the Memory from 2 GB to <strong>4 </strong>or higher GB of Ram memory for better performance.</p>
+<div id="attachment_11265" class="wp-caption aligncenter">
+<a href="https://i1.wp.com/www.wikigain.com/wp-content/uploads/2017/06/Increase-Memory.png"><img class="size-full wp-image-11265" style="margin:0;padding:0;border:0 none;font-style:inherit;font-variant:inherit;font-weight:inherit;font-stretch:inherit;font-size:inherit;line-height:inherit;font-family:inherit;vertical-align:baseline;max-width:98.5%;height:auto;width:auto;" src="{{site.baseurl}}/assets/images/2018/01/Increase-Memory.png?zoom=1.25&amp;resize=683%252C614" alt="Install macOS High Sierra on VMware on Windows" width="683" height="614"></a></p>
+<p class="wp-caption-text">Increase Memory</p>
+</div>
+<p><strong>#9.</strong> Increase the <strong>CPU processor</strong> core from 2 cores to <strong>4 </strong>or Higher cores for better performance.Finally, Click <strong>OK</strong> to save all the changes that you made virtual machine settings.</p>
+<div id="attachment_11266" class="wp-caption aligncenter">
+<a href="https://i2.wp.com/www.wikigain.com/wp-content/uploads/2017/06/Increase-Processors-.png"><img class="size-full wp-image-11266" style="margin:0;padding:0;border:0 none;font-style:inherit;font-variant:inherit;font-weight:inherit;font-stretch:inherit;font-size:inherit;line-height:inherit;font-family:inherit;vertical-align:baseline;max-width:98.5%;height:auto;width:auto;" src="{{site.baseurl}}/assets/images/2018/01/Increase-Processors-.png?zoom=1.25&amp;resize=683%252C614" alt="Install macOS High Sierra on VMware on Windows" width="683" height="614"></a></p>
+<p class="wp-caption-text">Increase Processors</p>
+</div>
+<h3><strong>Step #6: Manage macOS High Sierra VMDK and Virtual Machine VMX file</strong></h3>
+<p><strong>#1.</strong> Now go to macOS High Sierra virtual machine files that you browsed and located in step 4.4. If you have left that steps as default then the files are saved in this location: <strong>This PC &gt; Documents &gt; Virtual Machine &gt; virtual machine Name</strong>.  Here you need to replace the macOS High Sierra Image(8.87GB) with this existing VMDK (5 MB). Just drag the macOS High Sierra Image that you download and extracted in step #1 then drop it on the Virtual machine files. If you get a replace or skip files dialog box then click on <strong>Replace the in the destination</strong>.</p>
+<div id="attachment_11274" class="wp-caption aligncenter">
+<a href="https://i1.wp.com/www.wikigain.com/wp-content/uploads/2017/06/Replace-the-Virtual-Machine-VMDK.png"><img class="size-full wp-image-11274" style="margin:0;padding:0;border:0 none;font-style:inherit;font-variant:inherit;font-weight:inherit;font-stretch:inherit;font-size:inherit;line-height:inherit;font-family:inherit;vertical-align:baseline;max-width:98.5%;height:auto;width:auto;" src="{{site.baseurl}}/assets/images/2018/01/Replace-the-Virtual-Machine-VMDK.png?zoom=1.25&amp;resize=711%252C484" alt="Install macOS High Sierra on VMware on Windows" width="711" height="484"></a></p>
+<p class="wp-caption-text">Replace the Virtual Machine VMDK</p>
+</div>
+<p><strong>Note</strong>: You have to name the macOS High Sierra Image as your virtual machine name. It should be the same in order to be replaced and make it work otherwise, you need to add the image manually. Also, the size should change from <strong>5 MB to 9.57 GB</strong> after you replaced the VMDK.</p>
+<div id="attachment_11272" class="wp-caption aligncenter">
+<a href="https://i1.wp.com/www.wikigain.com/wp-content/uploads/2017/06/Match-the-name-and-Size.png"><img class="size-full wp-image-11272" style="margin:0;padding:0;border:0 none;font-style:inherit;font-variant:inherit;font-weight:inherit;font-stretch:inherit;font-size:inherit;line-height:inherit;font-family:inherit;vertical-align:baseline;max-width:98.5%;height:auto;width:auto;" src="{{site.baseurl}}/assets/images/2018/01/Match-the-name-and-Size.png?zoom=1.25&amp;resize=711%252C494" alt="Install macOS High Sierra on VMware on Windows" width="711" height="494"></a></p>
+<p class="wp-caption-text">Match the Name and Size</p>
+</div>
+<p><strong>#2.</strong> Now right-click on <strong>macOS High Sierra VMX</strong> and open it with <strong>Notepad</strong>.</p>
+<div id="attachment_11273" class="wp-caption aligncenter">
+<a href="https://i1.wp.com/www.wikigain.com/wp-content/uploads/2017/06/Open-the-VMX-with-Notepad.png"><img class="size-full wp-image-11273" style="margin:0;padding:0;border:0 none;font-style:inherit;font-variant:inherit;font-weight:inherit;font-stretch:inherit;font-size:inherit;line-height:inherit;font-family:inherit;vertical-align:baseline;max-width:98.5%;height:auto;width:auto;" src="{{site.baseurl}}/assets/images/2018/01/Open-the-VMX-with-Notepad.png?zoom=1.25&amp;resize=711%252C471" alt="Install macOS High Sierra on VMware on Windows" width="711" height="471"></a></p>
+<p class="wp-caption-text">Open the VMX with Notepad</p>
+</div>
+<p><strong>#3.</strong> Scroll down to the end, and type (<strong>smc.version = “0”) </strong>or (“smc.version = 0″as alternative) then press Ctrl+S to save it.”</p>
+<div id="attachment_11271" class="wp-caption aligncenter">
+<a href="https://i0.wp.com/www.wikigain.com/wp-content/uploads/2017/06/Edit-VMX-Save.png"><img class="size-full wp-image-11271" style="margin:0;padding:0;border:0 none;font-style:inherit;font-variant:inherit;font-weight:inherit;font-stretch:inherit;font-size:inherit;line-height:inherit;font-family:inherit;vertical-align:baseline;max-width:98.5%;height:auto;width:auto;" src="{{site.baseurl}}/assets/images/2018/01/Edit-VMX-Save.png?zoom=1.25&amp;resize=448%252C438" alt="Install macOS High Sierra on VMware on Windows" width="448" height="438"></a></p>
+<p class="wp-caption-text">Edit VMX &amp; Save</p>
+</div>
+<h3><strong>Step #7. Play the macOS High Sierra Virtual Machine</strong></h3>
+<p><strong>#1.</strong> Open macOS High Sierra VM window then click <strong>Power on this virtual machine. </strong></p>
+<div id="attachment_11279" class="wp-caption aligncenter">
+<a href="https://i0.wp.com/www.wikigain.com/wp-content/uploads/2017/06/Power-on-The-VM.png"><img class="size-full wp-image-11279" style="margin:0;padding:0;border:0 none;font-style:inherit;font-variant:inherit;font-weight:inherit;font-stretch:inherit;font-size:inherit;line-height:inherit;font-family:inherit;vertical-align:baseline;max-width:98.5%;height:auto;width:auto;" src="{{site.baseurl}}/assets/images/2018/01/Power-on-The-VM.png?zoom=1.25&amp;resize=711%252C525" alt="Install macOS High Sierra on VMware on Windows" width="711" height="525"></a></p>
+<p class="wp-caption-text">Power on The VM</p>
+</div>
+<p>Here you go and you don’t need to install macOS High Sierra because we have done that for you to save time, It is already installed on a virtual disk (VMDK). All you need to do now, perform a clean installation of macOS High Sierra to set it up as your needs. When you played the VM, then it should take you to the next step setting up macOS High Sierra in VMware.If no then you may miss any action or fail in any move, comment below and we will try our best for you.</p>
+<p><strong>#2.</strong> Choose your <strong>Country</strong> and click on <strong>Continue</strong>.</p>
+<div id="attachment_11276" class="wp-caption aligncenter">
+<a href="https://i2.wp.com/www.wikigain.com/wp-content/uploads/2017/06/Choose-your-Country.png"><img class="size-full wp-image-11276" style="margin:0;padding:0;border:0 none;font-style:inherit;font-variant:inherit;font-weight:inherit;font-stretch:inherit;font-size:inherit;line-height:inherit;font-family:inherit;vertical-align:baseline;max-width:98.5%;height:auto;width:auto;" src="{{site.baseurl}}/assets/images/2018/01/Choose-your-Country.png?zoom=1.25&amp;resize=711%252C534" alt="Install macOS High Sierra on VMware on Windows" width="711" height="534"></a></p>
+<p class="wp-caption-text">Choose your Country</p>
+</div>
+<p><strong>#3.</strong> Pick a <strong>keyboard</strong> Layout and click on <strong>Continue</strong>.</p>
+<div id="attachment_11280" class="wp-caption aligncenter">
+<a href="https://i2.wp.com/www.wikigain.com/wp-content/uploads/2017/06/Select-Your-Keyboard-Layout.png"><img class="size-full wp-image-11280" style="margin:0;padding:0;border:0 none;font-style:inherit;font-variant:inherit;font-weight:inherit;font-stretch:inherit;font-size:inherit;line-height:inherit;font-family:inherit;vertical-align:baseline;max-width:98.5%;height:auto;width:auto;" src="{{site.baseurl}}/assets/images/2018/01/Select-Your-Keyboard-Layout.png?zoom=1.25&amp;resize=711%252C534" alt="Install macOS High Sierra on VMware on Windows" width="711" height="534"></a></p>
+<p class="wp-caption-text">Select Your Keyboard Layout</p>
+</div>
+<p><strong>#4.</strong> Now choose your method to <strong>transfer information</strong> to this Mac and click on <strong>Continue</strong>. Here I don’t want to transfer any information.</p>
+<div id="attachment_11282" class="wp-caption aligncenter">
+<a href="https://i1.wp.com/www.wikigain.com/wp-content/uploads/2017/06/Transfer-Information-to-this-Mac.png"><img class="size-full wp-image-11282" style="margin:0;padding:0;border:0 none;font-style:inherit;font-variant:inherit;font-weight:inherit;font-stretch:inherit;font-size:inherit;line-height:inherit;font-family:inherit;vertical-align:baseline;max-width:98.5%;height:auto;width:auto;" src="{{site.baseurl}}/assets/images/2018/01/Transfer-Information-to-this-Mac.png?zoom=1.25&amp;resize=711%252C534" alt="Install macOS High Sierra on VMware on Windows" width="711" height="534"></a></p>
+<p class="wp-caption-text">Transfer Information to this Mac</p>
+</div>
+<p><strong>#5.</strong> In this step, you can to <strong>Sign in with your Apple ID</strong>. If you have one, then create a free Apple ID via the article, <a href="http://www.wikigain.com/create-an-apple-id-on-iphone-ipad/">how to create an Apple ID on iPhone, iPad or iPod Touch.</a> If you don’t want to sign in with Apple ID or it doesn’t work, then Choose <strong>Don’t Sign in</strong> and Click on <strong>Continue</strong>.</p>
+<div id="attachment_8754" class="wp-caption aligncenter">
+<a href="https://i2.wp.com/www.wikigain.com/wp-content/uploads/2017/06/Sign-in-with-Your-Apple-ID.jpg"><img class="size-full wp-image-8754" style="margin:0;padding:0;border:0 none;font-style:inherit;font-variant:inherit;font-weight:inherit;font-stretch:inherit;font-size:inherit;line-height:inherit;font-family:inherit;vertical-align:baseline;max-width:98.5%;height:auto;width:auto;" src="{{site.baseurl}}/assets/images/2018/01/Sign-in-with-Your-Apple-ID.jpg?zoom=1.25&amp;resize=711%252C534" alt="How to Install macOS High Sierra 10.13 on VMware on Windows" width="711" height="534"></a></p>
+<p class="wp-caption-text">Sign in with Your Apple ID</p>
+</div>
+<p><b>#6. Agree </b>to<b> </b>the <strong>Terms and Conditions</strong>.</p>
+<div id="attachment_11275" class="wp-caption aligncenter">
+<a href="https://i0.wp.com/www.wikigain.com/wp-content/uploads/2017/06/Agree-the-Terms-and-Conditions.png"><img class="size-full wp-image-11275" style="margin:0;padding:0;border:0 none;font-style:inherit;font-variant:inherit;font-weight:inherit;font-stretch:inherit;font-size:inherit;line-height:inherit;font-family:inherit;vertical-align:baseline;max-width:98.5%;height:auto;width:auto;" src="{{site.baseurl}}/assets/images/2018/01/Agree-the-Terms-and-Conditions.png?zoom=1.25&amp;resize=711%252C534" alt="Install macOS High Sierra on VMware on Windows" width="711" height="534"></a></p>
+<p class="wp-caption-text">Agree to the Terms and Conditions</p>
+</div>
+<p><strong>#7.</strong> Fill out the <strong>Full name,  Account name, Password, Hint</strong> and check the box of <strong>Set time zone based on Current location</strong>. Then finally click on <strong>Continue</strong> to create your user account for macOS High Sierra 10.13, which will be installed.</p>
+<div id="attachment_11277" class="wp-caption aligncenter">
+<a href="https://i2.wp.com/www.wikigain.com/wp-content/uploads/2017/06/Create-a-User-Account.png"><img class="size-full wp-image-11277" style="margin:0;padding:0;border:0 none;font-style:inherit;font-variant:inherit;font-weight:inherit;font-stretch:inherit;font-size:inherit;line-height:inherit;font-family:inherit;vertical-align:baseline;max-width:98.5%;height:auto;width:auto;" src="{{site.baseurl}}/assets/images/2018/01/Create-a-User-Account.png?zoom=1.25&amp;resize=711%252C534" alt="Install macOS High Sierra on VMware on Windows" width="711" height="534"></a></p>
+<p class="wp-caption-text">Create a User Account</p>
+</div>
+<p><strong>#8.</strong> On the <strong>Expres Set Up</strong> page, you don’t want to do something just click <em><strong>Continue</strong></em>.</p>
+<div id="attachment_11281" class="wp-caption aligncenter">
+<a href="https://i2.wp.com/www.wikigain.com/wp-content/uploads/2017/06/Set-Up-Express.png"><img class="size-full wp-image-11281" style="margin:0;padding:0;border:0 none;font-style:inherit;font-variant:inherit;font-weight:inherit;font-stretch:inherit;font-size:inherit;line-height:inherit;font-family:inherit;vertical-align:baseline;max-width:98.5%;height:auto;width:auto;" src="{{site.baseurl}}/assets/images/2018/01/Set-Up-Express.png?zoom=1.25&amp;resize=711%252C534" alt="Install macOS High Sierra on VMware on Windows" width="711" height="534"></a></p>
+<p class="wp-caption-text">Set Up Express</p>
+</div>
+<p><strong>#9.</strong> Wait a little while to Setting Up Your Mac. Then it will run to the desktop of macOS High Sierra.</p>
+<div id="attachment_8753" class="wp-caption aligncenter">
+<a href="https://i1.wp.com/www.wikigain.com/wp-content/uploads/2017/06/Setting-Up-You-Mac.jpg"><img class="size-full wp-image-8753" style="margin:0;padding:0;border:0 none;font-style:inherit;font-variant:inherit;font-weight:inherit;font-stretch:inherit;font-size:inherit;line-height:inherit;font-family:inherit;vertical-align:baseline;max-width:98.5%;height:auto;width:auto;" src="{{site.baseurl}}/assets/images/2018/01/Setting-Up-You-Mac.jpg?zoom=1.25&amp;resize=711%252C534" alt="How to Install macOS High Sierra 10.13 on VMware on Windows" width="711" height="534"></a></p>
+<p class="wp-caption-text">Setting Up Your Mac</p>
+</div>
+<h3><strong>Finish Installation of macOS High Sierra</strong></h3>
+<p>After performing a clean installation and Set upping your macOS High Sierra then you should see your final result that, macOS High Sierra has successfully installed on VMware.</p>
+<div id="attachment_11278" class="wp-caption aligncenter">
+<a href="https://i1.wp.com/www.wikigain.com/wp-content/uploads/2017/06/macOS-High-Sierra-Finally-Installed-on-VMware.png"><img class="size-full wp-image-11278" style="margin:0;padding:0;border:0 none;font-style:inherit;font-variant:inherit;font-weight:inherit;font-stretch:inherit;font-size:inherit;line-height:inherit;font-family:inherit;vertical-align:baseline;max-width:98.5%;height:auto;width:auto;" src="{{site.baseurl}}/assets/images/2018/01/macOS-High-Sierra-Finally-Installed-on-VMware.png?zoom=1.25&amp;resize=711%252C615" alt="How to Install macOS High Sierra on VMware on Windows" width="711" height="615"></a></p>
+<p class="wp-caption-text">macOS High Sierra Finally Installed on VMware</p>
+</div>
+<h2>Further Guide</h2>
+<p>I hope you guys have gotten something from this step by step guide. If you have any kinds of problem or question feel free to share via comment section down below. Also, you in the section below there are more guides that may help you out. So go ahead and check out them, thanks for being with us.</p>
+<h3>Install VMware tools to Fix Screen Resolution</h3>
+<p>Now that you have, install macOS High Sierra on VMware on Windows successfully still there are many things need to fix manually. One of the most important ones is the VMware, you need to install the VMware tool on macOS High Sierra to get the most of macOS High Sierra on Windows.  Many features like drag &amp; Drop, fix screen resolution, network and other issues will be fixed after you install VMware tool. We have a create a simple guide to do that so follow the guide linked down below step by step.</p>
+<ul>
+<li><a href="http://www.wikigain.com/install-vmware-tools-macos-high-sierra/" target="_blank" rel="noopener">How to Install VMware tools on macOS High Sierra</a></li>
+</ul>
+<p>It was all about, how to install macOS High Sierra on VMware on Windows. If you faced any problem tell us below by comment, feel free to say us. We’re waiting for your suggestion.</body></html></p>

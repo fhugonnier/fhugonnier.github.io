@@ -1,0 +1,82 @@
+---
+layout: post
+title: Problème de synchronisation ActiveSync Exchange 2013
+date: 2015-04-30 12:19:25.000000000 +02:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Exchange 2013
+tags: []
+meta:
+  _edit_last: '82119094'
+  _publicize_pending: '1'
+  geo_public: '0'
+author:
+  login: fhugonnier
+  email: fhugonnier@outlook.com
+  display_name: fhugonnier
+  first_name: ''
+  last_name: ''
+permalink: "/2015/04/30/probleme-de-synchronisation-activesync-exchange-2013/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body></p>
+<div class="separator" style="font:14px/19.6px 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;margin:0;padding:0;text-align:justify;color:#333333;text-transform:none;text-indent:0;letter-spacing:normal;clear:both;word-spacing:0;white-space:normal;widows:1;font-size-adjust:none;font-stretch:normal;background-color:#ffffff;">Tout ne se passe pas toujours comme prévu dans le monde fantastique d'Exchange 2013, le célèbre serveur de messagerie de Microsoft.</div>
+<div class="separator" style="font:14px/19.6px 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;margin:0;padding:0;text-align:justify;color:#333333;text-transform:none;text-indent:0;letter-spacing:normal;clear:both;word-spacing:0;white-space:normal;widows:1;font-size-adjust:none;font-stretch:normal;background-color:#ffffff;">L'un des problèmes les plus fréquents à la mise en place, lors d'une migration ou simplement en exploitation, c'est la perte de synchronisation ActiveSync avec un ou plusieurs terminaux mobiles (iPhone, BlackBerry avec le serveur BES, Nokia Mail for Exchange, etc.).</div>
+<div class="separator" style="font:14px/19.6px 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;margin:0;padding:0;text-align:justify;color:#333333;text-transform:none;text-indent:0;letter-spacing:normal;clear:both;word-spacing:0;white-space:normal;widows:1;font-size-adjust:none;font-stretch:normal;background-color:#ffffff;"></div>
+<div class="separator" style="font:14px/19.6px 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;margin:0;padding:0;text-align:justify;color:#333333;text-transform:none;text-indent:0;letter-spacing:normal;clear:both;word-spacing:0;white-space:normal;widows:1;font-size-adjust:none;font-stretch:normal;background-color:#ffffff;">
+<div class="separator" style="font:14px/19.6px 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;margin:0;padding:0;text-align:justify;color:#333333;text-transform:none;text-indent:0;letter-spacing:normal;clear:both;word-spacing:0;white-space:normal;widows:1;font-size-adjust:none;font-stretch:normal;background-color:#ffffff;">Voyons ici comment dépanner cela en quelques clics.</div>
+<div class="separator" style="font:14px/19.6px 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;margin:0;padding:0;text-align:justify;color:#333333;text-transform:none;text-indent:0;letter-spacing:normal;clear:both;word-spacing:0;white-space:normal;widows:1;font-size-adjust:none;font-stretch:normal;background-color:#ffffff;"></div>
+<h2 style="margin:.75em 0;padding:0;text-align:left;color:#333333;text-transform:none;text-indent:0;letter-spacing:normal;font-family:'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:1.5em;font-style:normal;font-variant:normal;font-weight:bolder;word-spacing:0;white-space:normal;position:relative;widows:1;background-color:#ffffff;">Constat :</h2>
+<div dir="ltr" style="font:14px/normal 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;margin:0;padding:0;text-align:left;color:#222222;text-transform:none;text-indent:0;letter-spacing:normal;word-spacing:0;white-space:normal;widows:1;font-size-adjust:none;font-stretch:normal;background-color:white;">
+<div>Impossible de lancer une synchronisation ActiveSync avec des comptes membres du groupe Administrateur.</div>
+</div>
+<div dir="ltr" style="font:14px/normal 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;margin:0;padding:0;text-align:left;color:#222222;text-transform:none;text-indent:0;letter-spacing:normal;word-spacing:0;white-space:normal;widows:1;font-size-adjust:none;font-stretch:normal;background-color:white;">
+<div></div>
+</div>
+<div style="font:14px/normal 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;margin:0;padding:0;text-align:left;color:#222222;text-transform:none;text-indent:0;letter-spacing:normal;word-spacing:0;white-space:normal;widows:1;font-size-adjust:none;font-stretch:normal;background-color:white;">
+<div>Présence dans les journaux d’événements de l'erreur :</div>
+</div>
+<div dir="ltr" style="font:14px/normal 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;margin:0;padding:0;text-align:left;color:#222222;text-transform:none;text-indent:0;letter-spacing:normal;word-spacing:0;white-space:normal;widows:1;font-size-adjust:none;font-stretch:normal;background-color:white;">
+<div>Erreur 1053 : “ActiveSync Exchange ne dispose pas des autorisations suffisantes pour créer le conteneur “</div>
+</div>
+<div><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2015/04/30-04-2015-13-09-25.png"><img class="alignnone  wp-image-139" src="{{site.baseurl}}/assets/images/2015/04/30-04-2015-13-09-25.png?w=300" alt="30-04-2015 13-09-25" width="363" height="183"></a></div>
+</div>
+<div>
+<h2 style="margin:.75em 0;padding:0;text-align:justify;color:#222222;text-transform:none;text-indent:0;letter-spacing:normal;font-family:'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:1.5em;font-style:normal;font-variant:normal;font-weight:bolder;word-spacing:0;white-space:normal;position:relative;widows:1;background-color:#ffffff;">Résolution :</h2>
+<p>Activez les “Fonctionnalités avancées” dans la console AD (Active Directory)</p></div>
+<div><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2015/04/30-04-2015-13-14-00.png"><img class="alignnone size-medium wp-image-140" src="{{site.baseurl}}/assets/images/2015/04/30-04-2015-13-14-00.png?w=300" alt="30-04-2015 13-14-00" width="300" height="159"></a></div>
+<div></div>
+<div>
+<span style="font:14px/14px 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;text-align:justify;color:#222222;text-transform:none;text-indent:0;letter-spacing:normal;word-spacing:0;vertical-align:baseline;white-space:pre-wrap;widows:1;font-size-adjust:none;font-stretch:normal;background-color:transparent;">Sélectionnez l’utilisateur touché par l’erreur et allez sur l’onglet sécurité puis cliquez</span><span style="font:14px/normal 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;text-align:justify;color:#222222;text-transform:none;text-indent:0;letter-spacing:normal;word-spacing:0;white-space:pre-wrap;widows:1;font-size-adjust:none;font-stretch:normal;background-color:transparent;"> sur "Avancé"</span>
+</div>
+<div><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2015/04/30-04-2015-13-15-35.png"><img class="alignnone size-medium wp-image-141" src="{{site.baseurl}}/assets/images/2015/04/30-04-2015-13-15-35.png?w=270" alt="30-04-2015 13-15-35" width="270" height="300"></a></div>
+<div></div>
+<div>
+<div dir="ltr" style="font:14px/normal 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;margin:0;padding:0;text-align:left;color:#222222;text-transform:none;text-indent:0;letter-spacing:normal;word-spacing:0;white-space:normal;widows:1;font-size-adjust:none;font-stretch:normal;background-color:white;">
+<div>Triez par nom et sélectionnez tous les objets “Exchange Servers”</div>
+</div>
+<div dir="ltr" style="font:14px/normal 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;margin:0;padding:0;text-align:left;color:#222222;text-transform:none;text-indent:0;letter-spacing:normal;word-spacing:0;white-space:normal;widows:1;font-size-adjust:none;font-stretch:normal;background-color:white;">
+<div>Et cliquer sur le bouton "Activer L'héritage"</div>
+</div>
+<div><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2015/04/30-04-2015-13-17-13.png"><img class="alignnone size-medium wp-image-142" src="{{site.baseurl}}/assets/images/2015/04/30-04-2015-13-17-13.png?w=300" alt="30-04-2015 13-17-13" width="300" height="201"></a></div>
+</div>
+<div>
+<div dir="ltr" style="font:14px/normal 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;margin:0;padding:0;text-align:left;color:#222222;text-transform:none;text-indent:0;letter-spacing:normal;word-spacing:0;white-space:normal;widows:1;font-size-adjust:none;font-stretch:normal;background-color:white;">
+<div>Et enfin appliquez toutes les modifications.</div>
+</div>
+<div style="font:14px/19.6px 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;margin:0;padding:0;text-align:left;color:#222222;text-transform:none;text-indent:0;letter-spacing:normal;word-spacing:0;white-space:normal;widows:1;font-size-adjust:none;font-stretch:normal;background-color:white;">
+<div></div>
+</div>
+<div dir="ltr" style="font:14px/normal 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;margin:0;padding:0;text-align:left;color:#222222;text-transform:none;text-indent:0;letter-spacing:normal;word-spacing:0;white-space:normal;widows:1;font-size-adjust:none;font-stretch:normal;background-color:white;"></div>
+<div style="font:14px/19.6px 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;margin:0;padding:0;text-align:left;color:#333333;text-transform:none;text-indent:0;letter-spacing:normal;word-spacing:0;white-space:normal;widows:1;font-size-adjust:none;font-stretch:normal;background-color:white;">
+<div>
+<div>Le compte va récupérer les droits nécessaires et la synchronisation va se dérouler correctement.</div>
+</div>
+</div>
+</div>
+<div dir="ltr" style="font:14px/normal 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;margin:0;padding:0;text-align:left;color:#222222;text-transform:none;text-indent:0;letter-spacing:normal;word-spacing:0;white-space:normal;widows:1;font-size-adjust:none;font-stretch:normal;background-color:white;"></div>
+<p></body></html></p>

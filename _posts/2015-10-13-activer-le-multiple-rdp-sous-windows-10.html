@@ -1,0 +1,53 @@
+---
+layout: post
+title: Activer le multiple RDP sous Windows 10
+date: 2015-10-13 08:57:51.000000000 +02:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Windows 10
+tags: []
+meta:
+  _edit_last: '82119094'
+  geo_public: '0'
+  _publicize_job_id: '15769913189'
+author:
+  login: fhugonnier
+  email: fhugonnier@outlook.com
+  display_name: fhugonnier
+  first_name: ''
+  last_name: ''
+permalink: "/2015/10/13/activer-le-multiple-rdp-sous-windows-10/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body></p>
+<h2>Informations</h2>
+<p>Windows 10 ne permet pas plusieurs connexions Bureau à distance (<a href="https://fr.wikipedia.org/wiki/Remote_Desktop_Protocol">RDP</a>) en simultanée. <strong>Seul un seul utilisateur à la fois peut se connecter via RDP sur votre ordinateur.<br />
+</strong></p>
+<p>Cependant, il est possible de contourner cette restriction. Il sera alors possible de se connecter à plusieurs utilisateurs en simultanés, via le protocole RDP.</p>
+<p><strong>Attention</strong> : ce tutoriels n’est en rien légal ! Sky-Future.net n’est pas responsable de l’utilisation de cette technique qui permet de contourner la restriction de windows 10. Actuellement le patch que nous allons mettre en place n’existe que pour les versions 64 bits de windows 10 donc si votre PC est en 32 bits ne l’utilisez surtout pas.</p>
+<h2>Près-requis</h2>
+<ul>
+<li>Un PC sous windows 10 en 64 bits</li>
+<li>Les droits administrateurs sur le PC</li>
+<li>Avoir déjà activer le RDP sur le poste</li>
+<li>Télécharger sur le PC le fichier <a href="http://www.sky-future.net/wp-content/uploads/2015/08/termsrv_patched_windows_10_x64.zip">termsrv_patched_windows_10_x64</a>
+</li>
+</ul>
+<h2>Mise en place du multiple RDP</h2>
+<p>Aller dans la barre de recherche et taper « services.msc » puis sélectionner le premier résultat.</p>
+<p><a href="http://www.sky-future.net/wp-content/uploads/2015/08/capture1.png"><img class="aligncenter wp-image-10204 size-medium" src="{{site.baseurl}}/assets/images/2015/10/capture1-193x300.png" alt="services.msc" width="193" height="300"></a></p>
+<p>Une fois ouvert, arrêtez les services “<strong>Services Bureau à distance</strong>“ et  « <strong>Configuration des services Bureau à distance</strong>« .</p>
+<p><a href="http://www.sky-future.net/wp-content/uploads/2015/08/multiplerdp6.png"><img class="aligncenter wp-image-10205 size-medium" src="{{site.baseurl}}/assets/images/2015/10/multiplerdp6-300x207.png" alt="Les services" width="300" height="207"></a></p>
+<p>Une fois arrêtée, rendez-vous dans le dossier : <strong>C:\Windows\System32</strong></p>
+<p>Faites une copie du fichier <strong>termsrv.dl</strong>l.</p>
+<p>Allez ensuite dans les propriétés du fichier.</p>
+<p>Puis dans l’onglet <strong>Sécurité </strong>et cliquez sur <strong>Avancé</strong>. Il faut ensuite changer le propriétaire qui est <strong>TrustedInstaller</strong>par défaut, ce qui ne permet pas de modifier les droits sur  le fichier. Cliquer sur <strong>Modifier</strong> et indiquez le nom de votre utilisateur disposant des droits administrateur puis valider.</p>
+<p>Fermer les propriété puis ouvrez les de nouveau. Pour vous donner cette fois-ci le contrôle total sur le fichier  au groupe « Administrateurs ».</p>
+<p><a href="http://www.sky-future.net/wp-content/uploads/2015/08/capt4.png"><img class="aligncenter wp-image-10206 size-medium" src="{{site.baseurl}}/assets/images/2015/10/capt4-300x121.png" alt="Droit fichier " width="300" height="121"></a></p>
+<p>Une fois effectuée, remplacer ce fichier <strong>termsrv.dl</strong>l par le fichier présent dans l’archive précédemment téléchargé.</p>
+<p>Puis redémarrer les services “<strong>Services Bureau à distance</strong>“ et  « <strong>Configuration des services Bureau à distance</strong>« .</p>
+<p>Voilà normalement vous pouvez vous connecter au bureau à distance à plusieurs en même temps avec un ou plusieurs comptes différents.</body></html></p>

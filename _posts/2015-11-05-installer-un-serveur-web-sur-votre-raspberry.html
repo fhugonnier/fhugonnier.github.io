@@ -1,0 +1,324 @@
+---
+layout: post
+title: Installer un serveur web sur votre Raspberry
+date: 2015-11-05 11:34:28.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Raspberry Pi
+tags: []
+meta:
+  _edit_last: '82119094'
+  geo_public: '0'
+  _publicize_job_id: '16558771035'
+author:
+  login: fhugonnier
+  email: fhugonnier@outlook.com
+  display_name: fhugonnier
+  first_name: ''
+  last_name: ''
+permalink: "/2015/11/05/installer-un-serveur-web-sur-votre-raspberry/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body><br />
+<b><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2015/11/serveur_web_raspberry-637x320.jpg"><img class="alignnone size-medium wp-image-212" src="{{site.baseurl}}/assets/images/2015/11/serveur_web_raspberry-637x320.jpg?w=300" alt="serveur_web_raspberry-637x320" width="300" height="151"></a></b></p>
+<p>Après avoir créé votre carte SD, et après avoir démarré pour la première fois votre Raspberry Pi, il y a de fortes chances que vous souhaitiez l’utiliser comme un serveur web.</p>
+<h2>La Raspberry Pi comme serveur web, pourquoi ?</h2>
+<p>Mais <strong>pourquoi utiliser la Raspberry comme un serveur Web</strong>, plutôt que de faire appel à des prestataires de services spécialisés dans l’hébergement web ?</p>
+<p>Tout d’abord, d’un point de vue économique, il faut savoir que <strong>les services d’hébergement web ne sont pas gratuits</strong> et qu’il faut sortir le porte-monnaie tous les mois/ans. Contrairement à la Raspberry qui <strong>demande juste une connexion.</strong><br />
+De plus, en choisissant la Raspberry, <strong>vous avez la possibilité de modifier vos services à souhait</strong> (exemples : la taille du disque, l’hébergem­ent de Database, etc.), ce qui n’est en général <strong>pas le cas chez les hébergeurs spécialisés</strong>, qui vendent souvent des hébergements mutualisés avec <strong>une faible capacité de configuration.</strong><br />
+Cependant <strong>pour supporter plus d’utilisateurs</strong>, vous avez intérêt à utiliser <a title="Raspberry Pi avec 1Go de RAM" href="http://www.amazon.fr/gp/product/B00T2U7R7I/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;camp=1642&amp;creative=6746&amp;creativeASIN=B00T2U7R7I&amp;linkCode=as2&amp;tag=raspbianfranc-21&amp;linkId=IXEFHYYRC4D5XWPS" target="_blank" rel="nofollow">une Raspberry Pi 2</a>, soit la Raspberry Pi avec <strong>1 Go de RAM</strong>, plutôt que la <a title="Raspberry Pi B+" href="http://www.amazon.fr/gp/product/B00LPESRUK/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;camp=1642&amp;creative=6746&amp;creativeASIN=B00LPESRUK&amp;linkCode=as2&amp;tag=raspbianfranc-21" target="_blank" rel="nofollow">Raspberry de type B+</a> (512 Mo de RAM)</p>
+<p>La question qui se pose maintenant est, <strong>comment faire de la Raspeberry un serveur web</strong> ?</p>
+<h2>Installation du serveur Apache avec Raspbian</h2>
+<h3>Apache, c’est quoi ?</h3>
+<p>Tout d’abord, nous allons installer Apache, qui est <strong>le serveur web en tant que tel</strong>.<br />
+Quand on parle de serveur web, on pense souvent à la machine, mais <strong>ce terme désigne aussi le logiciel</strong> qui permet à la machine d’analyser les requêtes d’un utilisateur (sous forme http), et de retourner le fichier correspondant à la requête (ou une erreur si le fichier n’est pas trouvé, ou la requête mal formulée).<br />
+Dans le cadre d’Apache, <strong>c’est donc du logiciel que l’on parle.</strong></p>
+<p>À l’heure actuelle, <strong>Apache est le serveur web le plus utilisé</strong>, avec environ <strong>60 % de parts de marché</strong>. Apache possède même <strong>sa propre licence</strong>, utilisée par de nombreux autres projets. De plus, l’utilisation massive d’Apache (devenu le standard des serveurs web), couplée à sa forte popularité, à amener à une formidable abondance <a title="Le meilleur de la documentation Apache" href="http://www.amazon.fr/gp/product/2746018195/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;camp=1642&amp;creative=6746&amp;creativeASIN=2746018195&amp;linkCode=as2&amp;tag=raspbianfranc-21" target="_blank" rel="nofollow">de documentation, de cours, et autres livres traitant de son utilisation, depuis l’installation jusqu’à la sécurisation.</a></p>
+<p>Que ce soit pour la Raspberry Pi et Raspbian, ou pour une machine plus généraliste,<strong>Apache est donc un choix sûr</strong>, et les compétences que vous pourrez acquérir sur le sujet <strong>vous seront toujours utiles.</strong></p>
+<h3>Installation d’Apache</h3>
+<p>Avant d’installer le serveur, assurons nous d’avoir une machine bien à jour. Pour ce faire nous devons <strong>posséder les droits administrateur</strong>, soit en étant connecté en root, soit via la commande sudo.</p>
+<div>
+<div id="highlighter_66081" class="syntaxhighlighter  bash">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+<div class="line number2 index1 alt1">2</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2">
+<code class="bash functions">sudo</code> <code class="bash plain">aptitude update</code>
+</div>
+<div class="line number2 index1 alt1">
+<code class="bash functions">sudo</code> <code class="bash plain">aptitude upgrade</code>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Une fois la Raspberry Pi à jour, nous allons installer le serveur Apache.</p>
+<div>
+<div id="highlighter_288459" class="syntaxhighlighter  bash">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2">
+<code class="bash functions">sudo</code> <code class="bash plain">aptitude </code><code class="bash functions">install</code> <code class="bash plain">apache2</code>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<h3>Vérifier qu’Apache fonctionne</h3>
+<p>Une fois l’installation terminée, nous pouvons <strong>tester qu’Apache fonctionne correctement</strong> en nous rendant sur l’adresse de la Raspberry.<br />
+Pour cela, il faut tenter d’accéder à la Raspberry depuis le port 80 (ce port n’étant pas encore ouvert depuis l’extérieur, <strong>il faudra le faire depuis la Raspberry elle-même</strong>). Ne vous inquiétez pas, c’est très facile. Il vous suffit d’ouvrir le navigateur web de la Raspberry (par défaut Midori sous Raspbian), et d’aller à l’adresse « http://127.0.0.1 ». Vous devriez alors obtenir une page avec un message du genre « <em>It works!</em> ».<br />
+Si jamais <strong>vous ne possédez pas d’interface graphique sur votre Raspbian</strong>, ou que vous utilisez le SSH pour vous connecter à votre Raspberry, vous pouvez utiliser la commande suivante :</p>
+<div>
+<div id="highlighter_810416" class="syntaxhighlighter  bash">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2">
+<code class="bash plain">wget -O verif_apache.html http:</code><code class="bash plain">//127</code><code class="bash plain">.0.0.1</code>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Cette commande va <strong>enregistrer le code HTML de la page dans le fichier « verif_apache.html »</strong> dans le répertoire courant.<br />
+Vous n’avez donc plus qu’à lire le fichier avec la commande</p>
+<div>
+<div id="highlighter_763463" class="syntaxhighlighter  bash">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2">
+<code class="bash functions">cat</code> <code class="bash plain">.</code><code class="bash plain">/verif_apache</code><code class="bash plain">.html</code>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Si vous voyez marqué à un endroit dans le code « <em>It works!</em> », c’est qu’Apache marche.</p>
+<p><strong>Apache utilise le répertoire « /var/www » comme racine pour votre site.</strong> Cela signifie que quand vous appelez votre Raspberry sur le port 80 (http), Apache cherche le fichier dans « /var/www ».<br />
+Par exemple, si vous appelez l’adresse « http://127.0.0.1/example », Apache cherchera le fichier « example » dans le répertoire « /var/www ».<br />
+Pour ajouter de nouveaux fichiers, sites, etc., vous devrez donc <strong>les ajouter dans ce répertoire.</strong></p>
+<p>Vous pouvez <strong>dès à présent</strong> utiliser votre Raspberry pour faire un site <strong>en HTML,  CSS et JavaScript pur</strong>, en interne.<br />
+Cependant, vous voudrez sans doute rapidement <strong>permettre des interactions entre le site et l’utilisateur</strong>. Par exemple permettre à l’utilisateur de s’inscrire, etc. Pour cela, vous allez avoir besoin de PHP.</p>
+<h2>Installation de PHP sur la Raspberry</h2>
+<h3>Qu’est-ce que PHP ?</h3>
+<p>Tout d’abord, il faut savoir que le <strong>PHP est un langage interprété</strong>. Et comme dans le cas des serveurs, l’acronyme PHP <strong>peut avoir plusieurs sens</strong>. En fait, quand l’on parle de PHP, on peut parler<strong> soit du langage, soit de l’interpréteur.</strong><br />
+Ici, quand nous parlons d’installer PHP, cela signifie que <strong>nous allons installer l’interpréteur</strong>, afin d’utiliser le langage.</p>
+<p>PHP (le langage cette fois) est <strong>principalement</strong> utilisé pour rendre un site dynamique, c’est-à-dire que l’utilisateur envoie des informations au serveur qui lui renvoie <strong>les résultats modifiés en fonction de ces infos</strong>. A contrario, un site statique<strong> ne s’adapte pas aux informations fournies par un utilisateur.</strong> Il est enregistré sous forme de fichier <strong>une fois pour toute,</strong> et livrera toujours le même contenu.</p>
+<p><strong>PHP est libre</strong>, et maintenu par la fondation PHP, ainsi que l’entreprise Zend, et diverses autres entreprises (il est à noter que Zend est aussi l’auteur <a title="Un livre pour commencer avec Zend Framework" href="http://www.amazon.fr/gp/product/B005SRR706/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;camp=1642&amp;creative=6746&amp;creativeASIN=B005SRR706&amp;linkCode=as2&amp;tag=raspbianfranc-21" target="_blank" rel="nofollow">du célèbre framework Zend PHP, très utilisé et reconnu dans le monde de l’entreprise</a>).</p>
+<p>C’est <strong>un des langages de programmation les plus utilisés</strong>, et c’est même <strong>le plus utilisé pour la programmation destinée au web</strong>, avec environ<strong> 79 % de parts de marché.</strong></p>
+<p>Là encore, l’ensemble des compétences que vous pourrez acquérir, sur le langage ou sur l’installation et la configuration de l’interpréteur, <strong>vous seront toujours utiles.</strong>Nous ne pouvons donc que vous conseiller <a title="Un bon ouvrage pour apprendre le PHP" href="http://www.amazon.fr/gp/product/274608371X/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;camp=1642&amp;creative=6746&amp;creativeASIN=274608371X&amp;linkCode=as2&amp;tag=raspbianfranc-21" target="_blank" rel="nofollow">d’apprendre le PHP</a>, qui est vraiment un langage merveilleux, et trop sous-estimé.</p>
+<h3>Installer PHP</h3>
+<p>On va encore une fois faire appel à <strong>l’administrateur</strong> pour installer php5 avec la ligne de commande.</p>
+<div>
+<div id="highlighter_375241" class="syntaxhighlighter  bash">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2">
+<code class="bash functions">sudo</code> <code class="bash plain">aptitude </code><code class="bash functions">install</code> <code class="bash plain">php5</code>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<h3>Vérifier que PHP fonctionne</h3>
+<p>Pour savoir si PHP fonctionne correctement, ce n’est pas très compliqué, et <strong>la méthode est relativement proche de celle employée pour Apache.</strong></p>
+<p>Vous allez en premier lieu <strong>supprimer le fichier « index.html »</strong> dans le répertoire « /var/www ».</p>
+<div>
+<div id="highlighter_586792" class="syntaxhighlighter  bash">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2">
+<code class="bash functions">sudo</code> <code class="bash functions">rm</code> <code class="bash plain">/var/www/index</code><code class="bash plain">.html</code>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Puis <strong>créez un fichier « index.php »</strong> dans ce répertoire, avec cette ligne de commande</p>
+<div>
+<div id="highlighter_687741" class="syntaxhighlighter  bash">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2">
+<code class="bash functions">echo</code> <code class="bash string">"&lt;?php phpinfo(); ?&gt;"</code> <code class="bash plain">&gt; </code><code class="bash plain">/var/www/index</code><code class="bash plain">.php</code>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>À partir de là, le fonctionnement <strong>est le même que pour la vérification d’Apache.</strong>Vous tentez d’accéder à votre page, et vous devriez avoir un résultat proche de cette image (si vous n’avez pas d’interface, utilisez la même méthode que précédemment, et cherchez les mots « PHP Version »).</p>
+<p><a href="http://raspbian-france.fr/wp-content/uploads/2014/03/phpinfo.jpg"><img class="size-full wp-image-96" src="{{site.baseurl}}/assets/images/2015/11/phpinfo.jpg" alt="Capture d'un phpinfo d'un serveur sous Raspbian" width="601" height="441"></a></p>
+<h2>Une base de données MySQL pour votre serveur</h2>
+<h3>Un SGBD c’est quoi ? Pourquoi MySQL ?</h3>
+<p>Maintenant que <strong>nous avons mis en place PHP5</strong>, vous allez sans doute <strong>vouloir stocker des informations</strong> pour les utiliser dans vos sites. Pour cela, on utilise le plus souvent des bases de données.<br />
+Nous allons donc mettre en place un SGBD (Système de Gestion de Bases de Données), à savoir MySQL.</p>
+<p><strong>MySQL est un SGBD libre</strong>, puissant, massivement utilisé (<strong>environ 56 % de parts de marché des SGBD libres</strong>). Là encore, MySQL est tellement un incontournable du développement, quelle qu’en soit la branche, que vous devez absolument<a title="Le livre du zéro, parfait pour commencer avec MySQL" href="http://www.amazon.fr/gp/product/B00850RB1S/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;camp=1642&amp;creative=6746&amp;creativeASIN=B00850RB1S&amp;linkCode=as2&amp;tag=raspbianfranc-21" target="_blank" rel="nofollow">l’apprendre et le maitriser.</a></p>
+<h3>Installer MySQL</h3>
+<p>Pour ce faire, nous allons installer mysql-server <strong>et</strong> php5-mysql (qui servira de lien entre php et mysql)</p>
+<div>
+<div id="highlighter_913162" class="syntaxhighlighter  bash">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2">
+<code class="bash functions">sudo</code> <code class="bash plain">aptitude </code><code class="bash functions">install</code> <code class="bash plain">mysql-server php5-mysql</code>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Lors de l’installation de mysql-server, il nous est demandé un mot de passe pour le compte administrateur MySQL (root), <strong>attention à bien le retenir, car il sera utilisé plus tard.</strong></p>
+<h3>Vérifier que MySQL marche correctement</h3>
+<p>Pour vérifier le fonctionnement de MySQL, cette fois <strong>nous utiliserons uniquement la ligne de commande.</strong> Pour cela, nous allons simplement nous connecter via la commande :</p>
+<div>
+<div id="highlighter_504242" class="syntaxhighlighter  bash">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2"><code class="bash plain">mysql --user=root --password=votrepasswd</code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Vous devriez alors avoir un message du type</p>
+<p>« Bienvenue sur MySQL! »</p>
+<p>Vous avez donc maintenant un <strong>serveur web, relié à PHP5 et à MySQL</strong>. Soit tout ce qu’il faut. <strong>Vous pouvez donc vous arrêter ici.</strong></p>
+<h2>PHPMyAdmin, gérer facilement ses bases de données</h2>
+<p>Toutefois, vous pourriez vouloir <strong>une interface un peu plus simple</strong> pour administrer vos bases de données qu’une simple console MySQL. Pour cela, vous pouvez installer PHPMyAdmin.</p>
+<h3>PHPMyAdmin, c’est quoi ?</h3>
+<p>PHPMyAdmin est une application développée en PHP, et qui vise à fournir <strong>une interface simplifiée pour MySQL.</strong><br />
+Elle vous permet par exemple de voir rapidement et de façon lisible le contenu de votre base de données, ou de la manipuler <strong>sans avoir besoin de faire vous-mêmes vos requêtes MySQL.</strong></p>
+<h3>Installer PHPMyAdmin</h3>
+<p>L’installation de PHPMyAdmin n’est <strong>pas du tout obligatoire</strong>. Nous ferons ici une installation <strong>sans paramètres de sécurité particuliers.</strong></p>
+<p>L’installation de PHPMyAdmin se fait très simplement, via le gestionnaire de paquets, en utilisant la commande suivante :</p>
+<div>
+<div id="highlighter_458348" class="syntaxhighlighter  bash">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2">
+<code class="bash functions">sudo</code> <code class="bash plain">aptitude </code><code class="bash functions">install</code> <code class="bash plain">phpmyadmin</code>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>PHPMyAdmin vous posera plusieurs questions concernant ses réglages.<br />
+Choisissez donc <strong>un serveur Apache</strong>, puis utilisez le choix par défaut pour la base (<strong>dbconfig-common</strong>). Pour le mot de passe root, il s’agit de <strong>celui que vous aviez utilisé pour MySQL.</strong></p>
+<p>Une fois PHPMyAdmin installé, vérifiez que le fichier « /etc/apache2/apache2.conf » contient la ligne</p>
+<div>
+<div id="highlighter_72129" class="syntaxhighlighter  bash">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2">
+<code class="bash plain">Include </code><code class="bash plain">/etc/phpmyadmin/apache</code><code class="bash plain">.conf</code>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Si ce n’est pas le cas, ajoutez-la et redémarrez le serveur Apache.</p>
+<h3>Vérifier l’installation de PHPMyAdmin</h3>
+<p>Pour vérifier le bon fonctionnement de PHPMyAdmin, vous allez simple tenter d’y accéder, en utilisant l’adresse de votre Raspberry suivi de /phpmyadmin. Par exemple, en local ce sera « http://127.0.0.1/phpmyadmin ».</p>
+<h2>Rendre un serveur accessible depuis le web</h2>
+<p>Votre serveur web est donc prêt. Cependant, <strong>vous ne pouvez sans doute pas y accéder depuis internet.</strong> En effet, il faudrait pour cela que votre box (livebox, freebox, etc.) redirige les requêtes vers votre Raspberry, sur les bons ports, etc.<br />
+Pour mettre ces redirections en place, et même obtenir une adresse URL, allez voir <a title="Mettre en ligne votre serveur web Raspbian, DynDNS et port forwarding" href="http://raspbian-france.fr/mettre-en-ligne-serveur-web-raspbian-dydns-port-forwarding/" target="_blank">le tuto sur le port fowarding et le dydns</a>.</body></html></p>

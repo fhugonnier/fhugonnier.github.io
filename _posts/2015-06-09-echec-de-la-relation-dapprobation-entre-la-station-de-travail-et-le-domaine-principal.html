@@ -1,0 +1,43 @@
+---
+layout: post
+title: Échec de la relation d'approbation entre la station de travail et le domaine
+  principal
+date: 2015-06-09 13:29:32.000000000 +02:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Windows
+tags: []
+meta:
+  _edit_last: '82119094'
+  geo_public: '0'
+  _publicize_job_id: '11492744245'
+author:
+  login: fhugonnier
+  email: fhugonnier@outlook.com
+  display_name: fhugonnier
+  first_name: ''
+  last_name: ''
+permalink: "/2015/06/09/echec-de-la-relation-dapprobation-entre-la-station-de-travail-et-le-domaine-principal/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body><br />
+<img src="{{site.baseurl}}/assets/images/2015/06/microsoft.jpg" alt=""></p>
+<p>Petit article sur un problème assez récurrent surtout lorsque l’on utilise les fonctionnalités de «snapshot» ou de «rollback» dans un domaine.<br />
+<img src="{{site.baseurl}}/assets/images/2015/06/WindowsTrustRelationship.png" alt="" width="539" height="276"></p>
+<p>Dans ce cas, une solution rapide s’offre à vous :</p>
+<ul>
+<li>Se connecter en admin local sur la machine</li>
+<li>Ouvrir une CMD</li>
+<li>Tapez la commande suivante :</li>
+</ul>
+<pre> netdom resetpwd /s:DC.domain.com /ud:domain\Administrator /pd:"password"</pre>
+<ul>
+<li>/s = FQDN du controleur de domaine principal</li>
+<li>/ud = Compte d’administrateur du domaine</li>
+<li>/pd = Mot de passe du compte d’admin du domaine</li>
+</ul>
+<p>Un petit reboot, et vous devriez être capable de vous authentifier auprès du contrôleur de domaine.</body></html></p>

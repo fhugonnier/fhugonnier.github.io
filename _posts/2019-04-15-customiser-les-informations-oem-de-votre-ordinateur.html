@@ -1,0 +1,117 @@
+---
+layout: post
+title: Customiser les informations OEM de votre ordinateur
+date: 2019-04-15 06:52:12.000000000 +02:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Windows 10
+tags: []
+meta:
+  _edit_last: '82119094'
+  timeline_notification: '1555307536'
+  geo_public: '0'
+  _publicize_job_id: '29772968766'
+author:
+  login: fhugonnier
+  email: fhugonnier@outlook.com
+  display_name: fhugonnier
+  first_name: ''
+  last_name: ''
+permalink: "/2019/04/15/customiser-les-informations-oem-de-votre-ordinateur/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body></p>
+<h2 class="post-title"></h2>
+<div class="entry clearfix">
+<p><a href="https://dyrk.org/wp-content/uploads/2016/08/hack-any-windows-7-user-password.1280x600.jpg"><img class="size-large wp-image-4070 aligncenter" src="{{site.baseurl}}/assets/images/2019/04/hack-any-windows-7-user-password.1280x600-1024x480.jpg" alt="hack-any-windows-7-user-password.1280x600" width="860" height="403"></a></p>
+<p> </p>
+<p>Bon après midi,</p>
+<p> </p>
+<p>J'ai décidé de vous fournir quelques lignes de commande qui vous permettront, pour les fans de tuning qui collent tout plein de stickers sur le dos de leurs laptops, d'aller encore plus loin dans le tuning !!!</p>
+<p> </p>
+<p>Alors qu'est-ce que <strong>OEM</strong> signifie ?</p>
+<p><img class="size-full wp-image-4066 aligncenter" src="{{site.baseurl}}/assets/images/2019/04/Capture2-2.png" alt="Capture2" width="622" height="326"></p>
+<p> </p>
+<p>Voilà, en gros, c'est simplement le fabricant de super machine de compétition (<em>ou la vielle carcasse qui vous sert d'ordinateur, c'est vous qui voyez</em>).</p>
+<p> </p>
+<p>Vous pouvez accéder à ces informations de plusieurs manières :</p>
+<p> </p>
+<p>Soit en vous rendant sur votre poste de travail (<em>ordinateur</em>), en faisant un clic droit, puis en selectionnant "propriété".</p>
+<p> </p>
+<p><a href="https://dyrk.org/wp-content/uploads/2016/08/Sans-titre-1.png"><img class="size-full wp-image-4068 aligncenter" src="{{site.baseurl}}/assets/images/2019/04/Sans-titre-1.png" alt="Sans titre" width="724" height="608"></a></p>
+<p>Soit en saisissant directement dans votre barre de recherche "<strong>System</strong>"</p>
+<p> </p>
+<p><a href="https://dyrk.org/wp-content/uploads/2016/08/Sans-titre.png"><img class=" wp-image-4067 aligncenter" src="{{site.baseurl}}/assets/images/2019/04/Sans-titre.png" alt="Sans titre" width="460" height="430"></a></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Voilà, vous devriez trouver les informations sur votre système:<em> Windows 10 édition 64bits, fabricant MSI, ...</em></p>
+<p>Mais où donc se trouvent ces informations ?</p>
+<p>Dans votre base de registres !!!</p>
+<p>Oui bon je l'avoue, ça tombe de sens ...</p>
+<p>Vous pouvez consulter tout via un (<em>ctrl + r</em>), <strong>regedit</strong></p>
+<blockquote><p>Puis en naviguant jusqu'ici :<br />
+<em>&gt; HKEY_LOCAL_MACHINE<br />
+&gt;&gt; SOFTWARE<br />
+&gt;&gt;&gt; Microsoft<br />
+&gt;&gt;&gt;&gt;&gt; Windows<br />
+&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; CurrentVersion<br />
+&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; OEMInformation</em>
+</p></blockquote>
+<p> </p>
+<p>Voici un récapitulatif des données que vous pourrez y ajouter / modifier :</p>
+<table>
+<tbody>
+<tr>
+<td><b>Value name</b></td>
+<td><b>Data</b></td>
+<td><b>Value type</b></td>
+</tr>
+<tr>
+<td><b>Logo</b></td>
+<td>&lt;Path to your logo file&gt;*</td>
+<td>REG_SZ</td>
+</tr>
+<tr>
+<td><b>Manufacturer</b></td>
+<td>&lt;System manufacturer name&gt;</td>
+<td>REG_SZ</td>
+</tr>
+<tr>
+<td><b>Model</b></td>
+<td>&lt;System Model number&gt;</td>
+<td>REG_SZ</td>
+</tr>
+<tr>
+<td><b>SupportHours</b></td>
+<td>&lt;Support hours&gt;</td>
+<td>REG_SZ</td>
+</tr>
+<tr>
+<td><b>SupportPhone</b></td>
+<td>&lt;OEM Support Phone number&gt;</td>
+<td>REG_SZ</td>
+</tr>
+<tr>
+<td><b>SupportURL</b></td>
+<td>&lt;OEM Support URL&gt;</td>
+<td>REG_SZ</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Nota Bene :</strong><br />
+pour ce qui concerne le Logo, si vous souhaitez le customiser, il vous faudra indiquer le chemin vers une image au format BMP d'une taille de <em>120 x  120</em> pixels</p>
+<p> </p>
+<p>Pour modifier directement tout ça en ligne de commande voici quelques exemples :</p>
+<p>Ici, je change le logo du fabricant :</p>
+<p><em>reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation /v <strong>Logo</strong> /t REG_SZ /d C:\Users\Moi\Pictures\logo.bmp</em></p>
+<p>Là, je modifie le nom du fabricant :</p>
+<p><em>reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation /v <strong>Manufacturer</strong> /t REG_SZ /d société</em></p>
+<p>Voyons maintenant un peu ce que ça donne ....</p>
+<p><a href="https://fhugonnier.wordpress.com/wp-content/uploads/2019/04/informations.png"><img class="alignnone size-medium wp-image-465" src="{{site.baseurl}}/assets/images/2019/04/informations.png?w=300" alt="" width="300" height="219"></a></p>
+</div>
+<p></body></html></p>

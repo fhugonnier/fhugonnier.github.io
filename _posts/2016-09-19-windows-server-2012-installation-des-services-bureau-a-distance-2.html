@@ -1,0 +1,70 @@
+---
+layout: post
+title: 'Windows Server 2012 : Installation des Services Bureau à Distance'
+date: 2016-09-19 16:25:04.000000000 +02:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Windows 2012 R2
+tags: []
+meta:
+  _rest_api_published: '1'
+  _rest_api_client_id: "-1"
+  _publicize_job_id: '26987572731'
+  _edit_last: '82119094'
+  geo_public: '0'
+author:
+  login: fhugonnier
+  email: fhugonnier@outlook.com
+  display_name: fhugonnier
+  first_name: ''
+  last_name: ''
+permalink: "/2016/09/19/windows-server-2012-installation-des-services-bureau-a-distance-2/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body></p>
+<p>Nous allons procéder à l’installation des Services de Bureau à Distance (Remote Desktop Services) sur un serveur Windows 2012.</p>
+<p>Pour commencer, ouvrir le <strong>gestionnaire de serveur</strong> (server manager).</p>
+<p>Cliquer sur <strong>Gérer</strong> puis sur Ajouter des <strong>rôles et fonctionnalités</strong>.</p>
+<p><img src="{{site.baseurl}}/assets/images/2016/09/020913_2047_WindowsServ1.png" alt=""></p>
+<p>L’écran suivant s’affiche.</p>
+<p><img src="{{site.baseurl}}/assets/images/2016/09/020913_2047_WindowsServ2.png" alt=""></p>
+<p>Cliquer sur <strong>Suivant</strong>.</p>
+<p><img src="{{site.baseurl}}/assets/images/2016/09/020913_2047_WindowsServ3.png" alt=""></p>
+<p>Cocher l’option <strong>Installation des services de Bureau à distance</strong> puis cliquer sur <strong>Suivant</strong>.</p>
+<p><img src="{{site.baseurl}}/assets/images/2016/09/020913_2047_WindowsServ4.png" alt=""></p>
+<p>Cocher l’option <strong>Démarrage rapide</strong> puis cliquer sur <strong>Suivant</strong>.</p>
+<p><img src="{{site.baseurl}}/assets/images/2016/09/020913_2047_WindowsServ5.png" alt=""></p>
+<p>Cocher l’option <strong>Déploiement de bureaux basés sur une session</strong> puis cliquer sur <strong>Suivant</strong>.</p>
+<p><img src="{{site.baseurl}}/assets/images/2016/09/020913_2047_WindowsServ6.png" alt=""></p>
+<p>Choisir le serveur parmi le pool de serveurs sur lequel seront installés les services puis cliquer sur <strong>Suivant</strong>.</p>
+<p><img src="{{site.baseurl}}/assets/images/2016/09/020913_2047_WindowsServ7.png" alt=""></p>
+<p>Cocher la case <strong>Redémarrer automatiquement le serveur de destination si nécessaire</strong> puis cliquer sur <strong>Déployer</strong>.</p>
+<p><img src="{{site.baseurl}}/assets/images/2016/09/020913_2047_WindowsServ8.png" alt=""></p>
+<p>Patienter durant l’installation.</p>
+<p><img src="{{site.baseurl}}/assets/images/2016/09/020913_2047_WindowsServ9.png" alt=""></p>
+<p>L’installation se déroule service après service.</p>
+<p><img src="{{site.baseurl}}/assets/images/2016/09/020913_2047_WindowsServ10.png" alt=""></p>
+<p> </p>
+<p>Un redémarrage est à prévoir.</p>
+<p><img src="{{site.baseurl}}/assets/images/2016/09/020913_2047_WindowsServ11.png" alt=""></p>
+<p>Une fois l’installation terminée, cliquer sur <strong>Fermer</strong>.</p>
+<p>L’installation est maintenant terminée. Prochaine étape : la configuration.</p>
+<div class="titlepage">
+<div>
+<div>
+<h3 class="title">Configurer le déploiement RDS</h3>
+</div>
+</div>
+</div>
+<p>Il est possible de configurer votre déploiement et l'adapter selon vos besoins, voici donc les étapes pour la configuration :</p>
+<p>Dans l'onglet "<span class="bold"><strong>Vue d'ensemble du déploiement</strong></span>" du "<span class="bold"><strong>Service Bureau à distance</strong></span>", cliquez sur "<span class="bold"><strong>Tâches</strong></span>" puis "<span class="bold"><strong>Modifier les propriétés de déploiement</strong></span>".</p>
+<div class="mediaobject"><img class="" src="{{site.baseurl}}/assets/images/2016/09/16.png" width="606" height="384"></div>
+<p>• Cet assistant vous permet de configurer les paramètres de vos différents services RDS</p>
+<div class="mediaobject"><img class="" src="{{site.baseurl}}/assets/images/2016/09/17.png" width="622" height="495"></div>
+<p>• Vous pouvez également recupérer l'url pour le service web Bureau à distance en utilisant votre navigateur web pour les clients</p>
+<div class="mediaobject"><img class="" src="{{site.baseurl}}/assets/images/2016/09/18.png" width="642" height="512"></div>
+<p></body></html></p>

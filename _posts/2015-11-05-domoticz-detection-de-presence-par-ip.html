@@ -1,0 +1,79 @@
+---
+layout: post
+title: Domoticz détection de présence par ip
+date: 2015-11-05 12:21:18.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Raspberry Pi
+tags: []
+meta:
+  _edit_last: '82119094'
+  geo_public: '0'
+  _publicize_job_id: '16559854602'
+author:
+  login: fhugonnier
+  email: fhugonnier@outlook.com
+  display_name: fhugonnier
+  first_name: ''
+  last_name: ''
+permalink: "/2015/11/05/domoticz-detection-de-presence-par-ip/"
+---
+<p><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><br />
+<html><body></p>
+<p> </p>
+<p>Dans cette article, on va créer des interrupteurs virtuels sur <a href="http://www.geekland-leblog.fr/a-la-decouverte-de-domoticz/" target="_blank">Domticz</a> qui vont représenter les téléphones connectés sur le Wifi de votre box.</p>
+<p><a href="http://www.geekland-leblog.fr/wordpress/wp-content/uploads/2015/02/tel_domoticz.jpg" rel="prettyPhoto"><img class="alignnone wp-image-97 lazy-loaded" src="{{site.baseurl}}/assets/images/2015/11/tel_domoticz.jpg" alt="tel_domoticz" width="692" height="410"></a></p>
+<p>Exemple : On voit que mon téléphone est connecté sur le wifi donc je suis chez moi et ma copine est au travail, donc son téléphone est hors-ligne. On va commencé par créer nos boutons virtuels.</p>
+<p><a href="http://www.geekland-leblog.fr/wordpress/wp-content/uploads/2015/02/dunidev.jpg" rel="prettyPhoto"><img class="alignnone wp-image-98 lazy-loaded" src="{{site.baseurl}}/assets/images/2015/11/dunidev.jpg" alt="dunidev" width="713" height="328"></a></p>
+<p>Crée un Matériel virtuel  de type « Dummy (Does nothing, use for virtual switch only »). Nommez-le comme vous voulez, pour moi ça sera Dummy dev, cliquez sur ajoutez, on va à présent crée les interrupteurs virtuels,  <strong>Interrupteur/Ajout manuel.</strong></p>
+<p><a href="http://www.geekland-leblog.fr/wordpress/wp-content/uploads/2015/02/add-tel.jpg" rel="prettyPhoto"><img class="alignnone wp-image-99 size-full lazy-loaded" src="{{site.baseurl}}/assets/images/2015/11/add-tel.jpg" alt="add tel" width="402" height="431"></a></p>
+<p>Sélectionner <strong>Hardware</strong>: Dunny dev ( pour vous le nom que vous lui avez donnez) <strong>Switch Type</strong>: on/off Type: X10, puis <strong>add Devices</strong> refaite l’opération pour un deuxième téléphone en changeant juste le <strong>unit code</strong>. Maintenant il faut installer le sctipt sur le serveur. On connecte le pi en SSH avec putty, il faut mettre le script dans le repertoire /home/pi/domoticz/scripts/lua et le nommer « script_time_ping.lua ».</p>
+<p>Pour crée un dossier, on va taper :</p>
+<pre class="">sudo nano /home/pi/domoticz/scripts/lua/script_time_ping.lua</pre>
+<p>Et on va copier ce scripte modifié avec vos paramètre :</p>
+<pre class="">--Initialise la commande de retour finale
+commandArray={}
+--Mode deboggage (affichage des messages)
+debug=true
+--Prefixe pour les sorties de log
+prefixe="(PING) "
+--Tableau des périphériques à "pinguer"
+-- Key = adresse ip à pinguer
+-- Value = périphérique virtuel à switcher
+local ping={}
+ping['192.168.1.56']='Tel aurelien'
+ping['192.168.1.20']='NAS'
+ping['192.168.1.39']='Tel chaton'
+--pour chaque entree du tableau
+for ip, switch in pairs(ping) do
+ --Le Ping ! : -c1 = Un seul ping , -w1 délai d'une seconde d'attente de réponse
+ ping_success=os.execute('ping -c1 -w1 '..ip)
+ --Si le ping à répondu
+ if ping_success then
+ if(debug==true)then
+ print(prefixe.."ping success "..switch)
+ end
+ --si le switch etait sur off on l'allume
+ if(otherdevices[switch]=='Off') then
+ commandArray[switch]='On'
+ end
+ else
+ --Si pas de réponse
+ if(debug==true)then
+ print(prefixe.."ping fail "..switch)
+ end
+ --si le switch etait sur oN on l'eteind
+ if(otherdevices[switch]=='On') then
+ commandArray[switch]='Off'
+ end
+ end
+end</pre>
+<p>Sources du script <a title="ici" href="http://domoticz.blogspot.fr/2014/11/script-lua-verifier-la-presence.html" target="_blank">ici</a></p>
+<p>Vous modifiez les lignes avec les adresses ip CTRL X pour sauvegarder.</p>
+<p>On est maintenant capable de savoir si nos téléphones sont présent cela marche aussi avec un pc ou un nas il suffit juste de créer un interrupteur et de rentrer l’ip dans le script.</p>
+<p> </p>
+<p>source : http://www.geekland-leblog.fr/</body></html></p>
