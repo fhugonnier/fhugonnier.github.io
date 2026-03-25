@@ -159,7 +159,7 @@ permalink: /about/
 
 /* Sections */
 .about-section { margin-bottom: 44px; }
-.about-section h2 {
+.about-section h2, .about-page h2 {
   font-family: 'Sora', sans-serif;
   font-size: 20px; font-weight: 600;
   margin-bottom: 16px;

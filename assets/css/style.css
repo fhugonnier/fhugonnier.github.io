@@ -494,3 +494,20 @@ pre code {
   overflow-wrap: break-word;
   word-break: break-word;
 }
+/* Fix titres page About */
+.about-section h2 {
+  border-bottom: 1px solid #21262d !important;
+  font-size: 20px !important;
+}
+.about-page .post-content h2 {
+  border-bottom: none;
+}
+/* Fix page About */
+.about-page h2 {
+  border-bottom: 1px solid #21262d !important;
+  padding-bottom: 10px !important;
+  margin-top: 0 !important;
+}
+.about-page .post-content h2 {
+  border-bottom: 1px solid #21262d !important;
+}
