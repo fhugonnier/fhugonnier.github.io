@@ -13,3 +13,18 @@
     </div>
   </div>
 </footer>
+<p class="footer-views">
+  <span id="total-views">...</span> visites au total
+</p>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var tv = document.getElementById('total-views');
+  if (tv) {
+    fetch('https://noobs.goatcounter.com/counter/TOTAL.json')
+      .then(function(r) { return r.json(); })
+      .then(function(data) { tv.innerText = data.count; })
+      .catch(function() { tv.innerText = '0'; });
+  }
+});
+</script>

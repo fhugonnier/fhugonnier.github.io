@@ -5,6 +5,7 @@ layout: default
   <header>
     <div class="post-meta">
       <time>{{ page.date | date: "%d %b %Y" }}</time>
+      <span class="view-count" id="pageviews">...</span> vues
       {% for cat in page.categories %}
         <span class="tag">{{ cat }}</span>
       {% endfor %}
@@ -34,4 +35,16 @@ layout: default
       {% endif %}
     </div>
   </footer>
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  var pv = document.getElementById('pageviews');
+  if (pv) {
+    var uri = location.pathname.replace(/\/$/, '');
+    fetch('https://noobs.goatcounter.com/counter/' + encodeURIComponent(uri) + '.json')
+      .then(function(r) { return r.json(); })
+      .then(function(data) { pv.innerText = data.count; })
+      .catch(function() { pv.innerText = '0'; });
+  }
+});
+</script>
 </article>
