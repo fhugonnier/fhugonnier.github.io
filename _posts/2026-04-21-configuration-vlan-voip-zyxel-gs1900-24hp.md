@@ -2,7 +2,7 @@
 layout: post
 title: "Configuration VLAN VoIP sur Zyxel GS1900-24HP"
 date: 2026-04-21
-categories: [réseau, voip]
+categories: [reseau, voip]
 tags: [vlan, voip, zyxel, gs1900, switch, qos, 802.1q]
 ---
 
