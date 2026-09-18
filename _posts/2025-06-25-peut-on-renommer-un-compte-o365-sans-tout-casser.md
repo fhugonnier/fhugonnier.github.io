@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Peut-on renommer un compte O365 sans tout casser ?"
-date: 2025-06-25
+date: 2025-06-25 10:00:00 +02:00
 categories: [office365, entra-id, microsoft-365]
 tags: [office365, entra, microsoft-365, upn, renommer, compte, utilisateur, azure-ad]
 ---

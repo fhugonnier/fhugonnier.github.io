@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Comment mettre en place un self-service sur O365 ?"
-date: 2025-06-25
+date: 2025-06-25 09:00:00 +02:00
 categories: [office365, entra-id, microsoft-365, self-service]
 tags: [office365, entra, microsoft-365, sspr, self-service, gestion-des-acces, teams, groupes]
 ---
