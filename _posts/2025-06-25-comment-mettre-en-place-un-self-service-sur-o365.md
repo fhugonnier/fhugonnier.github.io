@@ -83,7 +83,3 @@ Par défaut, **n'importe quel utilisateur peut créer un groupe Microsoft 365** 
 | **SSPR (Hybride / Réécriture AD local)** | Entra ID P1 (Business Premium, M365 E3) |
 | **Packages d'accès (MyAccess)** | Entra ID P1 / P2 (Identity Governance requis pour certaines fonctions avancées) |
 | **Restriction de création de groupes via AzureAD PowerShell** | Entra ID P1 (pour les utilisateurs concernés par la politique) |
-
----
-
-**Quel aspect du self-service souhaitez-vous configurer en priorité pour vos utilisateurs ou vos clients ?**
